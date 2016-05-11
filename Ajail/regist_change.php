@@ -68,18 +68,25 @@ $dataArr['password2']        = '';
 ///////この部分は再帰的な処理でもっとかんけつにできる。/////
 //var_dump($password_db);
 
-//$common        = new error_check();
+$common        = new error_check();
 
   //     $common->htmlEncode( $dataArr );        
+list( $yearArr, $monthArr, $dayArr ) = initMaster::getDate();
+arsort($yearArr);
 
+$mode = "first";
 
-
+if( isset($_POST["confirm"] )   === true ) $mode = "confirm" ;
+if( isset($_POST["back"] )      === true ) $mode = "back" ;
+if( isset($_POST["complete"] )  === true ) $mode = "complete" ;
+ 
        $selectYear = $dataArr['year'];
        $selectMonth = $dataArr['month'];
        $selectDay = $dataArr['day'];
-  $mode="first";
 
-  if($mode=="first"){
+ switch($mode){
+case "first":
+
 ?>
 
 <!-- 最初に表示 --!>
@@ -133,17 +140,8 @@ Eメールアドレス <?php echo $dataArr['email']; ?> <br>
 </html>  
 
 <?php
- }
-$common        = new error_check();
+ break;exit;
 
-list( $yearArr, $monthArr, $dayArr ) = initMaster::getDate();
-arsort($yearArr);
-
-if( isset($_POST["confirm"] )   === true ) $mode = "confirm" ;
-if( isset($_POST["back"] )      === true ) $mode = "back" ;
-if( isset($_POST["complete"] )  === true ) $mode = "complete" ;
- 
-switch($mode){
 case "confirm":
 
      unset($_POST["confirm"]);
@@ -313,8 +311,8 @@ Eメールアドレス <?php echo $dataArr['email']; ?> <br>
 
 パスワード <?php echo "***********"/*$dataArr['password1']*/; ?> <br>
 
-        <input type = "submit" name = "back" value = "戻る"/>
-        <input type = "submit" name = "complete" value = "登録完了"/><br>  
+        <input type = "submit" name = "back" value = "項目表示"/>
+        <input type = "submit" name = "complete" value = "変更完了"/><br>  
         <?php foreach( $dataArr as $key => $value) { ?>
           <?php if(is_array($value)) { ?> 
             <?php foreach( $value as $v ){ ?>

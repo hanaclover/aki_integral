@@ -44,7 +44,7 @@ $user_id="noid";
 //ログイン状態のとき$nameと$user_idを取得
 if(isset($_SESSION)){
 	var_dump($_SESSION);
-//	$name=$_SESSION["NAME"].$_SESSION["FIRSTNAME"];
+	$name=$_SESSION["NAME"].$_SESSION["FIRSTNAME"];
 	$user_id=$_SESSION["USERID"];
 }else{
 }
