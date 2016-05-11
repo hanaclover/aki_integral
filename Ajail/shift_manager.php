@@ -47,7 +47,7 @@ $arr=$db->select($table,$column, $where);
 
 //人数の長さ
 $person=count($arr);
-
+echo " person ".$person."<br>";
 //文字列の分解
 $shift=explode(',',$arr[0]["shift_data"]);
 
@@ -245,7 +245,10 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 		$column="COUNT(*) ";
 		$where=" shift_year= ".$arr[0]["shift_year"]." AND shift_month= ".$_POST["month_submit"];
 		
-		$result=$db->select($table,$where);
+		$result=$db->select($table,$column,$where);
+		
+		var_dump($result);
+		
 		if($result[0]["COUNT(*)"]==0){
 		
 			$col="user_id,shift_year,shift_month,shift_data,delete_flg";//insertするcolumn指定
@@ -273,12 +276,12 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 				$shift_data=implode("," , $sche[$i]);//insertするvalue指定
 				$data="\"".$shift_data."\"";
 					
-				$db->update2($table,$col,$data,$where);
+				$db->update2($table,$column,$data,$where);
 			}
 			
 		}
-		header("Location:./shift_confirm.php");
-		exit();	
+		//header("Location:./shift_confirm.php");
+		//exit();	
 	}
 }else{
 	//makeボタンが押される前に実行される
