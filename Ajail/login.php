@@ -37,8 +37,8 @@ $hs = new tohash();
 
 //セッションにはユーザーID入れておく
 $_SESSION["USERID"] = $_POST["userid"];
-$_SESSION["NAME"] = $_POST["family_name"];
-$_SESSION["FIRSTNAME"] = $_POST["first_name"];
+//$_SESSION["NAME"] = $_POST["family_name"];
+//$_SESSION["FIRSTNAME"] = $_POST["first_name"];
 
 
 //入力IDからデータベース参照
@@ -64,7 +64,7 @@ if($password_db[0]["dlt_flg"] == 0){
 //パスワード確認
 if($password_db[0]["Password"] == $password){
   echo "認証に成功しました";
-
+  echo isset($_SESSION["KEY"]);
 //セッションに苗字を入れる「〜様ようこそ」用
   session_regenerate_id(true);
   $_SESSION["NAME"] = $password_db[0]["FamilyName"];
@@ -72,14 +72,14 @@ if($password_db[0]["Password"] == $password){
   $_SESSION["ID"]=$password_db[0]["User_ID"];
   $_SESSION["TYPE"] = $password_db[0]["Type"];
 //タイプに応じて飛ぶページをカエル
-
-  if($password_db[0]["Type"]=="お客様"){
-     if(isset($_SESSION["KEY"])){
+  //var_dump ($password_db[0]["Type"]);
+//  if($password_db[0]["Type"]==="お客様"){
+     /*if(isset($_SESSION["KEY"])){
             header("Location : index.php");
-     }else{
-            header("Location : test.php");
-     }
-  } 
+     }else{*/
+            header("Location : shift_worker.php");
+     /*}*/
+ // } 
 
   if($password_db[0]["Type"]=="アルバイト")
   header("Location: shift_worker.php");
