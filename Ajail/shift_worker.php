@@ -43,9 +43,19 @@ $user_id="noid";
 
 //ログイン状態のとき$nameと$user_idを取得
 if(isset($_SESSION)){
-	var_dump($_SESSION);
-	$name=$_SESSION["NAME"].$_SESSION["FIRSTNAME"];
+	
 	$user_id=$_SESSION["USERID"];
+	
+	$arr=array();
+	$db=new database();
+	$table="regist";//テーブル名指定	
+	$column="";
+	$where="User_ID= "."\"".$user_id."\"";
+	$arr=$db->select($table,$column, $where);
+	
+	$name=$arr[0]["FamilyName"]." ".$arr[0]["FirstName"];
+	
+	
 }else{
 }
 

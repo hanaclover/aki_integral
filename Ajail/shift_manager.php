@@ -7,7 +7,7 @@
 require_once("shiibashi.php");
 require_once("database_class.php");
 require_once("calendar.php");
-require_once("login_check_master.php");
+//require_once("login_check_master.php");
 
 
 ///表示するyearとmonthを定める
@@ -243,7 +243,7 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 		$db=new database();
 		$table=	"shift_fix";//テーブル名指定
 		$column="COUNT(*) ";
-		$where=" shift_year= ".$arr[0]["shift_year"]." AND shift_month= ".$arr[0]["shift_month"];
+		$where=" shift_year= ".$arr[0]["shift_year"]." AND shift_month= ".$_POST["month_submit"];
 		
 		$result=$db->select($table,$where);
 		if($result[0]["COUNT(*)"]==0){
@@ -268,7 +268,7 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 				
 			for($i=0;$i<$person;$i++){
 				$column="shift_data";
-				$where=" user_id ="."\"".$arr[$i]["user_id"]."\"". " AND shift_month=". $arr[$i]["shift_month"];
+				$where=" user_id ="."\"".$arr[$i]["user_id"]."\"". " AND shift_month=". $_POST["month_submit"];
 				
 				$shift_data=implode("," , $sche[$i]);//insertするvalue指定
 				$data="\"".$shift_data."\"";
@@ -384,6 +384,8 @@ function shop_supply($shop,$j,$arr,$person){
 		}
 	}
 ?>
+
+<input type="hidden" name="month_submit" value=<?php  echo $month; ?>>
 <input type="submit" name="submit" value="シフト作成">
 <input type="submit" name="sendToDB" value="シフト決定">
 </form>
