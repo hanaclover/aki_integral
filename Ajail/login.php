@@ -63,7 +63,7 @@ if($password_db[0]["dlt_flg"] == 0){
 
 //パスワード確認
 if($password_db[0]["Password"] == $password){
-  echo "認証に成功しました";
+  echo "認証に成功したようです";
   echo isset($_SESSION["KEY"]);
 //セッションに苗字を入れる「〜様ようこそ」用
   session_regenerate_id(true);
@@ -77,7 +77,7 @@ if($password_db[0]["Password"] == $password){
      /*if(isset($_SESSION["KEY"])){
             header("Location : index.php");
      }else{*/
-            header("Location : shift_worker.php");
+            header("Location:./regist_change.php");
      /*}*/
  // } 
 
