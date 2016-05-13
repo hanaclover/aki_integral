@@ -53,11 +53,11 @@ $(function()
     var priceSum = 0; 
     for( var j = 0; j < arr_category.length; j++)
     {
-        for( var key in array[j])
+        for( var key in arr_category[j])
         {
             if( key === "price" )
             {
-                priceSum = parseInt(array[j][key]) + priceSum;
+                priceSum = parseInt(arr_category[j][key]) + priceSum;
             }
         }
     };
