@@ -2,7 +2,6 @@
 $(function()
 {
 //-------もろもろ作成-------------------------------------------------------
-    $('div#res').append('<a id="res" href="reserve.php">Go cart!!</a>');
     $.cookie.json = true;
     var cart_arr = $.cookie('cart');
     
@@ -29,7 +28,7 @@ $(function()
         for(var b in array[i])
         {
             //cartにはいっているもののみ配列に追加
-            if( b === "kana" && jQuery.inArray(array[i][b], cart_arr) !== -1 )
+            if( b === "id" && jQuery.inArray(array[i][b], cart_arr) !== -1 )
             {
                 arr_category.push(array[i]);
             }
@@ -67,7 +66,7 @@ $(function()
     $("p#gennka").text("合計金額は" + priceSumAll + "のところ…");
 
 ///////idからkanaに変換///////////////////////////////////////////////////////////////////
-    console.log(array);
+/*    console.log(array);
     console.log(cart_arr);
     var arrExchange = new Array();
     var arrName = new Array();
@@ -77,7 +76,7 @@ $(function()
         for(var key2 in array[i])
         {
             //cartにはいっているもののみ配列に追加
-            if( key2 === "kana" && jQuery.inArray(array[i][key2], cart_arr) !== -1 )
+            if( key2 === "id" && jQuery.inArray(array[i][key2], cart_arr) !== -1 )
             {
                 arrExchange.push(array[i]);
             }
@@ -88,13 +87,44 @@ $(function()
     {	
         for(var key3 in arrExchange[i])
         {
-            if( key3 === "id" )
+            if( key3 === "kana" )
             {
                 arrName.push(arrExchange[i][key3]);
             }
         }
     };
 
+    //console.log(arrName);
+    
+    //$.cookie("cart", arrName);
+    
+
+    console.log($.cookie("cart"));
+    */
+////ajaxによるページ遷移///////////////////////////////////////////////////////////////////////
+    //ページを書き換える箇所の設定(しなくてもいい)
+/*	var $content = $('div#session');
+
+		var link = "list_1.php";
+
+				pageChange(link);
+
+
+	//ページを取得してくる
+    function pageChange(link){
+    	$.ajax({
+            type: 'GET',
+            url: link,
+            dataType: 'json',
+            success: function(data){
+                $content.html(data).fadeIn(600);
+            },
+            error:function(){
+                alert('問題がありました。');
+            }
+    	});
+    };
+*/
 //------カートに追加・削除----------------------------------------------------------------------------------
     $('button').on("click", function()
         {

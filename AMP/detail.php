@@ -15,7 +15,11 @@ $cart = new cart("cart");
 $cart->checkSession();
 //////////////////////////////////////////////////////////
 
+print_r($_GET["id"]);
+
 require_once("ifGETname.php");
+
+print_r($data);
 
 $db->close();
 

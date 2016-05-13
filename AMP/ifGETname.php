@@ -1,8 +1,8 @@
 <?php
 
-    $name = $_GET["name"];
+    $id = $_GET["id"];
     $ctr  = new control(db_host, db_user, db_pass, db_name );
-    $data = $ctr->detailOpen($name);
+    $data = $ctr->detailOpen($id);
 
 /*
 if($_GET["sort"] == "add" && $_SESSION["cart"] !== array() ){
