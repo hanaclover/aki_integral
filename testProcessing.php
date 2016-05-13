@@ -55,7 +55,6 @@ if (($reserve->getSID()) == 0) {
 
     $_SESSION['full'] = "予約が埋まっております。大変申し訳ございません。<br>よろしければ" .
         "姉妹店をご利用いただけますと幸いです。";
-    echo "<script>history.go(-1);</script>";
 }
 
 if(count($_SESSION['err']) == 0 && (!isset($_SESSION['full']) || $_SESSION['full'] == '')) {
