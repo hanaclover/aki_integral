@@ -37,6 +37,9 @@ $hs = new tohash();
 
 //セッションにはユーザーID入れておく
 $_SESSION["USERID"] = $_POST["userid"];
+$_SESSION["NAME"] = $_POST["family_name"];
+$_SESSION["FIRSTNAME"] = $_POST["first_name"];
+
 
 //入力IDからデータベース参照
 $table = "regist";
