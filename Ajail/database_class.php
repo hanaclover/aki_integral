@@ -112,7 +112,7 @@ class database {
 		//返り値 select結果
 	
 
-                $this->sql=" UPDATE " . $table . " SET " . $setcol . " = " . $value1 . " WHERE " . $wherecol . " = '" . $value2  ."'";   
+                $this->sql=" UPDATE " . $table . " SET " . $setcol . " = '" . $value1 . "' WHERE " . $wherecol . " = '" . $value2  ."'";   
                 $result = mysqli_query($this->link, $this->sql);
                 echo $this->sql;
                 if(!$result){
@@ -123,7 +123,7 @@ class database {
 	        }
          }
 		 
-		          public function update2($table, $setcol, $value1, $where){
+		public function update2($table, $setcol, $value1, $where){
 		/* $table・・・DB内の$tableテーブル
 		** $setcol・・・valueの値を変えたいカラム
 		** $valu1・・・変えたい値
@@ -143,6 +143,9 @@ class database {
                     return true;
 	        }
          }
+		 
+	
+		
 
 }
 

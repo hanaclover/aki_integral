@@ -1,24 +1,29 @@
-<?php>
+<?php
 $yearNow = date("Y");
 $monthNow = date("m");
-$day = num_month($year,$month);
-
+$count = 0;
 
 $month = $monthNow;
 $year = $yearNow;
+
 if(isset($_POST["month"])){
-	$monthPost = $_POST["month"];
-	if($monthPost>12){
-		$month = $monthPost - 12;
-		$year = $yaerNow + 1;
-	}else if($monthPost<=0){
-		$month = $monthPost + 12;
+	$monthPost = $_POST["month"][0];
+	if($month-$monthPost>3){
+		$year = $yearNow + 1;
+		$month = $monthPost;
+	}else if($monthPost==12 && $month==1){
 		$year = $yearNow - 1;
+		$month = $monthPost;
+	}else{
+	$month = $monthPost;
 	}
 }else{
 	$monthPost = $month;
 }
+$prev = $month!=1 ? $monthPost-1 : 12;
+$next = $month!=12 ? $monthPost+1 : 1;
 
+$day = num_month($year,$month);
 $startDay = date_id($year, $month, 1);
 ?>
 
@@ -28,19 +33,20 @@ $startDay = date_id($year, $month, 1);
 <head><meta charset="utf8"></head>
 
 <body>
-
 <?php 
-echo $data["name"];
-echo "<br>$yearNow年$month月<br>";
+$name = $_COOKIE['name'];
+echo $name;
+echo '<br>'.$year.'年'.$month.'月<br>';
 ?>
 
 
 
 <form method="post" action="">
-<?php if($monthPost - $monthNow > 7){	?>
-<input type = "button" name="month" value="<?php echo $monthPost+1; ?>">
-<?php }else if($monthPost - $monthNow < 0 ){	?>
-<input type = "button" name="month" value="<?php echo $monthPost-1; ?>">
+<?php if($monthNow-$monthPost!=4){	?>
+<input type = "submit" name="month[]" value="<?php echo $next; ?>">
+<?php }if($monthNow-1!=$monthPost){	?>
+<input type = "submit" name="month[]" value="<?php echo $prev; ?>">
+</form>
 <?php }	?>
 
 
@@ -49,17 +55,29 @@ echo "<br>$yearNow年$month月<br>";
 
 <form  method="post"  action="" name="test">
 
-<table border=1><tr>
-<?php	for($i=1;$i<31;$i++){echo "<td>$i</td>";}	?>
-</tr>
-<tr>
-<?php	for($i=0;$i<30;$i++){
-	echo '<td><input type="checkbox" name="schedule[]" value='.$i .' ></td>';
+<table border=1>
+
+
+<?php	
+for($i=0, $count=0; $i<$day; $i++, $count++){
+	if($count==0)
+		echo '<tr>';
+	if($i==0){
+		for($j=0; $j<$startDay; $j++){
+			echo '<td></td>';
+			$count++;
+		}
+	}
+	echo '<td><input type="checkbox" name="schedule[]" value='.$i .' >'.($i+1).'</td>';
+	if($count==6){
+		echo '</tr>';
+		$count=-1;
+	}
 }?>
-</tr>
+
 </table>
 
-
+<input type="hidden" name="month" value="<?php echo $month; ?>">
 <input type="submit" name="submit" value="提出">
 </form>
 

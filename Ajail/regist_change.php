@@ -23,7 +23,7 @@ $counts = count($password_db);
 
 //セッションに苗字を入れる「〜様ようこそ」用
   session_regenerate_id(true);
-  $_SESSION["USERID"] = $password_db[0]["FamilyName"];
+  $_SESSION["NAME"] = $password_db[0]["FamilyName"];
 
 $dataArr = array(
    'family_name'      => '',
@@ -453,48 +453,18 @@ $dlt_flg = 0;
 
 //UPDATE HENKOU
 $db = new database();
-$result = $db->update("regist","FamilyName",$family_name,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","FirstName",$first_name,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","FamilyName_kana",$family_name_kana,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","FamilyName_kana",$first_name_kana,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","Sex",$sex,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","Birthday",$birth,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","PhoneNum",$tel,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","Mail",$email,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","User_ID",$ID,"User_ID",$_SESSION[USERID]);
-$result = $db->update("regist","Password",$password,"User_ID",$_SESSION[USERID]);
+$result = $db->update("regist","FamilyName",$family_name,"User_ID",$_SESSION["USERID"]);
+$result = $db->update("regist","FirstName",$first_name,"User_ID",$_SESSION["USERID"]);
+$result = $db->update("regist","FamilyName_kana",$family_name_kana,"User_ID",$_SESSION["USERID"]);
+$result = $db->update("regist","FamilyName_kana",$first_name_kana,"User_ID",$_SESSION["USERID"]);
+$result = $db->update("regist","Sex",$sex,"User_ID",$_SESSION["USERID"]);
+$result = $db->update("regist","Birthday",$birth,"User_ID",$_SESSION["USERID"]);
+$result = $db->update("regist","PhoneNum",$tel,"User_ID",$_SESSION["USERID"]);
+$result = $db->update("regist","Mail",$email,"User_ID",$_SESSION["USERID"]);
+$result = $db->update("regist","User_ID",$ID,"User_ID",$_SESSION["USERID"]);
+$_SESSION["USERID"] = $ID; 
+$result = $db->update("regist","Password",$password,"User_ID",$_SESSION["USERID"]);
 //$result = $db->update("regist","",$family_name,"User_ID",$_SESSION[USERID]);
-
- $sql = "INSERT INTO regist( FamilyName,
-                             FirstName,
-                             FamilyName_kana,
-                             FirstName_kana,
-                             Sex,
-                             Birthday,
-                             PhoneNum,
-                             Mail,
-                             User_ID,
-                             Password,
-                             Type,
-                             dlt_flg)
-                      VALUES('$family_name',
-                             '$first_name',
-                             '$family_name_kana',
-                             '$first_name_kana',
-                             '$sex',
-                             '$birth',
-                             '$tel',
-                             '$email',
-                             '$ID',
-                             '$password',
-                             '$type',
-                             '$dlt_flg')";
-
-  echo $sql;
-  $result = mysqli_query($link,$sql);
-  if(!$result){
-   echo "error" . mysqli_error($link);
-  }
 
 /*try{
   $dbh = new PDO("mysql:host=localhost;dbname=Akifarm_db;charset=utf8",

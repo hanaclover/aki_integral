@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 require_once('error_Check_workers.class.php');
 require_once('initMaster_workers.class.php');
@@ -322,7 +323,7 @@ $sex  = $dataArr["sex"];
 $ID   = $dataArr["ID"];
 $password = $hs->to_hash($dataArr["password1"]);
 $shop = $dataArr["shop"];
-
+$_SESSION["USERID"]= $ID;
 //echo $tel . "<br>"; 
 
 $link = mysqli_connect('localhost' ,'user' ,'password', 'Akifarm_db');
@@ -401,18 +402,18 @@ $sql = "INSERT INTO workers( FamilyName,
 for($i=1;$i<=12;$i++){
   $db     = new database();
   $tbl    = "shift_submit";
-  $col    = "name, user_id, shift_year, shift_month, shift_data, submit_time, delete_flg";
+  $col    = "user_id, shift_year, shift_month, shift_data, submit_time, delete_flg";
   $oppai  = make_shift(2016,$i);
-  $data   = "'" . $name ."','". $ID . "' ,'', '". $i ."','" . $oppai ."' , '',''";
+  $data   = $ID . "' ,'', '". $i ."','" . $oppai ."' , '',''";
 
   $result= $db->insert($tbl, $col, $data); 
 }
  
 for($i=1;$i<=12;$i++){
   $tbl    = "shift_fix";
-  $col    = "name, user_id, shift_year, shift_month, shift_data, fix_time, delete_flg";
+  $col    = "user_id, shift_year, shift_month, shift_data, fix_time, delete_flg";
   $oppai  = make_shift(2016, $i);
-  $data   = "'','". $ID . "' ,'', '". $i ."','" . $oppai ."' , '',''";
+  $data   = $ID . "' ,'', '". $i ."','" . $oppai ."' , '',''";
 
   $result = $db->insert($tbl, $col, $data);
 }
