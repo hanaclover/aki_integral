@@ -6,6 +6,8 @@ var cartCookieFn = $(function()
 
   //--------オブジェクト宣言--------------------------------------------------------
   var cartFlag
+    , wordFlag
+    , timer
     , idTarget
     , idCookie;
   //クッキーを読み込む
@@ -66,27 +68,48 @@ var cartCookieFn = $(function()
   }
 
 
-  //--------カートボタンを押したときにウインドウを出したり閉じたり---------------------------------------------------------
-  var cartWindowChange = function(way){
+  //--------オーバーレイボックスをコントロールするメソッド---------------------------------------------------------
+  var windowChange = function(way,target,locate){
     if(way==="in"){
-      $("#cartlay").fadeIn();
-      $('.navMenu>li:last-child').css("background-color","#aaa");
-      cartFlag=1;
+      $("#"+target+"lay").fadeIn();
+      $(locate).css("background-color","#aaa");
+      eval(target+"Flag=1;");
     }else if (way==="out") {
-      $("#cartlay").hide();
-      $('.navMenu>li:last-child').css("background-color","");
-      cartFlag=0;
+      $("#"+target+"lay").hide();
+      $(locate).css("background-color","");
+      eval(target+"Flag=0;");
     }
   }
 
+  var changeControl = function(way){
+    //setTimeoutを使うのはスクロールが完了してからメニューを表示させるためです。
+    setTimeout(function(){
+      if(way=="cart"){
+        if(cartFlag!==1){
+          windowChange("in","cart",".navMenu>li:last-child");
+        }else {
+          windowChange("out","cart",".navMenu>li:last-child");
+        }
+      }else if(way=="word"){
+        if(wordFlag!==1){
+          windowChange("in","word",".textList i");
+        }else{
+          windowChange("out","word",".textList i");
+        }
+      }
+	  },150);
+  }
 
-  var cartChangeControl = function(){
-    if(cartFlag!==1){
-      cartWindowChange("in");
-    }else {
-      cartWindowChange("out");
+  //このメソッドが呼び出されると、表示中のオーバーレイボックスを閉じます。
+  var closeControl = function(){
+    if($('#wordlay').css('display') !== 'none'){
+      windowChange("out","word",".textList i")
+    }
+    if($('#cartlay').css('display') !== 'none'){
+      windowChange("out","cart",".navMenu>li:last-child")
     }
   }
+
 
 
   //--------パブリックメソッド---------------------------------------------------------
@@ -94,26 +117,33 @@ var cartCookieFn = $(function()
   $(document).on("click" , '.list button' , function(){
     cookieControl($(this));
   });
+
   $('#close').click(function(){
     $("#overlay").fadeOut();
   });
 
   //ボックス外をクリックしたときにボックスを閉じる
   $(document).click(function(event) {
-    if($.contains($(".navMenu>li:last-child")[0], event.target) || $("#cartlay")[0] == event.target){
+    if($.contains($(".navMenu>li:last-child")[0], event.target) || $(".textList i")[0] == event.target || $("#cartlay")[0] == event.target || $("#wordlay")[0] == event.target){
       return false;
     }
-    cartWindowChange("out");
+    console.log("a");
+    closeControl();
   });
 
   $('.cartButton').click(function(){
     //指定した位置まで自動でスクロール
-    $("html,body").animate({scrollTop:$('.navMenu').offset().top}, {complete: cartChangeControl()});
+    $("html,body").animate({scrollTop:$('.navMenu').offset().top}, {duration: 100, complete: changeControl("cart")});
   });
 
-  // $(window).scroll(function() {
-  //   cartWindowChange("out");
-  // });
+  $('.textList i').click(function(){
+    $("html,body").animate({scrollTop:$('.navMenu').offset().top}, {duration: 100, complete: changeControl("word")});
+  });
+
+  //ウインドウをスクロールするとオーバーレイボックスを閉じます。
+  $(window).scroll(function() {
+    closeControl();
+  });
 
   //最初のアクセスでカートの数字を書き換える
   cartNumChange();
