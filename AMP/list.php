@@ -1,6 +1,7 @@
 <?php
 
 //////default settings/////////////////
+$server_flg = 1;
 require_once("config.php");
 require_once("./class/dbClass.php");
 require_once("./class/sessionClass.php");
