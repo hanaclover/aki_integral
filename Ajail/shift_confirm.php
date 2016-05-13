@@ -6,7 +6,7 @@
 require_once("database_class.php");
 require_once("calendar.php");
 require_once("login_check.php");
- //require_once("calendar.php");
+ require_once("calendar.php");
  
 
  ///表示するyearとmonthを定める
