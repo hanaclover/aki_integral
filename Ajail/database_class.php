@@ -27,6 +27,8 @@ class database {
 					.$data
 					." ) ";
 					echo "  <br>";
+					
+					//echo $this->sql;
 		$result = mysqli_query($this->link,$this->sql);
 		if(!$result){
 			echo "error" . mysqli_error($this->link);
