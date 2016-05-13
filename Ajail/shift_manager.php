@@ -7,7 +7,7 @@
 require_once("shiibashi.php");
 require_once("database_class.php");
 require_once("calendar.php");
-//require_once("login_check.php");
+//require_once("login_check_master.php");
 
 
 ///表示するyearとmonthを定める

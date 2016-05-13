@@ -9,7 +9,7 @@
 require_once("calendar.php");
 require_once("database_class.php");
 require_once("schedule.php");
-//require_once("login_check.php");
+require_once("login_check.php");
 
 //表示するyearとmonthを定める
 $year=date("Y");
@@ -43,8 +43,9 @@ $user_id="noid";
 
 //ログイン状態のとき$nameと$user_idを取得
 if(isset($_SESSION)){
-	$name=$_SESSION["NAME"].$_SESSION["FIRSTNAME"];
-	$user_id=$_SESSION["ID"];
+	var_dump($_SESSION);
+//	$name=$_SESSION["NAME"].$_SESSION["FIRSTNAME"];
+	$user_id=$_SESSION["USERID"];
 }else{
 }
 
@@ -215,7 +216,7 @@ $column="shift_data";
 //var_dump($_POST);
 if(isset($_POST["month_submit"])){
 	var_dump($_POST);
-	$month=$_POST["month_submit"];
+	//$month=$_POST["month_submit"];
 }
 $where=" user_id ="."\"".$user_id."\"". " AND shift_month=". $month;
 $arr=$db->select($table,$column, $where);

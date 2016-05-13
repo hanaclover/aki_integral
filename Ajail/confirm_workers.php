@@ -404,7 +404,7 @@ for($i=1;$i<=12;$i++){
   $tbl    = "shift_submit";
   $col    = "user_id, shift_year, shift_month, shift_data, submit_time, delete_flg";
   $oppai  = make_shift(2016,$i);
-  $data   = $ID . "' ,'', '". $i ."','" . $oppai ."' , '',''";
+  $data   = "'" . $ID . "' ,'', '". $i ."','" . $oppai ."' , '',''";
 
   $result= $db->insert($tbl, $col, $data); 
 }
@@ -413,7 +413,7 @@ for($i=1;$i<=12;$i++){
   $tbl    = "shift_fix";
   $col    = "user_id, shift_year, shift_month, shift_data, fix_time, delete_flg";
   $oppai  = make_shift(2016, $i);
-  $data   = $ID . "' ,'', '". $i ."','" . $oppai ."' , '',''";
+  $data   = "'" . $ID . "' ,'', '". $i ."','" . $oppai ."' , '',''";
 
   $result = $db->insert($tbl, $col, $data);
 }

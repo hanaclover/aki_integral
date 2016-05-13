@@ -7,7 +7,7 @@ define('USER','user');
 define('PASS','password');
 
 require_once("database_class.php");
-require_once("calendar.php");
+require_once("calender.php");
 
 $link = mysqli_connect('localhost','user','password','Akifarm_db');
 
@@ -21,18 +21,14 @@ if(isset($_POST['send'])===true){
 		include_once("shift_worker_login_proto.html");
 	}else{
 		setCookie("id", $id);
-		setCookie("name", $data['name']);
 		include_once("shift_worker_send_proto.php");
 	}
 }
-if(isset($_POST['month'])){
-include_once("shift_worker_send_proto.php");
-}
+
 
 if(isset($_POST["submit"])){
 	echo "提出完了";
 	$id = $_COOKIE["id"];
-	$month = $_POST['month'];
 
 	$schedule_post=array();
 	for($i=0;$i<30;$i++){
@@ -42,11 +38,15 @@ if(isset($_POST["submit"])){
 		$schedule_post[$_POST["schedule"][$i]]=1;
 	}
 
-	$data=implode("," , $schedule_post);
-	$query='update shift_submit_proto set shift_data="'.$data.'" where id="'.$id.'" and month="'.$month.'"';
-	
-	mysqli_query($link, $query);
-
+	$db = new database();
+	$table="shift_submit_proto";
+	$col="id,shift_data";//insertするcolumn指定
+	$shift_data=implode("," , $schedule_post);//insertするvalue指定
+	$data=	'"'.$id.'"'
+			.','
+			.'"'.$shift_data.'"'
+			;
+		echo $db->insert($table,$col,$data);
 		include_once("shift_worker_send_proto.php");
 }
 
