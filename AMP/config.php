@@ -1,5 +1,6 @@
 <?php
-if($server_flg == 1){
+
+if($_SERVER['HTTP_HOST'] == "aki-farm.main.jp"){
 	define("db_host", "mysql111.phy.lolipop.lan");
 	define("db_user", "LAA0739220");
 	define("db_pass", "Akifarm0519");
