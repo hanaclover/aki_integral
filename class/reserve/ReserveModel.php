@@ -12,7 +12,7 @@
 
 //コンストラクタを創ってReseerveを渡すようにするのもアリ!
 
-require_once "../../../class/reserve/PDODatabase.class.php";
+require_once "../../class/reserve/PDODatabase.class.php";
 require_once "../../class/reserve/SeatModel.php";
 
 function echoman($echoStr){
