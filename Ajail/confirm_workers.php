@@ -327,7 +327,7 @@ $shop = $dataArr["shop"];
 $_SESSION["USERID"]= $ID;
 //echo $tel . "<br>"; 
 
-$link = mysqli_connect('db_host' ,'db_user' ,'db_pass', 'db_name');
+$link = mysqli_connect(db_host ,db_user ,db_pass, db_name);
   if(mysqli_connect_errno($link)){
      echo "inncorect";
   }
@@ -365,7 +365,7 @@ $sql = "INSERT INTO regist( FamilyName,
   mysqli_close($link);
 
 
-$link = mysqli_connect('db_host' ,'db_user' ,'db_pass', 'db_name');
+$link = mysqli_connect(db_host ,db_user ,db_pass, db_name);
   if(mysqli_connect_errno($link)){
      echo "inncorect";
   }

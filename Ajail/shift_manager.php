@@ -20,6 +20,7 @@ if(isset($_POST["year"])){
 	$year=$_POST["year"];
 }
 
+//次、前、今月のタイプ指定
 $method="";
 if(isset($_POST["next"])){
 	$method="next";
@@ -65,7 +66,7 @@ $shop=array("A","B","C");
 ?>
 
 <!-- 以下のjavascript関数は別ファイルに記述するのが望ましい -->
-<title>sumtrue manager</title>
+<title>manager</title>
 <script>
 function turn(element){
 	var val=document.b2.elements[element].value;
@@ -128,7 +129,6 @@ function setColor(i){
 		document.b3.elements[i].value=0;	
 	}
 	
-	//document.form_shop.elements[i-i/30].value=sum_row("A",i-i/30);
 	document.form_shop.elements[i-Math.floor((i/<?php echo $day; ?>))*<?php echo $day; ?>].value=sum_row("A",i-Math.floor((i/<?php echo $day; ?>))*<?php echo $day; ?>);
 	document.form_shop.elements[<?php echo $day; ?>+i-Math.floor((i/<?php echo $day; ?>))*<?php echo $day; ?>].value=sum_row("B",i-Math.floor((i/<?php echo $day; ?>))*<?php echo $day; ?>);
 	document.form_shop.elements[<?php echo 2*$day; ?>+i-Math.floor((i/<?php echo $day; ?>))*<?php echo $day; ?>].value=sum_row("C",i-Math.floor((i/<?php echo $day; ?>))*<?php echo $day; ?>);
@@ -170,9 +170,6 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 	$sol2=array();
 	if(isset($_POST["submit"])){
 		
-		// submitボタンを押されたときの月month_submitをsupに代入するべきだが、
-		// ボタンを押すと現在の月になってしまうため月の日数にずれが生じる
-		//
 		
 		//var_dump( $_POST["schedule"]);
 		$day=num_month($year,$_POST["month_submit"]);
@@ -258,8 +255,9 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 		
 		$result=$db->select($table,$column,$where);
 		
-		var_dump($result);
+		//var_dump($result);
 		
+		//
 		if($result[0]["COUNT(*)"]==0){
 		
 			$col="user_id,shift_year,shift_month,shift_data,delete_flg";//insertするcolumn指定
