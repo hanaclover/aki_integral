@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 function num_month($year,$month){
 

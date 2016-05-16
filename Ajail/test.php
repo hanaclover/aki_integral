@@ -1,4 +1,4 @@
-
+﻿
 <html>
 
 <head>
@@ -57,7 +57,7 @@ if(isset($_SESSION["USERID"])){	?>
 
 	
 	<div id="sideColumn">
-		<button class="reserveBt">ご予約はこちらから</button>
+		<button class="reserveBt" onclick="location.href='reserve_top.php'">ご予約はこちらから</button>
 	</div>
 	<div>
 		<button type="checkbox" class="NGbutton" value="test"></button>

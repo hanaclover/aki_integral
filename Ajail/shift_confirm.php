@@ -2,12 +2,13 @@
 <html>
 
 <head>
+<meta charset = "utf-8"/>
 <?php
 require_once("database_class.php");
 require_once("calendar.php");
 require_once("login_check.php");
  require_once("calendar.php");
- 
+  
 
  ///表示するyearとmonthを定める
 $year=date("Y");
@@ -28,7 +29,7 @@ if(isset($_POST["next"])){
 }else if(isset($_POST["now"])){
 	$method="now";
 }
-
+ 
 //年月計算
 $year=turnCalendar($year,$month,$method)[0];
 $month=turnCalendar($year,$month,$method)[1];
@@ -38,7 +39,7 @@ $db=new database();
 $table="shift_fix";//テーブル名指定	
 
 $db=new database();
-$table="shift_submit JOIN regist ON shift_submit.user_id=regist.User_ID";//テーブル名指定	
+$table="shift_fix JOIN regist ON shift_fix.user_id=regist.User_ID";//テーブル名指定	
 
 //月に提出されたデータをすべて取り出す
 $where=" shift_month= ".$month;

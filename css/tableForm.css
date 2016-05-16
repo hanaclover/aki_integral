@@ -66,3 +66,12 @@ h1 {
     text-align: center;
     /*padding-right: 15%;*/
 }
+.reserve_info {
+    position: absolute;
+    width : 100%;
+    bottom: 10%;
+    margin: 0px auto;  
+}
+.relative {
+    position: relative;
+}

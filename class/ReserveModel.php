@@ -41,8 +41,8 @@ class ReserveModel {
         $seatPDO = new PDODatabase();
         $sm = new SeatModel($seatPDO);
 
-//        $this->minJoinTableNum = $sm->getJointTableStartNum();
-//        $this->arrJoinTableNum = $sm->getJointTableSID();
+        $this->minJoinTableNum = $sm->getJointTableStartNum();
+        $this->arrJoinTableNum = $sm->getJointTableSID();
 
         $selPDO = new PDODatabase();
         $snum = 0;
@@ -204,7 +204,7 @@ class ReserveModel {
         foreach ($res as $key => $value){
             $startTime = strtotime($value["StartDay"]." ".$value["StartTime"]);
             if ($startTime > ($nowTime - self::DINNERLENGTH ) && $nowTime + self::DINNERLENGTH >= $startTime){
-                echo "<br>$seatNum : ";
+                //echo "<br>$seatNum : ";
                 return false;
             }
         }
@@ -258,18 +258,35 @@ class ReserveModel {
         return 0;
     }
     public function getReserve( $seatNum ){
-        if ($this->isEmpty($seatNum)){ //$this->isEmpty($seatNum)
-            return "$seatNum : 空席";
-        }else{
+        // 空席状況の確認
+            // 空席の場合
+        if ($this->isEmpty($seatNum)){ 
+            return $res = array(
+                "flag"  => 0,
+                "msg"   => "予約可能");
+        }else{ // 予約有りの場合
+            // 現在は空席だが２時間以内に予約が有る場合、
+            // 次の予約のスタート時間を返す
             if ($this->nextReserveTime($seatNum) != 0){
-                return "$seatNum : next->".date("H:i:s",$this->nextReserveTime($seatNum));
-            }elseif ($this->endTime($seatNum) != 0){
-                return "$seatNum : end ->".date("H:i:s",$this->endTime($seatNum));
+                
+                return $res = array(
+                    "flag"   => 1,
+                    "msg"    =>  "次の予約時間：".date("H:i:s",$this->nextReserveTime($seatNum))
+                );
+            }elseif ($this->endTime($seatNum) != 0){ // 現在使用中の場合、終了時間を返す。
+                return $res = array(
+                    "flag"  => 1,
+                    "msg"   => "終了時間 :".date("H:i:s",$this->endTime($seatNum))
+                );
             }else{
-                return "空席";
+                return $res = array(
+                "flag"  => 0,
+                "msg"   => "予約可能");
             }
         }
-        return "予約なし";
+        return $res = array(
+            "flag"  => 0,
+            "msg"   => "予約可能");
     }
     public function getTodayReserves(){
         //今日の予約情報一覧をユーザー情報と関連付けて返す関数

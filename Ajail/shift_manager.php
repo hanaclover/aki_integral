@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -9,7 +9,7 @@ require_once("database_class.php");
 require_once("calendar.php");
 require_once("login_check_master.php");
 
-
+ 
 ///表示するyearとmonthを定める
 $year=date("Y");
 $month=date("m");
@@ -28,11 +28,15 @@ if(isset($_POST["next"])){
 }else if(isset($_POST["now"])){
 	$method="now";
 }
-
+ 
 //年月計算
-$year=turnCalendar($year,$month,$method)[0];
-$month=turnCalendar($year,$month,$method)[1];
-
+if(isset($_POST["month_submit"])){
+	$month=$_POST["month_submit"];
+	$year=turnCalendar($year,$month,$method)[0];
+}else{
+	$year=turnCalendar($year,$month,$method)[0];
+	$month=turnCalendar($year,$month,$method)[1];
+}
 $db=new database();
 $table="shift_submit JOIN regist ON shift_submit.user_id=regist.User_ID";//テーブル名指定	
 
@@ -47,7 +51,7 @@ $arr=$db->select($table,$column, $where);
 
 //人数の長さ
 $person=count($arr);
-
+echo " person ".$person."<br>";
 //文字列の分解
 $shift=explode(',',$arr[0]["shift_data"]);
 
@@ -165,6 +169,13 @@ function setColor(i){
 if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 	$sol2=array();
 	if(isset($_POST["submit"])){
+		
+		// submitボタンを押されたときの月month_submitをsupに代入するべきだが、
+		// ボタンを押すと現在の月になってしまうため月の日数にずれが生じる
+		//
+		
+		//var_dump( $_POST["schedule"]);
+		$day=num_month($year,$_POST["month_submit"]);
 		for($j=0;$j<$day;$j++){
 			for($i=0;$i<$person;$i++){
 				//スケジュール表のデータをsupに代入
@@ -243,9 +254,12 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 		$db=new database();
 		$table=	"shift_fix";//テーブル名指定
 		$column="COUNT(*) ";
-		$where=" shift_year= ".$arr[0]["shift_year"]." AND shift_month= ".$arr[0]["shift_month"];
+		$where=" shift_year= ".$arr[0]["shift_year"]." AND shift_month= ".$_POST["month_submit"];
 		
-		$result=$db->select($table,$where);
+		$result=$db->select($table,$column,$where);
+		
+		var_dump($result);
+		
 		if($result[0]["COUNT(*)"]==0){
 		
 			$col="user_id,shift_year,shift_month,shift_data,delete_flg";//insertするcolumn指定
@@ -268,17 +282,17 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 				
 			for($i=0;$i<$person;$i++){
 				$column="shift_data";
-				$where=" user_id ="."\"".$arr[$i]["user_id"]."\"". " AND shift_month=". $arr[$i]["shift_month"];
+				$where=" user_id ="."\"".$arr[$i]["user_id"]."\"". " AND shift_month=". $_POST["month_submit"];
 				
 				$shift_data=implode("," , $sche[$i]);//insertするvalue指定
 				$data="\"".$shift_data."\"";
 					
-				$db->update2($table,$col,$data,$where);
+				$db->update2($table,$column,$data,$where);
 			}
 			
 		}
-		header("Location:./shift_confirm.php");
-		exit();	
+		//header("Location:./shift_confirm.php");
+		//exit();	
 	}
 }else{
 	//makeボタンが押される前に実行される
@@ -384,6 +398,8 @@ function shop_supply($shop,$j,$arr,$person){
 		}
 	}
 ?>
+
+<input type="hidden" name="month_submit" value=<?php  echo $month; ?>>
 <input type="submit" name="submit" value="シフト作成">
 <input type="submit" name="sendToDB" value="シフト決定">
 </form>
@@ -419,6 +435,7 @@ for ($j=0;$j<$day;$j++ ){
 ?>
 </table>
 </form>
+<button  onclick="location.href='logout.php'">ログアウト</button>
 
 </body>
 </html>

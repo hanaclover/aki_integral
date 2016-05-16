@@ -1,9 +1,9 @@
-<?php
+ï»¿<?php
 
 require_once("database_class.php");
 
 function scheduleToArray($schedule_str){
-//’ño‚³‚ê‚½ƒVƒtƒg‚ðŽæ‚èo‚µ‚ÄÅŒã‚É’ño‚µ‚½ƒVƒtƒg‚ðo—Í
+//æå‡ºã•ã‚ŒãŸã‚·ãƒ•ãƒˆã‚’å–ã‚Šå‡ºã—ã¦æœ€å¾Œã«æå‡ºã—ãŸã‚·ãƒ•ãƒˆã‚’å‡ºåŠ›
 $arr=array();
 
 for($i=0;$i<count($schedule_str);$i++){
