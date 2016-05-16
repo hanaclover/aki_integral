@@ -1,17 +1,12 @@
 ﻿<!DOCTYPE html >
 <html>
-<!----
 
-//htdocs/aki_integral/aki_integral/html/management/shift_confirm.php
-
-
--->
 <head>
 <meta charset = "utf-8"/>
 <?php
-require_once("../../class/management/database_class.php");
+require_once("database_class.php");
 require_once("calendar.php");
-require_once("../../class/management/login_check.php");
+require_once("login_check.php");
  require_once("calendar.php");
   
 
@@ -127,7 +122,7 @@ function isWork($str,$shop){
 	
 }
 ?>
-<button  onclick="location.href='../top/logout.php'">ログアウト</button>
+<button  onclick="location.href='logout.php'">ログアウト</button>
 
 
 </body>

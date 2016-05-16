@@ -1,6 +1,6 @@
 ﻿<?php
 
-require_once("../../class/management/database_class.php");
+require_once("database_class.php");
 
 function scheduleToArray($schedule_str){
 //提出されたシフトを取り出して最後に提出したシフトを出力

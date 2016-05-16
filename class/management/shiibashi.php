@@ -1,10 +1,6 @@
 ﻿<?php
 	
 class shiibashi{
-	
-	//パス
-//htdocs/aki_integral/aki_integral/html/management/shiibashi.php
-	
 	/*
 	input matrix S, vector d,vector shop,vector shop
 	*/

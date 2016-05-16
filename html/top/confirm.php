@@ -1,12 +1,15 @@
 ﻿<?php
 
+//パス
+//htdocs/aki_integral/aki_integral/html/top/confirm.php
+
 session_start();
 
-require_once('error_Check.class.php');
-require_once('initMaster.class.php');
-require_once('database_class.php');
-require_once('To_hash_class.php');
-require_once('../AMP/config.php');
+require_once('../../class/management/error_Check.class.php');
+require_once('../../class/management/initMaster.class.php');
+require_once('../../class/management/database_class.php');
+require_once('../../class/management/To_hash_class.php');
+require_once('../../conf/config_menu.php');
 
 $common        = new error_check();
 

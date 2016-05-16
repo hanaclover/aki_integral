@@ -1,6 +1,9 @@
 ﻿<?php
 
-require_once( 'initMaster.class.php' );
+//パス
+//htdocs/aki_integral/aki_integral/html/top/regist.php
+
+require_once( '../../class/management/initMaster.class.php' );
 
 $dataArr = array(
    'family_name'      => '',

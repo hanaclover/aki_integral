@@ -1,17 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
-<!---  
-//htdocs/aki_integral/aki_integral/html/management/shift_manager.php
-
--->
 <head>
 <meta charset="utf-8">
 
 <?php 
 require_once("shiibashi.php");
-require_once("../../class/managemnt/database_class.php");
+require_once("database_class.php");
 require_once("calendar.php");
-require_once("../../class/management/login_check_master.php");
+require_once("login_check_master.php");
 
  
 ///表示するyearとmonthを定める
@@ -445,7 +441,7 @@ for ($j=0;$j<$day;$j++ ){
 ?>
 </table>
 </form>
-<button  onclick="location.href='../top/logout.php'">ログアウト</button>
+<button  onclick="location.href='logout.php'">ログアウト</button>
 
 </body>
 </html>

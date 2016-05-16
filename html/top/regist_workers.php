@@ -1,6 +1,9 @@
 ﻿<?php
 
-require_once( 'initMaster_workers.class.php' );
+//パス
+//htdocs/aki_integral/aki_integral/html/top/regist_workers.php
+
+require_once( '../../class/management/initMaster_workers.class.php' );
 
 $dataArr = array(
    'family_name'      => '',

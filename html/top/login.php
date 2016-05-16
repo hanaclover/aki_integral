@@ -1,7 +1,10 @@
 ﻿<?php
 
-require_once('database_class.php');  //データベースクラス
-require_once('To_hash_class.php');  //ハッシュ化クラス
+//パス
+//htdocs/aki_integral/aki_integral/html/top/login.php
+
+require_once('../../class/management/database_class.php');  //データベースクラス
+require_once('../../class/management/To_hash_class.php');  //ハッシュ化クラス
 
 session_start(); //セッション開始
 
