@@ -12,7 +12,7 @@
 
 //コンストラクタを創ってReseerveを渡すようにするのもアリ!
 
-require_once "../../../class/reserve/PDODatabase.class.php";
+require_once "../../class/reserve/PDODatabase.class.php";
 require_once "../../class/reserve/SeatModel.php";
 
 function echoman($echoStr){
@@ -23,8 +23,8 @@ function echoman($echoStr){
 
 class ReserveModel {
 
-    //const DISTANCETIME = 3600*7;
-    const DISTANCETIME = 25200;
+    const DISTANCETIME = 0;
+    //const DISTANCETIME = 25200;
     //const DINNERLENGTH = 60 * 60 * 2;
     const DINNERLENGTH = 7200;
     private $minJoinTableNum = 100; //100
