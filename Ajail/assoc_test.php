@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
  $link = mysqli_connect('localhost','user','password','Akifarm_db');
  $sql  = "SELECT * FROM regist WHERE User_ID = 'loginid1'";

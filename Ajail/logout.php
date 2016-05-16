@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once("login_check.php");
 
 $_SESSION = array();

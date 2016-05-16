@@ -1,4 +1,4 @@
-<?php>
+﻿<?php>
 $yearNow = date("Y");
 $monthNow = date("m");
 $day = num_month($year,$month);

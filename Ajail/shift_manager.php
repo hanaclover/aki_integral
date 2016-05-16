@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -7,9 +7,9 @@
 require_once("shiibashi.php");
 require_once("database_class.php");
 require_once("calendar.php");
-//require_once("login_check_master.php");
+require_once("login_check_master.php");
 
-
+ 
 ///表示するyearとmonthを定める
 $year=date("Y");
 $month=date("m");
@@ -28,11 +28,15 @@ if(isset($_POST["next"])){
 }else if(isset($_POST["now"])){
 	$method="now";
 }
-
+ 
 //年月計算
-$year=turnCalendar($year,$month,$method)[0];
-$month=turnCalendar($year,$month,$method)[1];
-
+if(isset($_POST["month_submit"])){
+	$month=$_POST["month_submit"];
+	$year=turnCalendar($year,$month,$method)[0];
+}else{
+	$year=turnCalendar($year,$month,$method)[0];
+	$month=turnCalendar($year,$month,$method)[1];
+}
 $db=new database();
 $table="shift_submit JOIN regist ON shift_submit.user_id=regist.User_ID";//テーブル名指定	
 
@@ -165,6 +169,13 @@ function setColor(i){
 if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 	$sol2=array();
 	if(isset($_POST["submit"])){
+		
+		// submitボタンを押されたときの月month_submitをsupに代入するべきだが、
+		// ボタンを押すと現在の月になってしまうため月の日数にずれが生じる
+		//
+		
+		//var_dump( $_POST["schedule"]);
+		$day=num_month($year,$_POST["month_submit"]);
 		for($j=0;$j<$day;$j++){
 			for($i=0;$i<$person;$i++){
 				//スケジュール表のデータをsupに代入
@@ -424,6 +435,7 @@ for ($j=0;$j<$day;$j++ ){
 ?>
 </table>
 </form>
+<button  onclick="location.href='logout.php'">ログアウト</button>
 
 </body>
 </html>

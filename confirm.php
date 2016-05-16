@@ -8,8 +8,8 @@
 
 //予約が確定され、SIDとRIDが付与されてるとき
 include_once("class/Reserve.php");
+session_start();
 $reserve = new Reserve();
-//echo session_id()."<br>";
 // <----
 $reserve->setUID($_SESSION['UID']);
 // $reserve->setRID($_POST['RID']);     일단 없는 상태로 진행
@@ -37,7 +37,7 @@ if($reserve->getCourse() == 4) {
     if(count($reserve->errCheck()) !== 0) {
         $arr = $reserve->errCheck();
         /*echo  "<script>
-                    window.location.href = 'http://localhost/aki_farm/aki_farm/Reserved.php?err=$arr[0]';
+                    window.location.href = 'http://localhost/aki_farm/Reserved.php?err=$arr[0]';
                </script>";*/
     }
 
@@ -112,7 +112,7 @@ if($reserve->getCourse() == 4) {
         </tr>
     </table>
     <div class="btns">
-        <form action="Processing.php" method="POST">
+        <form action="finishProcessing.php" method="POST">
             <input type='hidden' name='Date' value="<?php echo $_SESSION['Date']; ?>" />
             <input type='hidden' name='hour' value="<?php echo $_SESSION['hour']; ?>" />
             <input type='hidden' name='minute' value="<?php echo $_SESSION['minute']; ?>" />

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 require_once( 'initMaster_workers.class.php' );
 
