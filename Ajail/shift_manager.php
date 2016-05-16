@@ -239,6 +239,9 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 	} 
 	if(isset($_POST["sendToDB"])){
 		//シフト決定ボタンが押されたとき
+		
+		//echo "シフトを決定しました<br>";
+		
 		$sche=array();
 		for($i=0;$i<$person;$i++){
 			for($j=0;$j<$day;$j++){
@@ -400,7 +403,10 @@ function shop_supply($shop,$j,$arr,$person){
 <input type="hidden" name="month_submit" value=<?php  echo $month; ?>>
 <input type="submit" name="submit" value="シフト作成">
 <input type="submit" name="sendToDB" value="シフト決定">
+
 </form>
+<br>
+<button  onclick="location.href='shift_confirm.php'">シフト確認</button>
 
 <!--  未完成  -->
 <form  action="" name="b4">
@@ -421,6 +427,8 @@ for ($j=0;$j<$day;$j++ ){
 			//表データボタン作成
 				
 			echo "<td>";
+			//提出されたシフトを表示
+			//空いているならo,空いていないならxを返す
 			if($shift[$j]==1){
 				echo "<input type=\"button\"  value="."\"○\">";
 			}else{
