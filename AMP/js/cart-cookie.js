@@ -127,7 +127,6 @@ var cartCookieFn = $(function()
     if($.contains($(".navMenu>li:last-child")[0], event.target) || $(".textList i")[0] == event.target || $("#cartlay")[0] == event.target || $("#wordlay")[0] == event.target){
       return false;
     }
-    console.log("a");
     closeControl();
   });
 

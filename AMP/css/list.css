@@ -4,7 +4,7 @@
   padding: 0;
   margin: 0 auto;
   list-style-type: none;
-  background-color: #3d3734;
+  /*background-color: #3d3734;*/
   height: 78px;
   display: block;
 }
@@ -30,7 +30,7 @@
   padding: 10px;
 }
 .navMenu p a{
-  color: #ddd;
+  color: #3d3734;
   font-weight: bold;
 }
 
@@ -73,11 +73,11 @@
   float: left;
   margin-top: 6px;
   margin-left: 6px;
-  color: #fff;
+  color: #3d3734;
 }
-.textList li a{
-  color: #ddd;
+.textList li p{
   text-decoration: underline;
+  cursor: pointer;
 }
 .textList li:not(:first-child){
   margin-left: 12px;
@@ -93,7 +93,7 @@
 .cartWrapper{
   position: relative;
   text-align: center;
-  color: #eee;
+  color: #3d3734;
 }
 .label{
   opacity: 0.8;
@@ -113,13 +113,16 @@
 }
 .cartWrapper i{
   font-size: 36px;
-  color: #fff;
+  color: #3d3734;
 }
 .cartButton{
   cursor: pointer;
 }
 
 /*JSによって動的に生成されるリスト*/
+.list{
+  margin-top: 24px;
+}
 .list li{
   float: left;
   margin-left: 52px;
@@ -152,7 +155,7 @@
   height:300px;
   text-align: center;
   position: absolute;
-  top: 0;
+  top: 92px;
   right: 0;
   background: #eee;
 }
@@ -162,7 +165,7 @@
   height:200px;
   text-align: center;
   position: absolute;
-  top: 0;
+  top: 92px;
   right: 324px;
   background: #eee;
 }

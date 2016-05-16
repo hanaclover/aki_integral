@@ -63,7 +63,7 @@ var makeListFn = $(function()
   //--------ソートや検索が実行されたときのメソッド-----------------------------------------------------------
   var changeList = function(target){
     arrHtml = [];
-    listControl($(target).val());
+    listControl(target);
     changeHtml("#jsList");
   }
 
@@ -83,27 +83,33 @@ var makeListFn = $(function()
 
   //selectの値を変更したときにメソッド発動
   $('[name=category]').change(function() {
-    changeList('[name=category]');
+    changeList($('[name=category]').val());
   });
 
   //検索が実行されたときに実行する
   $('[type=button]').click(function(){
     if ($('[type=text]').val()) {
-      changeList('[type=text]');
+      changeList($('[type=text]').val());
     }
   });
   $('[type=text]').keypress(function(e){
   	if ( e.which == 13 ) {
       if ($('[type=text]').val()) {
-        changeList('[type=text]');
+        changeList($('[type=text]').val());
       }
   	}
   });
-  
+
+  $('.textList p').click(function(){
+    //console.log($(this).text());
+    changeList($(this).text());
+    $('[type=text]').val($(this).text())
+  });
+
   ////////autocomplete//////////////
   $("input#sw").autocomplete({
-        source: "./autocomplete.php", 
-        autoFocus: true, 
-        delay: 500 
+        source: "./autocomplete.php",
+        autoFocus: true,
+        delay: 500
     });
 });
