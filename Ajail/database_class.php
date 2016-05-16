@@ -10,7 +10,7 @@ class database {
 	public function __construct(){
 		//parent::__construct();
 		
-		$this->link = mysqli_connect('db_host','db_user','db_pass','db_name');
+		$this->link = mysqli_connect(db_host,db_user,db_pass,db_name);
 		$this->sql="";
 		//mysql_set_charset('utf8');
 	}
