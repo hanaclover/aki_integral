@@ -49,7 +49,7 @@ $user_id="noid";
 if(isset($_SESSION)){
 	
 	//出力ID
-	$user_id=$_SESSION["USERID"];
+	$user_id=$_SESSION["UID"];
 	$arr=array();
 	
 	//DBからシフト情報を取得
@@ -60,6 +60,12 @@ if(isset($_SESSION)){
 	$arr=$db->select($table,$column, $where);
 	
 	$name=$arr[0]["FamilyName"]." ".$arr[0]["FirstName"];
+	
+	/**************//
+	//dataCheckProcessing.phpでセッションに保存されている
+	//が、DBからシフト状況を取り出すため$nameもそこからとってきている。
+	//よって、セッションからはUIDのみを取り出す。
+	//*************//
 	
 }else{
 }
