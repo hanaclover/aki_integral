@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+ 
 require_once('error_Check_workers.class.php');
 require_once('initMaster_workers.class.php');
 require_once('database_class.php');

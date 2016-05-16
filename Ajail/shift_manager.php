@@ -9,7 +9,7 @@ require_once("database_class.php");
 require_once("calendar.php");
 require_once("login_check_master.php");
 
-
+ 
 ///表示するyearとmonthを定める
 $year=date("Y");
 $month=date("m");

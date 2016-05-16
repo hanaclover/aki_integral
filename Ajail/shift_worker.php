@@ -29,7 +29,7 @@ if(isset($_POST["next"])){
 }else if(isset($_POST["now"])){
 	$method="now";
 }
-
+ 
 //次や前、今月ボタンを押したときの年月計算
 $year=turnCalendar($year,$month,$method)[0];
 $month=turnCalendar($year,$month,$method)[1];
