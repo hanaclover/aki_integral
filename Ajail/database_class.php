@@ -2,7 +2,7 @@
 
 //require_once("BaseModel.php");
 //class database extends BaseModel{
-require_once("../config.php");
+require_once("../AMP/config.php");
 class database {
 	private $link="";
 	private $sql="";
