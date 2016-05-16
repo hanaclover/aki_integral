@@ -16,6 +16,13 @@ $where = "Password = '" .  $_SESSION["Pass"] . "'";
 $password_db = array();
 $password_db = $db->select($table, $column, $where);  
 
+$table = "workers";
+$column = "";
+$where = "Password = '" . $_SESSION["Pass"] . "'";
+$workers_db = array();
+$workers_db = $db->select($table, $column, $where);
+
+
 //$password_dbにはレジストの情報が
 
 //データベースに同じIDの情報があったか確認
@@ -26,19 +33,17 @@ $counts = count($password_db);
   $_SESSION["NAME"] = $password_db[0]["FamilyName"];
 
 $dataArr = array(
-   'family_name'      => '',
-   'first_name'       => '',
-   'family_name_kana' => '',
-   'first_name_kana'  => '',
-   'sex'              => '',
-   'year'             => '',
-   'month'            => '',
-   'day'              => '',
-   'tel1'             => '',
-   'tel2'             => '',
-   'tel3'             => '',
-   'email'            => '',
-   'ID'               => '',
+   'family_name'       => '',
+   'first_name'        => '',
+   'family_name_kana'  => '',
+   'first_name_kana'   => '',
+   'sex'               => '',
+   'year'              => '',
+   'month'             => '',
+   'day'               => '',
+   'shop'              => '',
+   'job'               => '',
+   'ID'                => '',
    'password1'         => '',
    'password2'         => ''
 );
@@ -54,13 +59,11 @@ $dataArr['first_name']       = $password_db[0]['FirstName'];
 $dataArr['family_name_kana'] = $password_db[0]['FamilyName_kana'];
 $dataArr['first_name_kana']  = $password_db[0]['FirstName_kana'];
 $dataArr['sex']              = $password_db[0]['Sex'];
-$dataArr['year']             = substr($password_db[0]['Birthday'],0,4); 
-$dataArr['month']            = substr($password_db[0]['Birthday'],4,2);
-$dataArr['day']              = substr($password_db[0]['Birthday'],-2);
-$dataArr['tel1']             = $tel[0];
-$dataArr['tel2']             = $tel[1];
-$dataArr['tel3']             = $tel[2];
-$dataArr['email']            = $password_db[0]['Mail'];
+$dataArr['year']             = substr($workers_db[0]['StartTime'],0,4); 
+$dataArr['month']            = substr($workers_db[0]['StartTime'],4,2);
+$dataArr['day']              = substr($workers_db[0]['StartTime'],-2);
+$dataArr['shop']             = $workers_db[0]["Store"];
+$dataArr['job']              = $password_db[0]["Type"];
 $dataArr['ID']               = $password_db[0]['User_ID'];
 $dataArr['password1']        = $_SESSION["Pass_Raw"];
 $dataArr['password2']        = '';
@@ -111,21 +114,21 @@ case "first":
                       echo "女性";
            }?> <br>
 
-生年月日 <?php echo $selectYear; ?>年
-         <?php echo $selectMonth; ?>月
-         <?php echo $selectDay; ?>日<br>
+勤務開始年月日   <?php echo $selectYear; ?>年
+                 <?php echo $selectMonth; ?>月
+                 <?php echo $selectDay; ?>日<br>
          
-
-電話番号   <?php echo $dataArr['tel1'] . "-" . $dataArr['tel2'] . "-" . $dataArr['tel3'];?> <br>    
-
-Eメールアドレス <?php echo $dataArr['email']; ?> <br>
-
 ログインID <?php echo $dataArr['ID']; ?>  <br>
 
 パスワード <?php echo "***********"/*$dataArr['password1']*/; ?> <br>
 
+所属店舗   <?php echo $dataArr["shop"][0]; ?><br>
+
+職種       <?php echo $dataArr["job"][0];  ?><br>
+
         <input type = "submit" name = "back" value = "項目表示"/>
         <input type = "submit" name = "complete" value = "変更完了"/><br>  
+
         <?php foreach( $dataArr as $key => $value) { ?>
           <?php if(is_array($value)) { ?> 
             <?php foreach( $value as $v ){ ?>
@@ -148,8 +151,9 @@ case "confirm":
 
      $dataArr = $_POST;
 
-
      if( isset($_POST['sex']) === false ) $dataArr['sex']   = "";
+     if( isset($_POST['shop']) === false ) $dataArr['shop']   = "";
+     if( isset($_POST['job']) === false ) $dataArr['job']   = "";
 
      $errArr = $common->errorCheck( $dataArr );
      $err_check = $common->getErrorFlg();
@@ -196,7 +200,7 @@ if( $err_check == false){//登録情報に不備がある時
       <?php if( $errArr['sex'] !== ''){ ?><br /><font color="red"><?php echo $errArr['sex']; } ?></font>
 
 
-生年月日<font color = "red">*</font>
+勤務開始年月日<font color = "red">*</font>
 
 <select name = "year">
      <option selected><?php echo $selectYear; ?></option>
@@ -235,27 +239,6 @@ if( $err_check == false){//登録情報に不備がある時
     <?php if($errArr['day'] !== ''){ ?><br/>
     <font color="red"> <?php echo $errArr['day']; }?></font><br/>
 
-
-
-電話番号<font color = "red">*</font>
-        <input type="text" name = "tel1" value="<?php echo $dataArr['tel1']; /*valueは初期値*/?>" /> -    
-        <input type="text" name = "tel2" value="<?php echo $dataArr['tel2']; /*valueは初期値*/?>" /> -    
-        <input type="text" name = "tel3" value="<?php echo $dataArr['tel3']; /*valueは初期値*/?>" /> <br>    
-
-        <?php if( $errArr['tel1'] !== ''){ ?>
-           <br /><font color="red"><?php echo $errArr['tel1']; }?></font>
-        <?php if( $errArr['tel2'] !== ''){ ?>
-           <br /><font color="red"><?php echo $errArr['tel2']; }?></font>
-        <?php if( $errArr['tel3'] !== ''){ ?>
-           <br /><font color="red"><?php echo $errArr['tel3']; }?></font>
-
-
-Eメールアドレス<font color = "red">*</font>
-        <input type ="text" name = "email" value = "<?php echo $dataArr['email'] ;?>" />  <br>
-
-        <?php if($errArr['email'] !== ''){ ?>
-        <font color = "red"><?php echo $errArr['email'];} ?></font>
-
 ログインID<font color = "red">*</font>
         <input type ="text" name = "ID" value = "<?php echo $dataArr['ID']; ?>" />  <br>
         <?php if($errArr['ID'] !== ''){ ?>
@@ -270,6 +253,19 @@ Eメールアドレス<font color = "red">*</font>
         <input type ="password" name = "password2" value = "<?php echo $dataArr['password2'] ?>" />  <br>
         <?php if($errArr['password2'] !== ''){ ?>
         <font color = "red"><?php echo $errArr['password2'];} ?> </font>
+
+所属店舗<font color = "red">*</font>
+      <input type = "radio" name = "shop[]" selected = "<?php echo $selectShop ?>" value = "A" >A
+      <input type = "radio" name = "shop[]" selected = "<?php echo $selectShop ?>" value = "B" >B
+      <input type = "radio" name = "shop[]" selected = "<?php echo $selectShop ?>" value = "C" >C<br>
+        <?php if($errArr['shop'] !== ''){ ?>
+        <font color = "red"><?php echo $errArr['shop'];} ?> </font>
+
+職種<font color = "red">*</font>
+      <input type = "radio" name = "job[]" selected = "<?php echo $selectJob ?>" value = "アルバイト">アルバイト
+      <input type = "radio" name = "job[]" selected = "<?php echo $selectJob ?>" value = "店長">店長<br>
+        <?php if($errArr['job'] !== ''){ ?>
+        <font color = "red"><?php echo $errArr['job'];} ?> </font>
 
         <input type = "submit" name = "confirm" value = "確認"><br>  
   </form> 
