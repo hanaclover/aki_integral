@@ -1,12 +1,13 @@
-﻿<?php
+<?php
 
 session_start();
- 
+
 require_once('error_Check_workers.class.php');
 require_once('initMaster_workers.class.php');
 require_once('database_class.php');
 require_once('To_hash_class.php');
 require_once('make_shift_class.php');
+require_once('../AMP/config.php');
 
 $common        = new error_check();
 
@@ -326,7 +327,7 @@ $shop = $dataArr["shop"];
 $_SESSION["USERID"]= $ID;
 //echo $tel . "<br>"; 
 
-$link = mysqli_connect('localhost' ,'user' ,'password', 'Akifarm_db');
+$link = mysqli_connect('db_host' ,'db_user' ,'db_pass', 'db_name');
   if(mysqli_connect_errno($link)){
      echo "inncorect";
   }
@@ -364,7 +365,7 @@ $sql = "INSERT INTO regist( FamilyName,
   mysqli_close($link);
 
 
-$link = mysqli_connect('localhost' ,'user' ,'password', 'Akifarm_db');
+$link = mysqli_connect('db_host' ,'db_user' ,'db_pass', 'db_name');
   if(mysqli_connect_errno($link)){
      echo "inncorect";
   }
