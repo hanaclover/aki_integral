@@ -21,7 +21,7 @@ if(0==1){
 <div id="container">
 <h1>ログインして予約しますか？</h1>
 <div><button onclick="location.href='login.php'">ログイン</button></div>
-<div><button onclick="location.href='index.php'">ログインしないで予約</button></div>
+<div><button onclick="location.href='../Reserved.php'">ログインしないで予約</button></div>
 </div>
 
 </div>
