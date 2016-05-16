@@ -4,6 +4,7 @@ require_once('database_class.php'); //データベースクラス
 require_once('To_hash_class.php');  //ハッシュ化クラス
 require_once('initMaster.class.php');//マスター
 require_once('error_Check.class.php');//エラーチェック
+require_once('../AMP/config.php');
 
 session_start();
 

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 require_once('database_class.php'); //データベースクラス
 require_once('To_hash_class.php');  //ハッシュ化クラス
