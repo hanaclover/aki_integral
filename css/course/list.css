@@ -4,7 +4,6 @@
   padding: 0;
   margin: 0 auto;
   list-style-type: none;
-  background-color: #eee;
   display: block;
 }
 .navMenu>li{
@@ -13,8 +12,8 @@
   margin: 0;
 }
 
-.navMenu>first-child{
-  margin-left: 27%;
+.navMenu>li:first-child{
+  margin-left: 10%;
   width: 8%;
 }
 .navMenu>li:nth-child(2){
@@ -23,7 +22,6 @@
 .navMenu>li:last-child{
   width: 6%;
   float: right;
-  padding: 10px;
 }
 .navMenu p a{
   color: #3d3734;
@@ -34,7 +32,6 @@
 #search input[type="text"]{
   padding: 9px;
   width: 200px;
-  margin-top: 12px;
   border-radius: 0 2px 2px 0;
   border-left: 0px;
   border: 1px solid #ccc;
@@ -44,7 +41,6 @@
   font-size: 14px;
   padding: 4px;
   width: 100px;
-  margin-top: 12px;
   border-radius: 2px;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -54,7 +50,6 @@
 .selecter select{
   padding: 4px;
   font-size: 14px;
-  margin-top: 12px;
   width: 100%;
   border-radius: 2px 0 0 2px;
   border: 1px solid #ccc;
@@ -68,7 +63,7 @@
   display: block;
   float: left;
   margin-top: 6px;
-  margin-left: 6px;
+  margin-left: 38%;
   color: #3d3734;
 }
 .textList li p{
@@ -98,8 +93,7 @@
   left: 20px;
   background-color: gold;
   color: black;
-  padding: 4px;
-  padding-left: 6px;
+  padding: 5px;
   width: 24px;
   height: 24px;
   box-sizing: border-box;
@@ -164,4 +158,15 @@
   top: 92px;
   right: 324px;
   background: #eee;
+}
+
+/*ナビゲーション固定*/
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0 -500%;
+  padding: 0 500%;
+  z-index: 10000;
+  border-color: #eee;
 }
