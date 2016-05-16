@@ -6,7 +6,7 @@
 <?php
 require_once("database_class.php");
 require_once("calendar.php");
-require_once("login_check.php");
+require_once("../top/login_check.php");
  require_once("calendar.php");
   
 
@@ -122,7 +122,7 @@ function isWork($str,$shop){
 	
 }
 ?>
-<button  onclick="location.href='logout.php'">ログアウト</button>
+<button  onclick="location.href='../top/logout.php'">ログアウト</button>
 
 
 </body>
