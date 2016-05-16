@@ -13,8 +13,8 @@
   margin: 0;
 }
 
-.navMenu>first-child{
-  margin-left: 27%;
+.navMenu>li:first-child{
+  margin-left: 10%;
   width: 8%;
 }
 .navMenu>li:nth-child(2){
@@ -23,7 +23,6 @@
 .navMenu>li:last-child{
   width: 6%;
   float: right;
-  padding: 10px;
 }
 .navMenu p a{
   color: #3d3734;
@@ -34,7 +33,6 @@
 #search input[type="text"]{
   padding: 9px;
   width: 200px;
-  margin-top: 12px;
   border-radius: 0 2px 2px 0;
   border-left: 0px;
   border: 1px solid #ccc;
@@ -44,7 +42,6 @@
   font-size: 14px;
   padding: 4px;
   width: 100px;
-  margin-top: 12px;
   border-radius: 2px;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -54,7 +51,6 @@
 .selecter select{
   padding: 4px;
   font-size: 14px;
-  margin-top: 12px;
   width: 100%;
   border-radius: 2px 0 0 2px;
   border: 1px solid #ccc;
@@ -68,7 +64,7 @@
   display: block;
   float: left;
   margin-top: 6px;
-  margin-left: 6px;
+  margin-left: 38%;
   color: #3d3734;
 }
 .textList li p{

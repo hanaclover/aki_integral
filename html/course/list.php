@@ -1,7 +1,7 @@
 <?php
 
 //////default settings/////////////////
-require_once("../../conf/config.php");
+require_once("../../conf/config_menu.php");
 require_once("../../class/course/dbClass.php");
 require_once("../../class/course/sessionClass.php");
 require_once("../../class/course/cartClass.php");
