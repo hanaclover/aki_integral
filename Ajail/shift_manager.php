@@ -30,9 +30,13 @@ if(isset($_POST["next"])){
 }
 
 //年月計算
-$year=turnCalendar($year,$month,$method)[0];
-$month=turnCalendar($year,$month,$method)[1];
-
+if(isset($_POST["month_submit"])){
+	$month=$_POST["month_submit"]
+	
+}else{
+	$year=turnCalendar($year,$month,$method)[0];
+	$month=turnCalendar($year,$month,$method)[1];
+}
 $db=new database();
 $table="shift_submit JOIN regist ON shift_submit.user_id=regist.User_ID";//テーブル名指定	
 
@@ -165,6 +169,13 @@ function setColor(i){
 if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 	$sol2=array();
 	if(isset($_POST["submit"])){
+		
+		// submitボタンを押されたときの月month_submitをsupに代入するべきだが、
+		// ボタンを押すと現在の月になってしまうため月の日数にずれが生じる
+		//
+		
+		//var_dump( $_POST["schedule"]);
+		$day=num_month($year,$_POST["month_submit"]);
 		for($j=0;$j<$day;$j++){
 			for($i=0;$i<$person;$i++){
 				//スケジュール表のデータをsupに代入
