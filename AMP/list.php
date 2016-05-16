@@ -10,7 +10,6 @@ require_once("./class/jsClass.php");
 //////////////////////////////////////
 
 ///////////call classes///////////////////////////////////
-
 $ctr = new control(db_host, db_user, db_pass, db_name );
 $cart = new cart("cart");
 $cart->checkSession();

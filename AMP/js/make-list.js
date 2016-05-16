@@ -99,5 +99,11 @@ var makeListFn = $(function()
       }
   	}
   });
-
+  
+  ////////autocomplete//////////////
+  $("input#sw").autocomplete({
+        source: "./autocomplete.php", 
+        autoFocus: true, 
+        delay: 500 
+    });
 });
