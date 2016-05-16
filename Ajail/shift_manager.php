@@ -435,6 +435,7 @@ for ($j=0;$j<$day;$j++ ){
 ?>
 </table>
 </form>
+<button  onclick="location.href='logout.php'">ログアウト</button>
 
 </body>
 </html>
