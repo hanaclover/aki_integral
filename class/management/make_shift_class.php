@@ -1,5 +1,7 @@
 ﻿<?php
 
+//htdocs/aki_integral/aki_integral/class/management/make_shift_class.php
+
 require_once('database_class.php');
 require_once('calendar.php');
 

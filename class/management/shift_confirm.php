@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html >
 <html>
-
+<!--
+//htdocs/aki_integral/aki_integral/class/management/shift_confirm.php
+-->
 <head>
 <meta charset = "utf-8"/>
 <?php
@@ -122,7 +124,7 @@ function isWork($str,$shop){
 	
 }
 ?>
-<button  onclick="location.href='logout.php'">ログアウト</button>
+<button  onclick="location.href='../../html/top/logout.php'">ログアウト</button>
 
 
 </body>

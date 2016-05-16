@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-
+<!--
+//htdocs/aki_integral/aki_integral/class/management/shift_manager.php
+-->
 <?php 
 require_once("shiibashi.php");
 require_once("database_class.php");
@@ -441,7 +443,7 @@ for ($j=0;$j<$day;$j++ ){
 ?>
 </table>
 </form>
-<button  onclick="location.href='logout.php'">ログアウト</button>
+<button  onclick="location.href='../../html/top/logout.php'">ログアウト</button>
 
 </body>
 </html>

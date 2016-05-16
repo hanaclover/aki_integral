@@ -1,5 +1,7 @@
 ﻿<?php
 
+//htdocs/aki_integral/aki_integral/class/management/schedule.php
+
 require_once("database_class.php");
 
 function scheduleToArray($schedule_str){

@@ -1,11 +1,16 @@
 ﻿<!DOCTYPE html >
+
+<!---        
+//htdocs/aki_integral/aki_integral/class/management/shift_worker.php
+
+--->
 <html>
  
 <head>
 <meta charset = "utf-8"/>
 
 <meta http-equiv="content-style-type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="shift_worker.css" />
+<link rel="stylesheet" type="text/css" href="../../css/management/shift_worker.css" />
 <?php
 require_once("calendar.php");
 require_once("database_class.php");
@@ -257,7 +262,7 @@ for($i=0;$i<$day;$i++){
 <input type="submit" name="submit" value="提出" onClick="alert('シフトを提出しました。');" /> 
 </form>
 <br>
-<button  onclick="location.href='logout.php'">ログアウト</button>
+<button  onclick="location.href='../../html/top/logout.php'">ログアウト</button>
 <button  onclick="location.href='shift_confirm.php'">シフト確認</button>
 <!--
 <input type="button" class="squareBt" value="test" />
