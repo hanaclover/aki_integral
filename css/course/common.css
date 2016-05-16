@@ -1,0 +1,21 @@
+.wrapper{
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 16px;
+}
+
+a{
+  text-decoration: none;
+}
+
+h1{
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+}
+
+.mt{
+  margin-top: 4px;
+}

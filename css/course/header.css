@@ -1,0 +1,11 @@
+.headerMenu{
+  height: 92px;
+  background-color: #ccc;
+  width: 100%;
+}
+.globalNav{
+  width: 960px;
+  background-color: #ddd;
+  margin: auto;
+  height: 70px;
+}
