@@ -24,7 +24,7 @@ print_r($data);
 $db->close();
 
 /////HMJからとんできたレコメンドをソート/////////////
-$name_arr = array();
+/*$name_arr = array();
 $num = array();
 foreach($mhj2 as $arr)
 {
@@ -37,6 +37,7 @@ foreach($mhj2 as $arr)
         }
     }
 };
+ */
 /////////////////////////////////////////////////////
 /*
 arsort($num);
