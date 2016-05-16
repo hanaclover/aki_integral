@@ -16,12 +16,11 @@
  * */
 echo "Reserved : ".session_id();
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
-    <title>予約ページ</title>
+    <title>予約Modify</title>
     <script src="lib/jquery-2.2.3.min.js"></script>
     <script src="js/management.js"></script>
     <script src="js/confirm.js"></script>
@@ -57,14 +56,14 @@ echo "Reserved : ".session_id();
         ?>
     </span>
     <h2>予約変更画面</h2>
-    <form action="http://aki-farm.main.jp/testProcessing.php" method="post">
+    <form action="./dataCheckProcessing.php" method="post">
         <span class="err"><?php echo (isset($_GET['err']) ? $_GET['err'] : ""); ?></span>
         <table border="1" class="design_table">
             <!--　SESSIONにErrorメッセージがあるとエラーを表示　-->
             <tr>
                 <td>日にち</td>
                 <td>
-                    <input type="date" name="Date" />
+                    <?php echo "<input type='date' name='Date' value='".$res[0]['StartDay']."'>"; ?>
                     <span class="err"><?php echo isset($_SESSION['err']['StartDay']) ? $_SESSION['err']['StartDay'] : "" ; ?></span>
                 </td>
             </tr>
@@ -120,13 +119,13 @@ echo "Reserved : ".session_id();
                     $PhoneNum = explode("-", $res[0]['PhoneNum']);
 
                     //080 070 090
-                        for($i = 0; $i < count($firstPN); $i++) {
-                            if($firstPN[$i] == $PhoneNum[0])
-                                echo "<option value='$firstPN[$i]' selected>$firstPN[$i]</option>";
-                            else
-                                echo "<option value='$firstPN[$i]'>$firstPN[$i]</option>";
-                        }
-                        echo "</select>-";
+                    for($i = 0; $i < count($firstPN); $i++) {
+                        if($firstPN[$i] == $PhoneNum[0])
+                            echo "<option value='$firstPN[$i]' selected>$firstPN[$i]</option>";
+                        else
+                            echo "<option value='$firstPN[$i]'>$firstPN[$i]</option>";
+                    }
+                    echo "</select>-";
 
                     echo "<input type='number' name='phoneNum2' value='".$PhoneNum[1]."' />-";
                     echo "<input type='number' name='phoneNum3' value='".$PhoneNum[2]."' />";
