@@ -88,8 +88,8 @@ if($_POST['confirm'] == "確定") {
     // ----------->
 
 
-    // echo "<script> window.location.href = 'http://localhost/aki_farm/complete.php?msg='+\"$msg\"; </script>";
-   echo "<script> window.location.href = 'http://localhost/aki_farm/complete.php' </script>";
+    // echo "<script> window.location.href = 'http://aki-farm.main.jp/complete.php?msg='+\"$msg\"; </script>";
+   echo "<script> window.location.href = 'http://aki-farm.main.jp/complete.php' </script>";
 
 } else if($_POST['confirm'] == "修正") {
     echo "<script>history.go(-2);</script>";
