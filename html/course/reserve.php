@@ -28,7 +28,30 @@ $ctr->close();
 //$cnt = count($_SESSION["cart"]);
 
 include_once('./reserve.html');
-$_SESSION["dish"] = $_COOKIE["cart"];
+
+$arrId = $_COOKIE["cart"];
+$nameChange = array();
+
+print_r($arrId);
+
+$arrId2 = explode(" ", $arrId);
+
+print_r($arrId2);
+
+foreach($data as $arr){
+    foreach($arr as $key => $val){
+        foreach($arrId as $id){
+            if($val === $id){
+                array_push($nameChange, $arr);
+            }
+        }
+    }
+};
+
+var_dump($nameChange);
+
+//$_SESSION["dish"] = $nameChange;
 
 echo "セッションの中に".($_SESSION["dish"])."が入りましたよ";
+
 ?>

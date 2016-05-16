@@ -49,6 +49,22 @@ $(function()
 
     $("div#box").html(arrctg_s);		
 
+    //idからカナに変更してsessionに格納
+    console.log(arr_category);
+    var nameChange = new Array();
+    for(var i=0 ; i < arr_category.length ; i++)
+    {	
+        for(var d in arr_category[i])
+        {
+            var name_s = arr_category[i][d].substr(0, arr_category[i][d].length-4);
+            if(d === "img")
+            {
+                nameChange.push(name_s);
+            }
+        }
+    };
+
+    console.log(nameChange);
 ///////カートと飲み放題の合計金額////////////////////////////////////
     var priceSum = 0; 
     for( var j = 0; j < arr_category.length; j++)
