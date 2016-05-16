@@ -72,7 +72,7 @@ var cartCookieFn = $(function()
   var windowChange = function(way,target,locate){
     if(way==="in"){
       $("#"+target+"lay").fadeIn();
-      $(locate).css("background-color","#aaa");
+      $(locate).css("background-color","#f7f3e8");
       eval(target+"Flag=1;");
     }else if (way==="out") {
       $("#"+target+"lay").hide();
@@ -132,11 +132,11 @@ var cartCookieFn = $(function()
 
   $('.cartButton').click(function(){
     //指定した位置まで自動でスクロール
-    $("html,body").animate({scrollTop:$('.navMenu').offset().top}, {duration: 100, complete: changeControl("cart")});
+    $("html,body").animate({scrollTop:$('.subNav').offset().top}, {duration: 100, complete: changeControl("cart")});
   });
 
   $('.textList i').click(function(){
-    $("html,body").animate({scrollTop:$('.navMenu').offset().top}, {duration: 100, complete: changeControl("word")});
+    $("html,body").animate({scrollTop:$('.subNav').offset().top}, {duration: 100, complete: changeControl("word")});
   });
 
   //ウインドウをスクロールするとオーバーレイボックスを閉じます。

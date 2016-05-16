@@ -1,4 +1,7 @@
 /*ソートや検索のナビゲーションへのスタイル*/
+.subNav{
+  padding-top: 8px;
+}
 .navMenu{
   width: 960px;
   padding: 0;
@@ -13,7 +16,7 @@
 }
 
 .navMenu>li:first-child{
-  margin-left: 10%;
+  margin-left: 5%;
   width: 8%;
 }
 .navMenu>li:nth-child(2){
@@ -23,6 +26,7 @@
   width: 6%;
   margin-right: 5%;
   float: right;
+  font-weight: bold;
 }
 .navMenu p a{
   color: #3d3734;
@@ -64,11 +68,11 @@
   display: block;
   float: left;
   margin-top: 6px;
-  margin-left: 38%;
+  margin-left: 28%;
   color: #3d3734;
 }
 .textList li p{
-  text-decoration: underline;
+  font-weight: bold;
   cursor: pointer;
 }
 .textList li:not(:first-child){
@@ -88,12 +92,12 @@
   color: #3d3734;
 }
 .label{
-  opacity: 0.8;
+  opacity: 0.95;
   position: absolute;
   top: 0px;
   left: 20px;
-  background-color: gold;
-  color: black;
+  background-color: #f08804;
+  color: #fff;
   padding: 5px;
   width: 24px;
   height: 24px;
@@ -146,19 +150,23 @@
   height:300px;
   text-align: center;
   position: absolute;
-  top: 92px;
-  right: 0;
-  background: #eee;
+  top: 82px;
+  right: 5%;
+  background: #f7f3e8;
+  border: 1px solid #aaa;
+  border-radius: 2px;
 }
 #wordlay{
   display: none;
-  width: 150px;
-  height:200px;
+  width: 112px;
+  height:150px;
   text-align: center;
   position: absolute;
   top: 92px;
-  right: 324px;
-  background: #eee;
+  left: 30%;
+  background: #f7f3e8;
+  border: 1px solid #aaa;
+  border-radius: 2px;
 }
 
 /*ナビゲーション固定*/
@@ -167,6 +175,6 @@
   top: 0;
   width: 960px;
   margin: 0 -500%;
-  padding: 4px 500%;
+  padding: 8px 500%;
   border-color: #eee;
 }
