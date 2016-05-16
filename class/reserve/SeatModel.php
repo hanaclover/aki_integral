@@ -17,7 +17,7 @@ var_dump($test);
 echo "</pre>";
 */
 
-require_once "./class/PDODatabase.class.php";
+require_once "../../class/reserve/PDODatabase.class.php";
 
 class SeatModel {
     

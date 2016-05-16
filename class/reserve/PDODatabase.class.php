@@ -9,16 +9,10 @@
  * 定数を定義するためにinit.phpが必要。
  */
 
-require_once "./class/BaseModel.php";
-require_once "./class/config.php";
+require_once "../../class/reserve/BaseModel.php";
+require_once "../../class/reserve/config.php";
 
 class PDODatabase extends BaseModel{
-
-    private  $db_host = "";
-    private  $db_user = "";
-    private  $db_pass = "";
-    private  $db_name = "";
-    private  $db_type = "";
 
     private  $order   = '';
     private  $limit   = '';

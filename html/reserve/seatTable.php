@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/reserve/tableForm.css" />
     <link rel="stylesheet" type="text/css" href="../../css/reserve/input.css" />
     <?php
-    require_once "./class/ReserveModel.php";
+    require_once "./class/reserve/ReserveModel.php";
     $reserveInfo = new ReserveModel();
     ?>
 </head>

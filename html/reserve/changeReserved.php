@@ -31,7 +31,7 @@ echo "Reserved : ".session_id();
     <link rel="stylesheet" type="text/css" href="../../css/reserve/input.css" />
     <?php
 
-    require_once "./class/PDODatabase.class.php";
+    require_once "./class/reserve/PDODatabase.class.php";
 
     date_default_timezone_set("Asia/Tokyo");
 
@@ -45,8 +45,8 @@ echo "Reserved : ".session_id();
 </head>
 <body>
 <div id="wrapper">
-    <?php include_once('./common/header.html'); ?>
-    <?php include_once('./common/nav.html'); ?>
+    <?php include_once('../../html/common/header.html'); ?>
+    <?php include_once('../../html/common/nav.html'); ?>
     <span id="shimaiten">
         <?php
         if(isset($_SESSION['full'])){
@@ -165,7 +165,7 @@ echo "Reserved : ".session_id();
         </table>
         <input type="submit" name="send" value="予約" class="common_btn submit"/>
     </form>
-    <?php include_once('./common/footer.html'); ?>
+    <?php include_once('../../html/common/footer.html'); ?>
 </div>
 </body>
 </html>

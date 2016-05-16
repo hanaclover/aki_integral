@@ -32,8 +32,8 @@ echo "Reserved : ".session_id();
 </head>
 <body>
 <div id="wrapper">
-    <?php include_once('./common/header.html'); ?>
-    <?php include_once('./common/nav.html'); ?>
+    <?php include_once('../../html/common/header.html'); ?>
+    <?php include_once('../../html/common/nav.html'); ?>
     <span id="shimaiten">
         <?php
         if(isset($_SESSION['full'])){
@@ -132,7 +132,7 @@ echo "Reserved : ".session_id();
         </table>
         <input type="submit" name="send" value="予約" class="common_btn submit"/>
     </form>
-    <?php include_once('./common/footer.html'); ?>
+    <?php include_once('../../html/common/footer.html'); ?>
 </div>
 </body>
 </html>

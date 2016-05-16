@@ -11,10 +11,10 @@
  *
 */
 // テスト用
-include_once("./class/BaseModel.php");
-include_once("./class/PDODatabase.class.php");
-include_once("./class/init.php");
-include_once("./class/SeatModel.php");
+include_once("./class/reserve/BaseModel.php");
+include_once("./class/reserve/PDODatabase.class.php");
+include_once("./class/reserve/init.php");
+include_once("./class/reserve/SeatModel.php");
 $db = new PDODatabase();
 $seat = new SeatModel($db);
 $test = $seat->getSeat(28);

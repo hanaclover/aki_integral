@@ -33,7 +33,7 @@ class SendMail {
     public function __construct() {
         mb_language("Japanese");
         mb_internal_encoding("UTF-8");
-        $this->mailContentsPath = './class/sample_mail.txt';
+        $this->mailContentsPath = '../../class/reserve/sample_mail.txt';
     }
 
     public function makeContents( $mode, $reserveNum, $reserveTime ) {

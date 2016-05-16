@@ -7,7 +7,7 @@
  */
 
 //予約が確定され、SIDとRIDが付与されてるとき
-include_once("class/Reserve.php");
+include_once("./class/reserve/Reserve.php");
 session_start();
 $reserve = new Reserve();
 // <----
@@ -54,8 +54,8 @@ if($reserve->getCourse() == 4) {
 </head>
 <body>
 <div id="wrapper">
- <?php include_once('./common/header.html'); ?>
- <?php include_once('./common/nav.html'); ?>
+ <?php include_once('../../html/common/header.html'); ?>
+ <?php include_once('../../html/common/nav.html'); ?>
     <h1>
         以上の内容でよろしいですか？
     </h1>
@@ -123,7 +123,7 @@ if($reserve->getCourse() == 4) {
         <span class="btn"><input type="submit" name="confirm" value="修正" class="common_btn modify"></span>
     </div>
     </form>
-<?php include_once('./common/footer.html'); ?>
+<?php include_once('../../html/common/footer.html'); ?>
 </div>
 </body>
 </html>

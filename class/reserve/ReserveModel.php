@@ -12,8 +12,8 @@
 
 //コンストラクタを創ってReseerveを渡すようにするのもアリ!
 
-require_once "./class/PDODatabase.class.php";
-require_once "./class/SeatModel.php";
+require_once "../.../../class/reserve/PDODatabase.class.php";
+require_once "../../class/reserve/SeatModel.php";
 
 function echoman($echoStr){
     echo "<pre>";

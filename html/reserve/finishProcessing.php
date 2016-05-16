@@ -11,10 +11,10 @@
 
 //IF(確定)の場合、
 //データベースに保存 ->メールを送る -> complete.htmlに移動
-include_once("./class/Reserve.php");
-include_once("./class/SendMail.class.php");
-include_once "./class/UserModel.php";
-include_once "./class/ReserveModel.php";
+include_once("./class/reserve/Reserve.php");
+include_once("./class/reserve/SendMail.class.php");
+include_once "./class/reserve/UserModel.php";
+include_once "./class/reserve/ReserveModel.php";
 session_start();
 
 if($_POST['confirm'] == "確定") {
