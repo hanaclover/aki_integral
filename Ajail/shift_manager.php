@@ -52,7 +52,7 @@ $arr=$db->select($table,$column, $where);
 
 //人数の長さ
 $person=count($arr);
-echo " person ".$person."<br>";
+//echo " person ".$person."<br>";
 //文字列の分解
 $shift=explode(',',$arr[0]["shift_data"]);
 
@@ -153,7 +153,7 @@ function setColor(i){
 
 
 <table border="/">
-<tr>schedule
+<tr>シフト表
 <th>名前
 
 
@@ -239,6 +239,9 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 	} 
 	if(isset($_POST["sendToDB"])){
 		//シフト決定ボタンが押されたとき
+		
+		//echo "シフトを決定しました<br>";
+		
 		$sche=array();
 		for($i=0;$i<$person;$i++){
 			for($j=0;$j<$day;$j++){
@@ -289,7 +292,7 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 			}
 			
 		}
-		//header("Location:./shift_confirm.php");
+		header("Location:./shift_confirm.php");
 		//exit();	
 	}
 }else{
@@ -400,7 +403,10 @@ function shop_supply($shop,$j,$arr,$person){
 <input type="hidden" name="month_submit" value=<?php  echo $month; ?>>
 <input type="submit" name="submit" value="シフト作成">
 <input type="submit" name="sendToDB" value="シフト決定">
+
 </form>
+<br>
+<button  onclick="location.href='shift_confirm.php'">シフト確認</button>
 
 <!--  未完成  -->
 <form  action="" name="b4">
@@ -421,6 +427,8 @@ for ($j=0;$j<$day;$j++ ){
 			//表データボタン作成
 				
 			echo "<td>";
+			//提出されたシフトを表示
+			//空いているならo,空いていないならxを返す
 			if($shift[$j]==1){
 				echo "<input type=\"button\"  value="."\"○\">";
 			}else{

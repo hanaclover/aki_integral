@@ -49,7 +49,7 @@ $user_id="noid";
 if(isset($_SESSION)){
 	
 	//出力ID
-	$user_id=$_SESSION["USERID"];
+	$user_id=$_SESSION["UID"];
 	$arr=array();
 	
 	//DBからシフト情報を取得
@@ -60,6 +60,12 @@ if(isset($_SESSION)){
 	$arr=$db->select($table,$column, $where);
 	
 	$name=$arr[0]["FamilyName"]." ".$arr[0]["FirstName"];
+	
+	//**************//
+	//dataCheckProcessing.phpでセッションに保存されている
+	//が、DBからシフト状況を取り出すため$nameもそこからとってきている。
+	//よって、セッションからはUIDのみを取り出す。
+	//*************//
 	
 }else{
 }
@@ -212,7 +218,9 @@ $table="shift_submit";//テーブル名指定
 </div><div>
 
 <form action=""   >
-<input id ="input" type="button" value="前回のデータ読み込み" onClick="inputSchedule();">
+
+<input id ="input" type="button" value="ロード" onClick="inputSchedule();">
+
 <input type="hidden" name="load_month" value=<?php  echo $month; ?>>
 </form>
 
@@ -248,9 +256,12 @@ for($i=0;$i<$day;$i++){
 <input type="hidden" name="month_submit" value=<?php  echo $month; ?>>
 <input type="submit" name="submit" value="提出" onClick="alert('シフトを提出しました。');" /> 
 </form>
+<br>
 <button  onclick="location.href='logout.php'">ログアウト</button>
 <button  onclick="location.href='shift_confirm.php'">シフト確認</button>
+<!--
 <input type="button" class="squareBt" value="test" />
+-->
 
 <br>赤:空いてない
 <br>青:空いている
