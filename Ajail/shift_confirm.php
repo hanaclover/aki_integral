@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<meta charset = "utf-8"/>
 <?php
 require_once("database_class.php");
 require_once("calendar.php");

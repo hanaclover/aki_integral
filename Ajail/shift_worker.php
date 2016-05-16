@@ -2,7 +2,8 @@
 <html>
  
 <head>
-<meta charset='utf8'>
+<meta charset = "utf-8"/>
+
 <meta http-equiv="content-style-type" content="text/css" />
 <link rel="stylesheet" type="text/css" href="shift_worker.css" />
 <?php
