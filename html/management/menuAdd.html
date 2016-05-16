@@ -1,0 +1,32 @@
+<html>
+      <head>
+           <meta http-equiv= "content-type" content= "text/html; charset = UTF-8"/>
+     <title>お問い合わせフォーム</title>
+     </head>
+     <body>
+
+          <form method="post" action="./menuEd.php" enctype="multipart/form-data">  
+          商品名:
+          <input type="text" name="item_name" value="" />
+          <br />
+		  商品説明:
+          <input type="text" name="detail" value="" />
+          <br />
+          価格:
+          <input type="text" name="price" value="" size="11" maxlength="11"/>
+          <br />
+          画像:
+           <input type="file" name="image"   enctype="multipart/form-data"/>
+           <br />
+		   カテゴリー:
+          <input type="text" name="ctg_id" value="" />
+          <br />
+          <p>表示の有無:
+		  <input type="radio" name="delete_flg" value="0" checked="checked" />表示
+<input type="radio" name="delete_flg" value="1" /> 非表示
+<br />
+<input type="hidden" name="edit_type" value="1">
+           <input type="submit" name="send"  value="送信" />
+        </form>
+		</body>
+		</html>

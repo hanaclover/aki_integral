@@ -1,0 +1,18 @@
+﻿    CREATE DATABASE shopping_db DEFAULT CHARACTER SET utf8;
+    GRANT ALL PRIVILEGES ON shopping_db.* TO shopping_user@'localhost' IDENTIFIED BY 'shopping_pass' WITH GRANT OPTION;
+    USE shopping_db;
+
+
+    //商品テーブル
+    CREATE TABLE item (
+        item_id int unsigned not null auto_increment,
+        item_name varchar(100) not null,
+        detail text not null,
+        price DECIMAL(10,3) unsigned not null, //デシマル:decimal(最大桁数,小
+        数点以下の桁数)
+        image varchar(50) not null,
+        ctg_id tinyint unsigned not null,
+        primary key( item_id ),
+  	delete_flg tinyint unsigned not null
+    );
+    
