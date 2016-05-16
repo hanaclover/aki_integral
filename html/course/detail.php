@@ -2,11 +2,11 @@
 
 //////default settings/////////////////
 require_once("config.php");
-require_once("./class/dbClass.php");
-require_once("./class/sessionClass.php");
-require_once("./class/cartClass.php");
-require_once("./class/listControlClass.php");
-require_once("./class/jsClass.php");
+require_once("../../class/course/dbClass.php");
+require_once("../../class/course/sessionClass.php");
+require_once("../../class/course/cartClass.php");
+require_once("../../class/course/listControlClass.php");
+require_once("../../class/course/jsClass.php");
 //////////////////////////////////////
 
 ///////////call classes///////////////////////////////////
@@ -48,6 +48,6 @@ echo "</pre>";
  */
 //////////////////////////////////////////////////////
 
-include_once('./html/detail.html');
+include_once('./detail.html');
 
 ?>

@@ -13,7 +13,7 @@ var makeListFn = $(function()
     arrHtml.push(
       '<li>'
       + '<a href="detail.php?id=' + arrValue["id"] + '">'
-      + '<img id="list" src="./img/' + arrValue["img"] + '" width="200" height="200" />'
+      + '<img id="list" src="../../img/menu/' + arrValue["img"] + '" width="200" height="200" />'
       + '</a>'
       + '<button id="button' + arrValue["id"] + '">追加</button>'
       //+ '<p>' + arrValue["name"] + '</p>'

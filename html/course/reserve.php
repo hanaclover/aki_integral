@@ -2,11 +2,11 @@
 
 //////default settings/////////////////
 require_once("config.php");
-require_once("./class/dbClass.php");
-require_once("./class/sessionClass.php");
-require_once("./class/cartClass.php");
-require_once("./class/listControlClass.php");
-require_once("./class/jsClass.php");
+require_once("../../class/course/dbClass.php");
+require_once("../../class/course/sessionClass.php");
+require_once("../../class/course/cartClass.php");
+require_once("../../class/course/listControlClass.php");
+require_once("../../class/course/jsClass.php");
 //////////////////////////////////////
 
 ///////////call classes///////////////////////////////////
@@ -26,7 +26,7 @@ $ctr->close();
 
 //$cnt = count($_SESSION["cart"]);
 
-include_once('./html/reserve.html');
+include_once('./reserve.html');
 $_SESSION["dish"] = $_COOKIE["cart"];
 
 echo "セッションの中に".($_SESSION["dish"])."が入りましたよ";
