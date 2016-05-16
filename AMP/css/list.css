@@ -4,8 +4,7 @@
   padding: 0;
   margin: 0 auto;
   list-style-type: none;
-  /*background-color: #3d3734;*/
-  height: 78px;
+  background-color: #eee;
   display: block;
 }
 .navMenu>li{
@@ -13,15 +12,12 @@
   float: left;
   margin: 0;
 }
-.navMenu>li:first-child{
-  padding: 10px;
-  padding-left: 0;
-  width: 27%;
-}
-.navMenu>li:nth-child(2){
+
+.navMenu>first-child{
+  margin-left: 27%;
   width: 8%;
 }
-.navMenu>li:nth-child(3){
+.navMenu>li:nth-child(2){
   width: 50%;
 }
 .navMenu>li:last-child{

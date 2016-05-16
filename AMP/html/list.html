@@ -7,7 +7,7 @@
   <?php
   //mb_convert_variables('utf-8','sjis',$data);
   //echo db_host;
-  var_dump($data);
+  //var_dump($data);
   ?>
   <script> var array = <?php echo json_safe_encode($data); ?></script>
 
@@ -28,7 +28,6 @@
   <div class="wrapper">
     <div class="subNav">
       <ul class="navMenu clearfix">
-        <li></li>
         <li>
           <label class="selecter">
             <select name="category">
@@ -44,6 +43,25 @@
             <input id="sw" type="text" placeholder="&#xF002;　料理名・食材名" name="keyword">
             <input type="button" value="メニュー検索">
           </div>
+          <!-- <ul class="textList">
+            <li><p>たこわさ</p></li>
+            <li><p>チャンジャ</p></li>
+            <li><p>えだまめ</p></li>
+            <li><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></li>
+          </ul> -->
+        </li>
+        <li>
+          <div class="cartWrapper">
+            <p class="cartButton"><i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
+            <!-- <p class="cartButton">カート</p> -->
+            <div class="label cartButton"></div>
+          </div>
+        </li>
+      </ul>
+      <ul class="navMenu clearfix">
+        <li>
+        </li>
+        <li>
           <ul class="textList">
             <li><p>たこわさ</p></li>
             <li><p>チャンジャ</p></li>
@@ -52,11 +70,7 @@
           </ul>
         </li>
         <li>
-          <div class="cartWrapper">
-            <p class="cartButton"><i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
-            <p class="cartButton">カート</p>
-            <div class="label cartButton"></div>
-          </div>
+          <p class="cartButton">カート</p>
         </li>
       </ul>
     </div>

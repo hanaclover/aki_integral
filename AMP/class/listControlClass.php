@@ -12,7 +12,7 @@ class control extends Database {
 		$data = $this->select($query);
 		return $data;
 	}
-	
+
 	public function wordSearch($get){
 		$query	= 'SELECT img, name, price, detail, category, id, kana FROM akino where kana like "%'. $get. '%"';
 		$data = $this->select($query);
@@ -24,22 +24,21 @@ class control extends Database {
 	    $data = $this->select($query);
 	    return $data;
 	}
-    
-    public function incrementSearch($word)
-    {
+
+  public function incrementSearch($word){
 	    $query = 'SELECT kana FROM akino where kana like "'. $word. '%"';
 	    $data = $this->select($query);
 	    return $data;
-    }
+  }
 
 	public function autocomplete($get){
 		$query = 'SELECT kana FROM akino where kana like "'. $get. '%"';
 	    $data = $this->select($query);
-	    return $data;	
+	    return $data;
 	}
-   
+
     public function addSelect($arr){
-		foreach($arr as $val){	
+		foreach($arr as $val){
 			$query = 'SELECT img, name, price, detail, category, id, kana FROM akino where id ="'. $val. '"';
 			if(empty($data)){
 				$data = array();
@@ -50,15 +49,15 @@ class control extends Database {
 		}
 		return $data;
 	}
-	
+
 	public function detailOpen($get){
 		$query = 'SELECT img, name, price, detail, category, id, kana FROM akino where id ="'. $get. '"';
 	    $data = $this->select($query);
-	    return $data;	
+	    return $data;
 	}
 
 	public function cartShow($arr){
-		foreach($arr as $val){	
+		foreach($arr as $val){
 			$query = 'SELECT *  FROM akino where id ="'. $val. '"';
 			if(empty($data)){
 				$data = array();

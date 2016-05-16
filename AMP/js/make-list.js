@@ -90,12 +90,16 @@ var makeListFn = $(function()
   $('[type=button]').click(function(){
     if ($('[type=text]').val()) {
       changeList($('[type=text]').val());
+    }else{
+      changeList('all');
     }
   });
   $('[type=text]').keypress(function(e){
   	if ( e.which == 13 ) {
       if ($('[type=text]').val()) {
         changeList($('[type=text]').val());
+      }else{
+        changeList('all');
       }
   	}
   });
