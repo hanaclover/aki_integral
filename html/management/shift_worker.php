@@ -72,6 +72,8 @@ if(isset($_SESSION)){
 	//*************//
 	
 }else{
+	$name="noname";
+	
 }
 
 ?>
