@@ -1,5 +1,8 @@
 ﻿<?php
-require_once("login_check.php");
+//パス
+//htdocs/aki_integral/aki_integral/html/top/logout.php
+
+require_once("../../class/management/login_check.php");
 
 $_SESSION = array();
 

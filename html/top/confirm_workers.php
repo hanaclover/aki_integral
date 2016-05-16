@@ -1,13 +1,16 @@
 <?php
 
+//パス
+//htdocs/aki_integral/aki_integral/html/top/confirm_workers.php
+
 session_start();
 
-require_once('error_Check_workers.class.php');
-require_once('initMaster_workers.class.php');
-require_once('database_class.php');
-require_once('To_hash_class.php');
-require_once('make_shift_class.php');
-require_once('../AMP/config.php');
+require_once('../../class/management/error_Check_workers.class.php');
+require_once('../../class/management/initMaster_workers.class.php');
+require_once('../../class/management/database_class.php');
+require_once('../../class/management/To_hash_class.php');
+require_once('../../class/management/make_shift_class.php');
+require_once('../../conf/config_menu.php');
 
 $common        = new error_check();
 
@@ -429,10 +432,10 @@ for($i=1;$i<=12;$i++){
    <center>
    <h1>登録完了しました。</h1><br>
    <?php if($type==="アルバイト" ){ ?>
-   <a href= "shift_worker.php">シフトページへ</a><br>
+   <a href= "../management/shift_worker.php">シフトページへ</a><br>
    <?php } ?>
     <?php if($type==="店長" ){ ?>
-   <a href= "shift_manager.php">シフトページへ</a><br>
+   <a href= "../management/shift_manager.php">シフトページへ</a><br>
    <?php } ?>
   </center>
  </body>

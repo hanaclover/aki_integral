@@ -1,17 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
-<!---  
-//htdocs/aki_integral/aki_integral/html/management/shift_manager.php
-
--->
 <head>
 <meta charset="utf-8">
 
 <?php 
 require_once("shiibashi.php");
-require_once("../../class/managemnt/database_class.php");
+require_once("database_class.php");
 require_once("calendar.php");
-require_once("../../class/management/login_check_master.php");
+require_once("../top/login_check_master.php");
 
  
 ///表示するyearとmonthを定める

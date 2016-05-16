@@ -1,10 +1,13 @@
 ﻿<?php
 
-require_once('database_class.php'); //データベースクラス
-require_once('To_hash_class.php');  //ハッシュ化クラス
-require_once('initMaster.class.php');//マスター
-require_once('error_Check.class.php');//エラーチェック
-require_once('../AMP/config.php');
+//パス
+//htdocs/aki_integral/aki_integral/html/top/regist_change.php
+
+require_once('../../class/management/database_class.php'); //データベースクラス
+require_once('../../class/management/To_hash_class.php');  //ハッシュ化クラス
+require_once('../../class/management/initMaster.class.php');//マスター
+require_once('../../class/management/error_Check.class.php');//エラーチェック
+require_once('../../conf/config_menu.php');
 
 session_start();
 

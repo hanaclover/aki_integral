@@ -1,10 +1,6 @@
 ﻿<!DOCTYPE html >
 <html>
- <!---
  
- //htdocs/aki_integral/aki_integral/html/management/shift_worker.php
-
- --->
 <head>
 <meta charset = "utf-8"/>
 
@@ -12,9 +8,9 @@
 <link rel="stylesheet" type="text/css" href="../../css/management/shift_worker.css" />
 <?php
 require_once("calendar.php");
-require_once("../../class/management/database_class.php");
+require_once("database_class.php");
 require_once("schedule.php");
-require_once("../../class/management/login_check.php");
+require_once("../top/login_check.php");
 
 //表示するyearとmonthを定める
 $year=date("Y");
