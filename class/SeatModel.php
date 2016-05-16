@@ -24,7 +24,7 @@ class SeatModel {
     public $db = NULL;
     private $arrTable = array();
     private $jointTableStartNum = 100;
-    private $arrJointTableSID = array(7,8,9);
+    private $arrJointTableSID = array(7,8,9); 
     private $plus = 2;
     
     public function __construct( PDODatabase $db ) {
@@ -177,6 +177,13 @@ class SeatModel {
         }
         return ( !empty($result) !== false ) ? $result : $result = array();
 
+    }
+
+    public function getSeatNumfromSID($sid){
+        $arrSeat = array($sid);
+        $seatID = $this->db->select("seat" , "sNum" , "SID=?" , $arrSeat);
+        $seatNum = $seatID[0]["sNum"];
+        return $seatNum;
     }
 //         /*
 //         * フィルターの条件（無名関数）をセット
