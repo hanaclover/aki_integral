@@ -10,6 +10,8 @@ class database {
 	public function __construct(){
 		//parent::__construct();
 		
+
+		
 		$this->link = mysqli_connect(db_host,db_user,db_pass,db_name);
 		$this->sql="";
 		//mysql_set_charset('utf8');
@@ -56,7 +58,7 @@ class database {
 			.$table
 			.$whereSQL;
 		
-		echo $this->sql . "<br>";
+		//echo $this->sql . "<br>";
 		
 		$res=mysqli_query($this->link,$this->sql);
 		$data = array();
@@ -118,7 +120,7 @@ class database {
 
                 $this->sql=" UPDATE " . $table . " SET " . $setcol . " = '" . $value1 . "' WHERE " . $wherecol . " = '" . $value2  ."'";   
                 $result = mysqli_query($this->link, $this->sql);
-                echo $this->sql;
+                //echo $this->sql;
                 if(!$result){
                     echo "error" . mysqli_error($this->link);
                     return false;
@@ -139,7 +141,7 @@ class database {
 
                 $this->sql=" UPDATE " . $table . " SET " . $setcol . " = " . $value1 . " WHERE " . $where;   
                 $result = mysqli_query($this->link, $this->sql);
-                echo $this->sql;
+               // echo $this->sql;
                 if(!$result){
                     echo "error" . mysqli_error($this->link);
                     return false;
