@@ -40,7 +40,7 @@ class Database
 		$res = $this->execute( $sql );
 		$data = array();
 		while( $row = mysqli_fetch_assoc( $res ) ) {
-		//mysql_fetch_array()‚¾‚ÆƒJƒ‰ƒ€‚Ì’l‚à‚Æ‚ê‚é
+		//mysql_fetch_array()ã ã¨ã‚«ãƒ©ãƒ ã®å€¤ã‚‚ã¨ã‚Œã‚‹
 			array_push( $data, $row );
 		}
 		//mysql_free_result( $res );
