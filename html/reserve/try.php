@@ -5,9 +5,9 @@
  * Date: 2016/05/09
  * Time: 15:22
  */
-require_once "./class/reserve/Reserve.php";
-require_once "./class/reserve/SeatModel.php";
-require_once "./class/reserve/ReserveModel.php";
+require_once "../../class/reserve/Reserve.php";
+require_once "../../class/reserve/SeatModel.php";
+require_once "../../class/reserve/ReserveModel.php";
 
 $rm = new ReserveModel();
 //$res = new Reserve();

@@ -7,7 +7,7 @@
  */
 
 //予約が確定され、SIDとRIDが付与されてるとき
-include_once("./class/reserve/Reserve.php");
+include_once("../../class/reserve/Reserve.php");
 session_start();
 $reserve = new Reserve();
 // <----

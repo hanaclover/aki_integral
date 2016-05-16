@@ -31,7 +31,7 @@ echo "Reserved : ".session_id();
     <link rel="stylesheet" type="text/css" href="../../css/reserve/input.css" />
     <?php
 
-    require_once "./class/reserve/PDODatabase.class.php";
+    require_once "../../class/reserve/PDODatabase.class.php";
 
     date_default_timezone_set("Asia/Tokyo");
 

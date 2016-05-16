@@ -19,7 +19,7 @@
     </title>
     <?php
 
-    require_once "./class/reserve/PDODatabase.class.php";
+    require_once "../../class/reserve/PDODatabase.class.php";
 
     date_default_timezone_set("Asia/Tokyo");
 

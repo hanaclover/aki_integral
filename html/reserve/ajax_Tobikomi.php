@@ -5,10 +5,10 @@
  * Date: 2016/05/13
  * Time: 17:26
  */
-require_once "./class/reserve/PDODatabase.class.php";
-require_once "./class/reserve/ReserveModel.php";
-require_once "./class/reserve/Reserve.php";
-require_once "./class/reserve/SeatModel.php";
+require_once "../../class/reserve/PDODatabase.class.php";
+require_once "../../class/reserve/ReserveModel.php";
+require_once "../../class/reserve/Reserve.php";
+require_once "../../class/reserve/SeatModel.php";
 
 $sid = $_GET["sid"];
 $rm = new ReserveModel();

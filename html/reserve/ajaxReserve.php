@@ -5,8 +5,8 @@
  * Date: 2016-05-10
  * Time: 오후 12:06
  */
-include_once("class/Reserve.php");
-require_once "class/ReserveModel.php";
+include_once("../../class/reserve/Reserve.php");
+require_once "../../class/reserve/ReserveModel.php";
     // エラーがないとき、確認ページに移動する
 
     // 座席チェック
