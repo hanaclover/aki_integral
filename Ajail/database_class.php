@@ -2,13 +2,15 @@
 
 //require_once("BaseModel.php");
 //class database extends BaseModel{
+require_once("../config.php");
 class database {
 	private $link="";
 	private $sql="";
 	
 	public function __construct(){
 		//parent::__construct();
-		$this->link = mysqli_connect('localhost','user','password','Akifarm_db');
+		
+		$this->link = mysqli_connect('db_host','db_user','db_pass','db_name');
 		$this->sql="";
 		//mysql_set_charset('utf8');
 	}
