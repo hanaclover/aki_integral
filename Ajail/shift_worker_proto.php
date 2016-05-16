@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 define('TABLE','user_ploto');
 define('HOST','localhost');

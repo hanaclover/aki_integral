@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class initMaster {
       public static function getDate(){

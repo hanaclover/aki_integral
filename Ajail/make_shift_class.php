@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 require_once('database_class.php');
 require_once('calendar.php');

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 $link = mysqli_connect('localhost','user', 'password','Akifarm_db');
 $query = 'select u.id, u.name, s.shift_data from user_ploto u join shift_submit_proto s on u.id = s.id'; 

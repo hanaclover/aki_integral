@@ -14,6 +14,8 @@ require_once("login_check.php");
 //表示するyearとmonthを定める
 $year=date("Y");
 $month=date("m");
+
+//月の移動ボタンが押された場合
 if(isset($_POST["month"])){
 	$month=$_POST["month"];
 }
@@ -21,6 +23,7 @@ if(isset($_POST["year"])){
 	$year=$_POST["year"];
 }
 
+//methodに次、前、今月の情報をいれる
 $method="";
 if(isset($_POST["next"])){
 	$method="next";
@@ -44,9 +47,11 @@ $user_id="noid";
 //ログイン状態のとき$nameと$user_idを取得
 if(isset($_SESSION)){
 	
+	//出力ID
 	$user_id=$_SESSION["USERID"];
-	
 	$arr=array();
+	
+	//DBからシフト情報を取得
 	$db=new database();
 	$table="regist";//テーブル名指定	
 	$column="";
@@ -54,7 +59,6 @@ if(isset($_SESSION)){
 	$arr=$db->select($table,$column, $where);
 	
 	$name=$arr[0]["FamilyName"]." ".$arr[0]["FirstName"];
-	
 	
 }else{
 }
@@ -100,7 +104,6 @@ function inputSchedule(){
 
 // -->
 </script>
-
 
 
 <meta charset="utf-8">
@@ -153,7 +156,8 @@ $table="shift_submit";//テーブル名指定
 		$data="\"".$shift_data."\"";
 		$db->update2($table,$col,$data,$where);
 		
-		//２ヶ月前のデータ更新(シフトをゼロにする)
+		//*２ヶ月前のデータ更新(シフトをゼロにする)***//
+		//updに2ヶ月前の年月を代入
 		$upd=operationCalendar(date("Y"),date("m"),-2);
 		$where=" user_id ="."\"".$user_id."\"". " AND shift_month=". $upd[1];
 		$zero_arr=array();
@@ -220,20 +224,14 @@ $db=new database();
 $table="shift_submit";//テーブル名指定	
 
 $column="shift_data";
-//$where=" user_id ="."\"".$user_id."\"";
-//$where=" user_id ="."\"".$user_id."\"". " AND shift_month=". $month;
 
-//var_dump($_POST);
-if(isset($_POST["month_submit"])){
-	var_dump($_POST);
-	//$month=$_POST["month_submit"];
-}
 $where=" user_id ="."\"".$user_id."\"". " AND shift_month=". $month;
 $arr=$db->select($table,$column, $where);
 $arr=scheduleToArray($arr);
+
+//空いているとき1,そうでないときに0をとるschedule_worker[]
 for($i=0;$i<$day;$i++){
 	if(count($arr)>0){
-		
 		if($arr[$i]==1){
 			echo "<input type=\"hidden\" name=\"schedule_worker[]\" value=1>";
 		}else{
@@ -242,7 +240,6 @@ for($i=0;$i<$day;$i++){
 	}else{
 		echo "<input type=\"hidden\" name=\"schedule_worker[]\" value=0>";
 	}
-	
 }
 
 	
