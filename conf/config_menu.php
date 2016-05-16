@@ -11,4 +11,7 @@ if($_SERVER['HTTP_HOST'] == "aki-farm.main.jp"){
 	define("db_pass", "akino_pass");
 	define("db_name", "akino_db");
 }
+
+define("db_type", "mysql");
+define("_DSN", db_type . ":host=" . db_host . ";dbname=" . db_name. ";charset=utf8");
 ?>

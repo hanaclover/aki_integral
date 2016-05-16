@@ -21,6 +21,7 @@
 }
 .navMenu>li:last-child{
   width: 6%;
+  margin-right: 5%;
   float: right;
 }
 .navMenu p a{
@@ -164,9 +165,8 @@
 .fixed {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 960px;
   margin: 0 -500%;
-  padding: 0 500%;
-  z-index: 10000;
+  padding: 4px 500%;
   border-color: #eee;
 }

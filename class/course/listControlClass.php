@@ -3,8 +3,8 @@
 
 class control extends Database {
 
-	public function __construct( $db_host, $db_user, $db_pass, $db_name ) {
-		parent::__construct( $db_host, $db_user, $db_pass, $db_name ) ;
+	public function __construct() {
+		parent::__construct() ;
 	}
 
 	public function categorySort($get){
