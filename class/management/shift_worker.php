@@ -1,4 +1,9 @@
 ﻿<!DOCTYPE html >
+
+<!---        
+//htdocs/aki_integral/aki_integral/class/management/shift_worker.php
+
+--->
 <html>
  
 <head>
@@ -10,7 +15,7 @@
 require_once("calendar.php");
 require_once("database_class.php");
 require_once("schedule.php");
-require_once("../top/login_check.php");
+require_once("login_check.php");
 
 //表示するyearとmonthを定める
 $year=date("Y");
@@ -257,7 +262,7 @@ for($i=0;$i<$day;$i++){
 <input type="submit" name="submit" value="提出" onClick="alert('シフトを提出しました。');" /> 
 </form>
 <br>
-<button  onclick="location.href='../top/logout.php'">ログアウト</button>
+<button  onclick="location.href='../../html/top/logout.php'">ログアウト</button>
 <button  onclick="location.href='shift_confirm.php'">シフト確認</button>
 <!--
 <input type="button" class="squareBt" value="test" />
