@@ -73,13 +73,13 @@ if($password_db[0]["Password"] == $password){
   $_SESSION["TYPE"] = $password_db[0]["Type"];
 //タイプに応じて飛ぶページをカエル
   //var_dump ($password_db[0]["Type"]);
-//  if($password_db[0]["Type"]==="お客様"){
-     /*if(isset($_SESSION["KEY"])){
-            header("Location : index.php");
-     }else{*/
-            header("Location:./regist_change.php");
-     /*}*/
- // } 
+  if($password_db[0]["Type"]==="お客様"){
+     if($_SESSION["KEY"]==="key"){
+            header("Location: index.php");
+     }else{
+            header("Location: test.php");
+     }
+  } 
 
   if($password_db[0]["Type"]=="アルバイト")
   header("Location: shift_worker.php");
