@@ -186,7 +186,7 @@ $(function()
 
     function listMakeDel(arrctg, arr, name )
     {
-        arrctg.push('<img id="list"  src="./img/' + 
+        arrctg.push('<img id="list"  src="../../img/menu/' + 
         arr + '" width="200" height="200" /> ');
     };
     
