@@ -6,6 +6,7 @@ require_once('error_Check.class.php');
 require_once('initMaster.class.php');
 require_once('database_class.php');
 require_once('To_hash_class.php');
+require_once('../AMP/config.php');
 
 $common        = new error_check();
 
@@ -329,7 +330,7 @@ $dlt_flg = 0;
 
 $_SESSION["USERID"]= $ID;
 
-$link = mysqli_connect('localhost','user','password','Akifarm_db');
+$link = mysqli_connect('db_host','db_user','db_pass','db_name');
  if(mysqli_connect_errno($link)){
   echo "inncorect";
  }

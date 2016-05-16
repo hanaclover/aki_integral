@@ -11,6 +11,7 @@
 
 require_once "./class/init.php";
 require_once "./class/BaseModel.php";
+require_once "./AMP/config.php";
 
 class PDODatabase extends BaseModel{
 
