@@ -1,12 +1,13 @@
 ﻿<?php
 
+
 session_start();
 
 $_SESSION["KEY"]= "key";
 $_SESSION["Login_stat"]= 'Guest';
 //ログインしてる時，予約フォームに飛ばす．
 if(0==1){
-	require_once('index.php');//とりあえずindex...
+	require_once('../top/index.php');//とりあえずindex...
 }else{	//ログインしてない時，ログインするかどうか？
 
 ?>
@@ -15,7 +16,7 @@ if(0==1){
 <head>
 <meta charset="utf8">
 <meta http-equiv="content-style-type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="adminTop.css" />
+<link rel="stylesheet" type="text/css" href="../../css/management/adminTop.css" />
 </head>
 
 <body>
