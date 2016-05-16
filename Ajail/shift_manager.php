@@ -28,11 +28,11 @@ if(isset($_POST["next"])){
 }else if(isset($_POST["now"])){
 	$method="now";
 }
-
+ 
 //年月計算
 if(isset($_POST["month_submit"])){
-	$month=$_POST["month_submit"]
-	
+	$month=$_POST["month_submit"];
+	$year=turnCalendar($year,$month,$method)[0];
 }else{
 	$year=turnCalendar($year,$month,$method)[0];
 	$month=turnCalendar($year,$month,$method)[1];
