@@ -75,7 +75,7 @@ if($password_db[0]["Password"] == $password){
   //var_dump ($password_db[0]["Type"]);
   if($password_db[0]["Type"]==="お客様"){
      if($_SESSION["KEY"]==="key"){
-            header("Location: index.php");
+            header("Location: ../Reserved.php");
      }else{
             header("Location: test.php");
      }
