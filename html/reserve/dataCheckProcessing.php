@@ -19,7 +19,9 @@ $phoneNumber = $_POST['phoneNum1']."-".$_POST['phoneNum2']."-".$_POST['phoneNum3
 // 4, true의 경우 AMP페이지로
 // 7,10의 경우 confirm 페이지로
 
-$_SESSION['UID']                = 0;
+//　LOGINの場合、UIDある、GUESTの場合0を入れます。→　ユーザーを登録した後、GUESTのUIDをDBからとってきて予約登録します。
+// 変更があるかもしれないので、FORMの内容をSESSIONに入れる
+$_SESSION['UID']                = (isset($_SESSION['UID']) ? $_SESSION['UID'] : 0);
 $_SESSION['StartDay']           = $_POST['Date'];
 $_SESSION['startTime']          = $startTime;
 $_SESSION['peopleNum']          = $_POST['peopleNum'];
@@ -35,13 +37,14 @@ if($_POST['course'] == "4") {
     $_SESSION['course_flag'] = true;
 } else $_SESSION['course_flag'] = false;
 
+echo $_POST['course_flag']."course_flag";
+
 // Input Data Check
 $_SESSION['err'] = inputDataCheck($_SESSION['UID'], $_SESSION['peopleNum'], $_SESSION['StartDay'],
                         $_SESSION['startTime'],$_SESSION['phoneNumber'], $_SESSION['familyName'], $_SESSION['firstName'],
                         $_SESSION['familyName_kana'], $_SESSION['firstName_kana'], $_SESSION['mail']);
 
 // 座席チェック
-$msg="";
 $rModel = new ReserveModel();
 $reserve = new Reserve();
 $reserve->setPeopleNum($_SESSION['peopleNum']);
@@ -78,28 +81,28 @@ function inputDataCheck($_uid, $_peopleNum, $_startDay, $_startTime, $_phoneNum,
     $inputDate = array();
 
     if(preg_match( '/[0-9]+/', $_uid ));
-    else $inputDate['UID'] = "UIDがおかしいです。";
+    else $inputDate['UID'] = "登録されたユーザーデータがありません";
 
     $parseDate = explode("-", $_startDay);
 
     if(preg_match( '/([2-9]{1}[0-9]{3})/', $parseDate[0] ) &&
         checkdate( $parseDate[1], $parseDate[2], $parseDate[0] )) {
-    } else $inputDate['StartDay'] = "StartDayのタイプが間違いました。";
+    } else $inputDate['StartDay'] = "日付は正しく入力してください";
 
     if(preg_match( '/([0-9]{2}):([0-9]{2}):([0-9]{2})/', $_startTime )) {
-    } else $inputDate['StartTime'] = "startTimeのタイプが間違いました。";
+    } else $inputDate['StartTime'] = "時刻は正しく入力してください";
 
     if( $_peopleNum > 0 && $_peopleNum <= 30 );
-    else $inputDate['peopleNum'] = "1~30人までです。";
+    else $inputDate['peopleNum'] = "お客様の人数は1～30人でお願いします";
 
     if ( preg_match( '/([0-9]{3})-([0-9]{4})-([0-9]{4})/', $_phoneNum ));
     else $inputDate['phoneNum'] = "電話番号は、半角数字で11桁以内で入力してください";
 
     if( $_familyName == '' || $_firstName == '')  {
-        $inputDate['Name'] ="確認お願いいたします。";
+        $inputDate['Name'] ="名前を入力してください";
     }
     if( $_familyName_kana == '' || $_firstName_kana == '')  {
-        $inputDate['Name_kana'] ="確認お願いいたします。";
+        $inputDate['Name_kana'] ="ふりがなを入力してください";
     }
     if ( preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+[a-zA-Z0-9\._-]+$/', $_mail ) === 0 )
     {
