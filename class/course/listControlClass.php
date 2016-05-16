@@ -33,9 +33,11 @@ class control extends Database {
 
 	public function autocomplete($get){
 		$query = 'SELECT kana FROM akino where kana like "'. $get. '%"';
-	    $data = $this->select($query);
-	    return $data;
+
+	  $data = $this->select($query);
+	  return $data;
 	}
+
 
     public function addSelect($arr){
 		foreach($arr as $val){

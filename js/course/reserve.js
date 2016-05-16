@@ -153,6 +153,7 @@ $(function()
             $(that).attr("class", "del"); 
             $(that).text("削除");
         };
+
     $.cookie('cart', cart_arr);
     };
 
