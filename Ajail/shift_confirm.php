@@ -122,6 +122,8 @@ function isWork($str,$shop){
 	
 }
 ?>
+<button  onclick="location.href='logout.php'">ログアウト</button>
+
 
 </body>
 

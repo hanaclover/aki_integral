@@ -52,7 +52,7 @@ $arr=$db->select($table,$column, $where);
 
 //人数の長さ
 $person=count($arr);
-echo " person ".$person."<br>";
+//echo " person ".$person."<br>";
 //文字列の分解
 $shift=explode(',',$arr[0]["shift_data"]);
 
@@ -153,7 +153,7 @@ function setColor(i){
 
 
 <table border="/">
-<tr>schedule
+<tr>シフト表
 <th>名前
 
 
@@ -289,7 +289,7 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 			}
 			
 		}
-		//header("Location:./shift_confirm.php");
+		header("Location:./shift_confirm.php");
 		//exit();	
 	}
 }else{
