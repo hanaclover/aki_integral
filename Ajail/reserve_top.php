@@ -1,7 +1,9 @@
 ﻿<?php
 
 session_start();
+
 $_SESSION["KEY"]= "key";
+$_SESSION["Login_stat"]= 'Guest';
 //ログインしてる時，予約フォームに飛ばす．
 if(0==1){
 	require_once('index.php');//とりあえずindex...

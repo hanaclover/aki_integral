@@ -36,7 +36,7 @@ $db = new database();
 $hs = new tohash();
 
 //セッションにはユーザーID入れておく
-$_SESSION["USERID"] = $_POST["userid"];
+$_SESSION["UID"] = $_POST["userid"];
 //$_SESSION["NAME"] = $_POST["family_name"];
 //$_SESSION["FIRSTNAME"] = $_POST["first_name"];
 
@@ -64,13 +64,22 @@ if($password_db[0]["dlt_flg"] == 0){
 //パスワード確認
 if($password_db[0]["Password"] == $password){
   echo "認証に成功したようです";
-  echo isset($_SESSION["KEY"]);
+
 //セッションに苗字を入れる「〜様ようこそ」用
   session_regenerate_id(true);
-  $_SESSION["NAME"] = $password_db[0]["FamilyName"];
-  $_SESSION["FIRSTNAME"]=$password_db[0]["FirstName"];
-  $_SESSION["ID"]=$password_db[0]["User_ID"];
+  $_SESSION["familyName"] = $password_db[0]["FamilyName"];
+  $_SESSION["firstName"]=$password_db[0]["FirstName"];
+  $_SESSION["familyName_kana"]=$password_db[0]["FamilyName_kana"];
+  $_SESSION["firstName_kana"]=$password_db[0]["FirstName_kana"];
+  $_SESSION["phoneNumber"]=$password_db[0]["PhoneNum"];
+  $_SESSION["mail"]=$password_db[0]["Mail"];
+  $_SESSION["UID"]=$password_db[0]["User_ID"];
   $_SESSION["TYPE"] = $password_db[0]["Type"];
+  if(isset($_SESSION["UID"])){
+        $_SESSION["Login_stat"]='Login';
+	}else{
+	$_SESSION["Login_stat"]='Login';
+	}
 //タイプに応じて飛ぶページをカエル
   //var_dump ($password_db[0]["Type"]);
   if($password_db[0]["Type"]==="お客様"){

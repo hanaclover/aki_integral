@@ -23,8 +23,8 @@ function echoman($echoStr){
 
 class ReserveModel {
 
-    //const DISTANCETIME = 3600*7;
-    const DISTANCETIME = 25200;
+    const DISTANCETIME = 0;
+    //const DISTANCETIME = 25200;
     //const DINNERLENGTH = 60 * 60 * 2;
     const DINNERLENGTH = 7200;
     private $minJoinTableNum = 100; //100
@@ -260,7 +260,7 @@ class ReserveModel {
     public function getReserve( $seatNum ){
         // 空席状況の確認
             // 空席の場合
-        if ($this->isEmpty($seatNum)){ 
+        if ($this->isEmpty($seatNum)){
             return $res = array(
                 "flag"  => 0,
                 "msg"   => "予約可能");
@@ -268,7 +268,7 @@ class ReserveModel {
             // 現在は空席だが２時間以内に予約が有る場合、
             // 次の予約のスタート時間を返す
             if ($this->nextReserveTime($seatNum) != 0){
-                
+
                 return $res = array(
                     "flag"   => 1,
                     "msg"    =>  "次の予約時間：".date("H:i:s",$this->nextReserveTime($seatNum))
