@@ -4,7 +4,6 @@
   padding: 0;
   margin: 0 auto;
   list-style-type: none;
-  background-color: #eee;
   display: block;
 }
 .navMenu>li{
@@ -94,8 +93,7 @@
   left: 20px;
   background-color: gold;
   color: black;
-  padding: 4px;
-  padding-left: 6px;
+  padding: 5px;
   width: 24px;
   height: 24px;
   box-sizing: border-box;
@@ -160,4 +158,15 @@
   top: 92px;
   right: 324px;
   background: #eee;
+}
+
+/*ナビゲーション固定*/
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0 -500%;
+  padding: 0 500%;
+  z-index: 10000;
+  border-color: #eee;
 }
