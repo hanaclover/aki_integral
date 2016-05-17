@@ -1,10 +1,10 @@
 $(function()
 {
-  //--------オブジェクト宣言--------------------------------------------------------
+  //--------オブジェクト宣言----------------------------------------------------------------------------
   var cartFlag
     , wordFlag;
 
-  //--------オーバーレイボックスをコントロールするメソッド---------------------------------------------------------
+  //--------オーバーレイボックスをコントロールするメソッド----------------------------------------------
   var windowChange = function(way,target,locate){
     if(way==="in"){
       $("#"+target+"lay").fadeIn();
@@ -66,7 +66,38 @@ $(function()
   $('.cartButton').click(function(){
     //指定した位置まで自動でスクロール
     $("html,body").animate({scrollTop:$('.subNav').offset().top}, {duration: 100, complete: changeControl("cart")});
+    
+    //ここでliを大量生産(相馬がいじったとこ)--------------------------------------------------
+        cart_arr = $.cookie('cart');
+        if(!cart_arr) cart_arr=[];
+        var cartChange = new Array();
+        var nameChange = new Array();
+        var arrLi = new Array();
+        for( var i = 0 ; i < arrayData.length ; i++ ){
+            for(var key in  arrayData[i] ){
+                if( key ==="id" && $.inArray(arrayData[i][key], cart_arr) !== -1){
+                    cartChange.push(arrayData[i]);
+                }
+            }
+        };
+        for( var i = 0 ; i < cartChange.length ; i++ ){
+            for(var key1 in  cartChange[i] ){
+                if( key1 ==="name" ){
+                    nameChange.push(cartChange[i][key1]);
+                }
+            }
+        };
+        //名前の配列になってます(例:チャンジャ、たこわさ)
+        nameChange;
+        //HTML文章を作ります
+        for( var i = 0 ; i < nameChange.length ; i++ ){
+            arrLi.push('<li id="'+ nameChange[i] +'">' + nameChange[i] 
+                    + '<button id="' + nameChange[i] + '" class="cartDel">削除</button></li>');
+        };
+       $('#cartButtonList').html(arrLi);
+    //--------------------------------------------------------------------
   });
+
   $('.textList i').click(function(){
     $("html,body").animate({scrollTop:$('.subNav').offset().top}, {duration: 100, complete: changeControl("word")});
   });
@@ -75,4 +106,15 @@ $(function()
   $('#close').click(function(){
     $("#overlay").fadeOut();
   });
+
+  //-----cartBottunList上での削除-------------------------------------------
+  /*$(document).on('click', 'button.cartDel', function(){
+    console.log("a");
+    //クリックされたボタンの親要素のliごと消す
+    $(this).prev().remove();
+  });
+*/
+
+  //------------------------------------------------------------------------
+
 });

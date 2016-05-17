@@ -96,6 +96,7 @@ var makeListFn = $(function()
       changeList('all');
     }
   });
+
   $('[type=text]').keypress(function(e){
   	if ( e.which == 13 ) {
       if ($('[type=text]').val()) {
