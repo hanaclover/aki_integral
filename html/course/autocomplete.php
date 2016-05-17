@@ -22,7 +22,7 @@ $where  = ' kana like "'. $term. '%" ';
 $data = $dbh->select($table,$col,$where);
 //////////////////////////////////////////////////////////
 
-print_r($data);
+// print_r($data);
 
 /////検索用にカナの配列を作る///////////////////////////
 $kanaArr = array();
@@ -39,15 +39,15 @@ foreach($data as $arr)
 
 /////飛んできたものとの一致を調べる///////////////
 $words = array();
- 
+
 ////部分一致で検索
 //
 foreach($kanaArr as $word){
     if(strpos( $word, $term) !== false){
         $words[] = $word;
-    }   
+    }
 };
- 
+
 //$ctr->ePrint($words);
 header("Content-Type: application/json; charset=utf-8");
 echo json_encode($words);
