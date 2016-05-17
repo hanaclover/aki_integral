@@ -9,7 +9,7 @@
 
 <?php 
 require_once("shiibashi.php");
-require_once("../../class/managemnt/database_class.php");
+require_once("../../class/management/database_class.php");
 require_once("calendar.php");
 require_once("../../class/management/login_check_master.php");
 
