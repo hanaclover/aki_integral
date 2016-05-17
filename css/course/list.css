@@ -1,6 +1,7 @@
 /*ソートや検索のナビゲーションへのスタイル*/
 .subNav{
   padding-top: 8px;
+  margin-top: 16px;
 }
 .navMenu{
   width: 960px;
@@ -92,13 +93,13 @@
   color: #3d3734;
 }
 .label{
-  opacity: 0.95;
+  opacity: 1.0;
   position: absolute;
   top: 0px;
   left: 20px;
   background-color: #f08804;
   color: #fff;
-  padding: 5px;
+  padding: 4px;
   width: 24px;
   height: 24px;
   box-sizing: border-box;
@@ -146,35 +147,32 @@
 /*カートのボタンがクリックされると表示する*/
 #cartlay{
   display: none;
-  width: 300px;
-  height:300px;
-  text-align: center;
+  width: 250px;
+  height:250px;
   position: absolute;
-  top: 82px;
+  padding: 15px;
+  top: 85px;
   right: 5%;
   background: #f7f3e8;
-  border: 1px solid #aaa;
-  border-radius: 2px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 #wordlay{
   display: none;
   width: 112px;
   height:150px;
-  text-align: center;
   position: absolute;
   top: 92px;
   left: 30%;
   background: #f7f3e8;
-  border: 1px solid #aaa;
-  border-radius: 2px;
-}
-.behind{
-  z-index: -1;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 /*ナビゲーション固定*/
-.fixed {
+.fixed{
   position: fixed;
+  z-index: 100;
   top: 0;
   width: 960px;
   margin: 0 -500%;

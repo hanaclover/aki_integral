@@ -1,9 +1,11 @@
 var makeListFn = $(function()
 {
   //--------オブジェクト宣言---------------------------------------------------------
-  var arrHtml = new Array();
-  var arrValue = new Array();
-  var cart_arr = new Array();
+  var arrHtml = new Array()
+    , arrValue = new Array()
+    , cart_arr = new Array();
+    //, arrayData = JSON.parse('<?php echo json_encode($data); ?>');
+
   //cookie.jsの設定、魔法の言葉
   $.cookie.json = true;
 
@@ -13,7 +15,7 @@ var makeListFn = $(function()
     arrHtml.push(
       '<li>'
       + '<a href="detail.php?id=' + arrValue["id"] + '">'
-      + '<img id="list" src="../../img/menu/' + arrValue["img"] + '" width="200" height="200" />'
+      + '<img id="list" src="../../img/menu/' + arrValue["img"] + '">'
       + '</a>'
       + '<button id="button' + arrValue["id"] + '">追加</button>'
       //+ '<p>' + arrValue["name"] + '</p>'
@@ -45,10 +47,10 @@ var makeListFn = $(function()
 
   //--------配列の要素の数だけループし、html出力につなげるメソッド----------------------------------------------------------
   var listControl = function(target){
-    for(var i=0 ; i < array.length ; i++){
+    for(var i=0 ; i < arrayData.length ; i++){
       //makeHtmlListに配列を渡すために格納する処理。
-      for(var cate in array[i]){
-        arrValue[cate]=array[i][cate];
+      for(var cate in arrayData[i]){
+        arrValue[cate]=arrayData[i][cate];
       }
       //allのときにはっ全部表示。検索ワードやカテゴリーソートの時は絞って表示
       if(target==="all"){
@@ -107,7 +109,7 @@ var makeListFn = $(function()
   $('.textList p').click(function(){
     //console.log($(this).text());
     changeList($(this).text());
-    $('[type=text]').val($(this).text())
+    $('[type=text]').val($(this).text());
   });
 
   ////////autocomplete//////////////

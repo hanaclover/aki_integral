@@ -1,0 +1,21 @@
+.headerMenu{
+  height: 80px;
+  width: 100%;
+  border-top: 8px solid #3d3734;
+  border-bottom: 3px solid #ddd;
+  padding-top: 4px;
+}
+.headerMenu>ul>li{
+  display: block;
+  float: left;
+  margin: 0;
+}
+.headerMenu img{
+  height: 80px;
+}
+
+
+.globalNav{
+  background-color: #ccc;
+  height: 44px;
+}

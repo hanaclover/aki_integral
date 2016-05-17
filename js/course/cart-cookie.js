@@ -5,9 +5,7 @@ var cartCookieFn = $(function()
 
 
   //--------オブジェクト宣言--------------------------------------------------------
-  var cartFlag
-    , wordFlag
-    , timer
+  var timer
     , idTarget
     , idCookie;
   //クッキーを読み込む
@@ -42,7 +40,7 @@ var cartCookieFn = $(function()
     //buttonの文字を削除し、idの数字だけ拾ってくる。
     idCookie = idTarget.slice(6);
 
-    //
+    //削除のボタンが押された実行する
     if(target.html()=="削除") {
       cookieEdit("del",cart_arr,idCookie);
       changeButton(idTarget,"追加");
@@ -51,10 +49,11 @@ var cartCookieFn = $(function()
     }else if(cart_arr.length === 4){
       return false;
 
-    //
+    //追加ボタンが押されたら実行
     }else if(target.html()=="追加"){
       cookieEdit("add",cart_arr,idCookie);
       changeButton(idTarget,"削除");
+      //カートの中身が４つに達したらオーバーレイボックスを表示
       if(cart_arr.length === 4){
         $("#overlay").fadeIn(500);
       }
@@ -68,81 +67,12 @@ var cartCookieFn = $(function()
   }
 
 
-  //--------オーバーレイボックスをコントロールするメソッド---------------------------------------------------------
-  var windowChange = function(way,target,locate){
-    if(way==="in"){
-      $("#"+target+"lay").fadeIn();
-      $(locate).css("background-color","#f7f3e8");
-      eval(target+"Flag=1;");
-    }else if (way==="out") {
-      $("#"+target+"lay").hide();
-      $(locate).css("background-color","");
-      eval(target+"Flag=0;");
-    }
-  }
-
-  var changeControl = function(way){
-    //setTimeoutを使うのはスクロールが完了してからメニューを表示させるためです。
-    setTimeout(function(){
-      if(way=="cart"){
-        if(cartFlag!==1){
-          windowChange("in","cart",".navMenu>li:last-child");
-        }else {
-          windowChange("out","cart",".navMenu>li:last-child");
-        }
-      }else if(way=="word"){
-        if(wordFlag!==1){
-          windowChange("in","word",".textList i");
-        }else{
-          windowChange("out","word",".textList i");
-        }
-      }
-	  },150);
-  }
-
-  //このメソッドが呼び出されると、表示中のオーバーレイボックスを閉じます。
-  var closeControl = function(){
-    if($('#wordlay').css('display') !== 'none'){
-      windowChange("out","word",".textList i")
-    }
-    if($('#cartlay').css('display') !== 'none'){
-      windowChange("out","cart",".navMenu>li:last-child")
-    }
-  }
-
-
-
   //--------パブリックメソッド---------------------------------------------------------
 
   $(document).on("click" , '.list button' , function(){
     cookieControl($(this));
   });
 
-  $('#close').click(function(){
-    $("#overlay").fadeOut();
-  });
-
-  //ボックス外をクリックしたときにボックスを閉じる
-  $(document).click(function(event) {
-    if($.contains($(".navMenu>li:last-child")[0], event.target) || $(".textList i")[0] == event.target || $("#cartlay")[0] == event.target || $("#wordlay")[0] == event.target){
-      return false;
-    }
-    closeControl();
-  });
-
-  $('.cartButton').click(function(){
-    //指定した位置まで自動でスクロール
-    $("html,body").animate({scrollTop:$('.subNav').offset().top}, {duration: 100, complete: changeControl("cart")});
-  });
-
-  $('.textList i').click(function(){
-    $("html,body").animate({scrollTop:$('.subNav').offset().top}, {duration: 100, complete: changeControl("word")});
-  });
-
-  //ウインドウをスクロールするとオーバーレイボックスを閉じます。
-  $(window).scroll(function() {
-    closeControl();
-  });
 
   //最初のアクセスでカートの数字を書き換える
   cartNumChange();
