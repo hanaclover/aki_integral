@@ -1,25 +1,28 @@
 <?php
 
+ini_set( 'display_errors', 1 );
 //////default settings/////////////////
-require_once("config.php");
-require_once("./class/dbClass.php");
-require_once("./class/sessionClass.php");
-require_once("./class/cartClass.php");
-require_once("./class/listControlClass.php");
-require_once("./class/jsClass.php");
+require_once("../../conf/config_menu.php");
+require_once "../../class/course/PDODatabase.class.php";
+require_once("../../class/course/jsClass.php");
 //////////////////////////////////////
-
-///////////call classes///////////////////////////////////
-$ctr = new control( db_host, db_user, db_pass, db_name );
-/////////////////////////////////////////////////////////
 
 /////現在入力中の文字を取得//////////////////////////////
 //$.getの場合、原則termで飛んでくるらしい
 $term = (isset($_GET['term']) && is_string($_GET['term'])) ? $_GET['term'] : '';
 
-//カナで前方一致検索/////////////////////////////////
-$data = $ctr->autocomplete($term);
-$ctr->close();
+///////////call classes///////////////////////////////////
+//session_start();
+$dbh = new PDODatabase(db_host, db_user, db_pass, db_name , db_type);
+$table  = ' akino ';
+$col    = ' kana ';
+$where  = ' kana like "'. $term. '%" ';
+//$where  = ' kana like "え%" ';
+//$arrVal = ( $ctg_id !== '' ) ? array( $ctg_id) :array();
+$data = $dbh->select($table,$col,$where);
+//////////////////////////////////////////////////////////
+
+print_r($data);
 
 /////検索用にカナの配列を作る///////////////////////////
 $kanaArr = array();
