@@ -2,7 +2,16 @@ $(function()
 {
   //--------オブジェクト宣言----------------------------------------------------------------------------
   var cartFlag
+    , cart_arr
+    , arrHtml = new Array()
     , wordFlag;
+
+  //--------クッキーの更新を取得----------------------------------------------------------
+  var cookieUpdate = function(){
+    cart_arr = $.cookie('cart');
+    if(!cart_arr) cart_arr=[];
+  }
+
 
   //--------オーバーレイボックスをコントロールするメソッド----------------------------------------------
   var windowChange = function(way,target,locate){
@@ -47,11 +56,39 @@ $(function()
   }
 
 
-  //--------パブリックメソッド---------------------------------------------------------
+  //--------カートリストのhtmlをつくる---------------------------------------------------------
+  var cartListMake = function(key){
+    arrHtml.push(
+      '<li>'
+      + '<img id="list" src="../../img/menu/' + arrayData[key]["img"] + '" width="30">'
+      + '<span>' + arrayData[key]["name"] + '</span>'
+      + '<button id="button' + arrayData[key]["id"] + '">削除</button>'
+      + '</li>'
+    );
+  }
 
+  //--------カートリストのhtmlをつくる---------------------------------------------------------
+  var cartListControl = function(time){
+    arrHtml = [];
+    for( var i = 0 ; i < arrayData.length ; i++ ){
+      for( var j = 0 ; j < cart_arr.length ; j++ ){
+        if(arrayData[i]['id']==cart_arr[j]){
+          // console.log(arrayData[i]['name']);
+          cartListMake(i);
+        }
+      }
+      $('#cartButtonList').html(arrHtml).hide().fadeIn(time);
+    }
+  }
+
+
+
+
+  //--------パブリックメソッド---------------------------------------------------------
   //ボックス外をクリックしたときにボックスを閉じる
   $(document).click(function(event) {
-    if($.contains($(".navMenu>li:last-child")[0], event.target) || $(".textList i")[0] == event.target || $("#cartlay")[0] == event.target || $("#wordlay")[0] == event.target){
+    console.log($(event.target).parents("#cartlay").length);
+    if($.contains($(".navMenu>li:last-child")[0], event.target) || $(".textList i")[0] == event.target || $(event.target).closest("#cartlay").length>0 || $(event.target).closest("#wordlay").length>0){
       return false;
     }
     closeControl();
@@ -64,38 +101,22 @@ $(function()
 
   //カート及びキーワードリストのボタンがクリックされたら発動する
   $('.cartButton').click(function(){
+    cookieUpdate();
+    //カートの中身がない場合クリックしても何も起こらない。
+    if(cart_arr.length<1){
+      return false;
+    }
     //指定した位置まで自動でスクロール
     $("html,body").animate({scrollTop:$('.subNav').offset().top}, {duration: 100, complete: changeControl("cart")});
-    
-    //ここでliを大量生産(相馬がいじったとこ)--------------------------------------------------
-        cart_arr = $.cookie('cart');
-        if(!cart_arr) cart_arr=[];
-        var cartChange = new Array();
-        var nameChange = new Array();
-        var arrLi = new Array();
-        for( var i = 0 ; i < arrayData.length ; i++ ){
-            for(var key in  arrayData[i] ){
-                if( key ==="id" && $.inArray(arrayData[i][key], cart_arr) !== -1){
-                    cartChange.push(arrayData[i]);
-                }
-            }
-        };
-        for( var i = 0 ; i < cartChange.length ; i++ ){
-            for(var key1 in  cartChange[i] ){
-                if( key1 ==="name" ){
-                    nameChange.push(cartChange[i][key1]);
-                }
-            }
-        };
-        //名前の配列になってます(例:チャンジャ、たこわさ)
-        nameChange;
-        //HTML文章を作ります
-        for( var i = 0 ; i < nameChange.length ; i++ ){
-            arrLi.push('<li id="'+ nameChange[i] +'">' + nameChange[i] 
-                    + '<button id="' + nameChange[i] + '" class="cartDel">削除</button></li>');
-        };
-       $('#cartButtonList').html(arrLi);
-    //--------------------------------------------------------------------
+
+    //カートリストの中身を書き換える
+    cartListControl(100);
+  });
+
+  $(document).on("click" , '#cartButtonList button' , function(){
+    cookieUpdate();
+    cartListControl(100);
+    changeControl("cart");
   });
 
   $('.textList i').click(function(){
@@ -107,14 +128,14 @@ $(function()
     $("#overlay").fadeOut();
   });
 
-  //-----cartBottunList上での削除-------------------------------------------
-  /*$(document).on('click', 'button.cartDel', function(){
-    console.log("a");
-    //クリックされたボタンの親要素のliごと消す
-    $(this).prev().remove();
-  });
-*/
-
-  //------------------------------------------------------------------------
+  //オーバーレイボックスをとじるメソッド
+  $('.cartWrapper').hover(
+    function(){
+      $(".cartWrapper").css("background-color","#ddd").css("border-top","1px solid #ddd");
+    },
+    function () {
+      $(".cartWrapper").css("background-color","").css("border","none");
+    }
+  );
 
 });

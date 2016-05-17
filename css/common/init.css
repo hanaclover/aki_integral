@@ -22,6 +22,7 @@ legend{color:#000}#yui3-css-stamp.cssreset{display:none}
 body{
   font-family:Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
   font-size: 14px;
+  background-color: #f7f7f7;
 }
 
 .clearfix:after {

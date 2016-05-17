@@ -1,12 +1,12 @@
 header>.wrapper{
-  border-bottom: 2px solid #eee;
+  border-bottom: 1px solid #bbb;
 }
 
 .headerMenu{
   height: 80px;
   width: 100%;
   border-top: 8px solid #3d3734;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #ccc;
   padding-top: 4px;
 }
 .headerMenu ul li{
@@ -32,7 +32,7 @@ header>.wrapper{
 .breadcrumb {
   margin: 18px 0;
   line-height: 48px;
-  color: #aaa;
+  color: #888;
   padding: 1px;
   font-size: 17px;
 }
@@ -44,16 +44,16 @@ ol.breadcrumb li:first-child{
 }
 ol.breadcrumb li a{
   display: block;
-  background: #eee;
+  background: #ddd;
   padding-right: 10px;
   height: 48px;
-  margin-right: 49px;
+  margin-right: 52px;
   position: relative;
   text-decoration: none;
-  color: #aaa;
+  color: #888;
 }
 ol.breadcrumb li a:last-of-type {
-  margin-right: 49px;
+  margin-right: 52px;
 }
 ol.breadcrumb li a:before {
   content: "";
@@ -64,7 +64,7 @@ ol.breadcrumb li a:before {
   top: 0;
   left: -48px;
   border: 24px solid transparent;
-  border-color: #eee;
+  border-color: #ddd;
   border-left-color: transparent;
 }
 ol.breadcrumb li a:after {
@@ -76,7 +76,7 @@ ol.breadcrumb li a:after {
   top: 0;
   right: -48px;
   border: 24px solid transparent;
-  border-left-color: #eee;
+  border-left-color: #ddd;
 }
 
 

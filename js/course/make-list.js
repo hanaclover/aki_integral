@@ -113,7 +113,7 @@ var makeListFn = $(function()
     $('[type=text]').val($(this).text());
   });
 
-  ////////autocomplete//////////////
+  //////autocomplete//////////////
   $("input#sw").autocomplete({
         source: "./autocomplete.php",
         autoFocus: true,
