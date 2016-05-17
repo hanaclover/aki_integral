@@ -80,8 +80,6 @@ class PDODatabase{
             {
                 array_push($data , $result);
             }
-
-
             return $data;
         }
 

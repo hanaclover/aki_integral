@@ -1,44 +1,32 @@
 <?php
 
+ini_set( 'display_errors', 1 );
 //////default settings/////////////////
 require_once("../../conf/config_menu.php");
-require_once("../../class/course/dbClass.php");
-require_once("../../class/course/sessionClass.php");
-require_once("../../class/course/cartClass.php");
-require_once("../../class/course/listControlClass.php");
+require_once "../../class/course/PDODatabase.class.php";
 require_once("../../class/course/jsClass.php");
 //////////////////////////////////////
 
 ///////////call classes///////////////////////////////////
-session_start();
-$ctr = new control(db_host, db_user, db_pass, db_name );
-//$cart = new cart("cart");
-//$cart->checkSession();
-$data = $ctr->allSelect();
+//session_start();
+$dbh = new PDODatabase(db_host, db_user, db_pass, db_name , db_type);
+$table  = ' akino ';
+$col    = ' img, name, price, detail, category, id, kana ';
+//$where  = ( $ctg_id !== '' ) ? '  ctg_id = ? ': '';
+//$arrVal = ( $ctg_id !== '' ) ? array( $ctg_id) :array();
+$data = $dbh->select($table,$col);
 //////////////////////////////////////////////////////////
-
-/*
-require_once("ifGET.php");
-require_once("sort_search.php");
-require_once("escape.php");
- */
-
-$ctr->close();
-
-//$cnt = count($_SESSION["cart"]);
-
-include_once('./reserve.html');
 
 $arrId = $_COOKIE["cart"];
 $nameChange = array();
 
-print_r($arrId);
+var_dump($arrId);
 
 $arrId2 = explode(" ", $arrId);
 
-print_r($arrId2);
+//print_r($arrId2);
 
-foreach($data as $arr){
+/*foreach($data as $arr){
     foreach($arr as $key => $val){
         foreach($arrId as $id){
             if($val === $id){
@@ -47,11 +35,14 @@ foreach($data as $arr){
         }
     }
 };
+ */
 
-var_dump($nameChange);
+//var_dump($nameChange);
 
 //$_SESSION["dish"] = $nameChange;
 
 echo "セッションの中に".($_SESSION["dish"])."が入りましたよ";
+
+include_once('./reserve.html');
 
 ?>
