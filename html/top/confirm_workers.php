@@ -397,7 +397,6 @@ $sql = "INSERT INTO workers( FamilyName,
                              '$password'
                                  )";
 
-  echo $sql;
   $result = mysqli_query($link,$sql);
   if(!$result){
    echo "error" . mysqli_error($link);

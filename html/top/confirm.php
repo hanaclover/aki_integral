@@ -365,7 +365,7 @@ $link = mysqli_connect(db_host,db_user,db_pass,db_name);
                              '$type',
                              '$dlt_flg')";
 
-  echo $sql;
+
   $result = mysqli_query($link,$sql);
   if(!$result){
    echo "error" . mysqli_error($link);
