@@ -187,7 +187,7 @@ if( $err_check == false){
 
 所属店舗  <?php  echo $dataArr['shop'][0]; ?><br>
 
-職種      <?php echo $dataArr["job"][0];   ?><br>
+職種      <?php echo $dataArr['job'][0];   ?><br>
 
         <input type = "submit" name = "back" value = "戻る"/>
         <input type = "submit" name = "complete" value = "登録完了"/><br>  
@@ -298,8 +298,8 @@ case "back":
       <input type = "radio" name = "shop" selected = "<?php echo $selectShop ?>" value = "C" >C<br>
 
 職種<font color = "red">*</font>
-      <input type = "radio" name = "job[]" selected = "<?php echo $selectJob ?>" value = "アルバイト">アルバイト
-      <input type = "radio" name = "job[]" selected = "<?php echo $selectJob ?>" value = "店長">店長<br>
+      <input type = "radio" name = "job" selected = "<?php echo $selectJob ?>" value = "アルバイト">アルバイト
+      <input type = "radio" name = "job" selected = "<?php echo $selectJob ?>" value = "店長">店長<br>
 
         <input type = "submit" name = "confirm" value = "確認"/><br/>  
   </form> 
@@ -330,7 +330,7 @@ $shop = $dataArr["shop"];
 $_SESSION["UID"]   = $ID;
 $_SESSION["USERID"]= $ID;
 $_SESSION["TYPE"] = $type;
-//echo $tel . "<br>"; 
+ 
 
 $link = mysqli_connect(db_host ,db_user ,db_pass, db_name);
   if(mysqli_connect_errno($link)){
@@ -338,7 +338,7 @@ $link = mysqli_connect(db_host ,db_user ,db_pass, db_name);
   }
 
 //into regist_table
-//mysql_set_charset('utf8');
+
 $sql = "INSERT INTO regist( FamilyName,
                             FirstName,
                             FamilyName_kana,
@@ -362,7 +362,7 @@ $sql = "INSERT INTO regist( FamilyName,
                              '$password',
                              '$type')";
 
-  echo $sql;
+
   $result = mysqli_query($link,$sql);
   if(!$result){
    echo "error" . mysqli_error($link);
@@ -375,7 +375,7 @@ $link = mysqli_connect(db_host ,db_user ,db_pass, db_name);
      echo "inncorect";
   }
 //into workers
-//mysql_set_charset('utf8');
+mysql_set_charset('utf8');
 $sql = "INSERT INTO workers( FamilyName,
                             FirstName,
                             FamilyName_kana,
@@ -397,7 +397,6 @@ $sql = "INSERT INTO workers( FamilyName,
                              '$password'
                                  )";
 
-  echo $sql;
   $result = mysqli_query($link,$sql);
   if(!$result){
    echo "error" . mysqli_error($link);
