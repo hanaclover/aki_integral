@@ -17,31 +17,34 @@ $col    = ' img, name, price, detail, category, id, kana ';
 $data = $dbh->select($table,$col);
 //////////////////////////////////////////////////////////
 
-$arrId = $_COOKIE["cart"];
-$nameChange = array();
+$strId = $_COOKIE["cart"];
+$deleteWord = array('[', ']', '"');
+$strIdClean = str_replace($deleteWord, "", $strId);
+$arrId2 = explode(",", $strIdClean);
+$arrId3 = array();
+$arrId4 = array();
 
-var_dump($arrId);
-
-$arrId2 = explode(" ", $arrId);
-
-//print_r($arrId2);
-
-/*foreach($data as $arr){
+foreach($data as $arr){
     foreach($arr as $key => $val){
-        foreach($arrId as $id){
-            if($val === $id){
-                array_push($nameChange, $arr);
-            }
+        if($key === "id" && in_array($val, $arrId2)){
+            $arrId3[] = $arr;
         }
     }
 };
- */
 
-//var_dump($nameChange);
+foreach($arrId3 as $arr1){
+    foreach($arr1 as $key1 => $val1){
+        if($key1 === "name"){
+            $arrId4[] = $val1;
+        }
+    }
+};
 
-//$_SESSION["dish"] = $nameChange;
+$_SESSION["dish"] = $arrId4;
 
-echo "セッションの中に".($_SESSION["dish"])."が入りましたよ";
+echo "セッションの中に";
+print_r($_SESSION["dish"]);
+echo "が入りましたよ";
 
 include_once('./reserve.html');
 
