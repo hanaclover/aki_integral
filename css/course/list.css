@@ -168,6 +168,9 @@
   border: 1px solid #aaa;
   border-radius: 2px;
 }
+.behind{
+  z-index: -1;
+}
 
 /*ナビゲーション固定*/
 .fixed {
