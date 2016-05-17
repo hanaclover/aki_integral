@@ -45,8 +45,6 @@ foreach($nameArr2 as $arr){
     }
 };
 
-//print_r($nameArrTrue);
-
 /////検索用にカナの配列を作る///////////////////////////
 $kanaArr = array();
 foreach($nameArrTrue as $val)

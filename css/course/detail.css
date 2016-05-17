@@ -13,21 +13,30 @@ img#list
 }
 
 p.name 
-{
-    margin-left: 50px;
+{    
+    position: absolute;
+	top: 50px;
+	left: 450px;
+    margin: 0 auto;
     font-size: 45px;
 }
 
 p.price 
 {
+    position: absolute;
+	top: 140px;
+	left: 650px;
     margin: 0 auto;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 
 p.detail
 {
-    padding-left: 50px;
+    position: absolute;
+	top: 200px;
+	left: 450px;  
+    margin: 0 auto;
     font-size: 35px;
 }
 
