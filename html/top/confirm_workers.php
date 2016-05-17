@@ -327,7 +327,9 @@ $sex  = $dataArr["sex"];
 $ID   = $dataArr["ID"];
 $password = $hs->to_hash($dataArr["password1"]);
 $shop = $dataArr["shop"];
+$_SESSION["UID"]   = $ID;
 $_SESSION["USERID"]= $ID;
+$_SESSION["TYPE"] = $type;
 //echo $tel . "<br>"; 
 
 $link = mysqli_connect(db_host ,db_user ,db_pass, db_name);

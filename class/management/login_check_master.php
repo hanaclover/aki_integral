@@ -2,7 +2,7 @@
 
  session_start();
 
-if(!isset($_SESSION["USERID"]) || $_SESSION["TYPE"]!=="店長"){
+if(!isset($_SESSION["UID"]) || $_SESSION["TYPE"]!=="店長"){
   header("Location:logout.php");
   exit;
 }
