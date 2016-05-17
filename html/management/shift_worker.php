@@ -14,7 +14,7 @@
 require_once("calendar.php");
 require_once("../../class/management/database_class.php");
 require_once("schedule.php");
-require_once("../../class/management/login_check.php");
+//require_once("../../class/management/login_check.php");
 
 //表示するyearとmonthを定める
 $year=date("Y");
@@ -86,9 +86,11 @@ function turn(element){
 var col=document.b1.elements[element].style.backgroundColor;
 if(col=="red"){
 	document.b1.elements[element].style.background="blue";
+	document.b1.elements[element].style.color="white";
 	document.hb.elements[element].value=1;
 }else{
 	document.b1.elements[element].style.background="red";
+	document.b1.elements[element].style.color="black";
 	document.hb.elements[element].value=0;
 }
 
@@ -102,9 +104,11 @@ function inputSchedule(){
 	
 		if(document.hb.elements[i].value==1){
 				document.b1.elements[i].style.background="blue";
+				document.b1.elements[i].style.color="white";
 				document.hb.elements[i].value=1;
 		}else{
 				document.b1.elements[i].style.background="red";
+				document.b1.elements[i].style.color="black";
 				document.hb.elements[i].value=0;
 		}
 
@@ -123,37 +127,45 @@ function inputSchedule(){
 <title>sumtrue</title>
 </head>
 <body >
-<div><div>
+
+
+<div id="container"><div id="header">
 名前:<?php echo $name; ?>
 <br>
 シフト締切:前月25日
 <br>
-</div>
 
+
+
+<?php echo  $year."年".$month. " 月"; ?>
+</div>
 <div>
-<table border="/">
-<tr><?php echo  $year."年".$month. " 月"; ?>
-<?php //echo $month; ?>
-<form method="post" action="">
+<div id="time">
+<form method="post" action="" >
 <input type="submit" name="prev" value="前の月"  /> 
 <input type="submit" name="next" value="次の月"  /> 
 <input type="submit" name="now" value="今月"  /> 
+
 <input type="hidden" name="month" value=<?php  echo $month; ?>>
 <input type="hidden" name="year" value=<?php  echo $year; ?>>
 </form>
+</div>
+</div>
 
-<th>日
-<th>月
-<th>火
-<th>水
-<th>木
-<th>金
-<th>土
+<div id="table">
+<table border=1><tr>
+<th bgcolor="#D88">日</th>
+<th>月</th>
+<th>火</th>
+<th>水</th>
+<th>木</th>
+<th>金</th>
+<th bgcolor="#88D">土</th>
 </tr>
 
-<form method ="post" action="" name="b1" class="squareBt">
+<form method ="post" action="" name="b1">
 <?php
-
+/*
 
 $db=new database();
 $table="shift_submit";//テーブル名指定	
@@ -169,7 +181,7 @@ $table="shift_submit";//テーブル名指定
 		$data="\"".$shift_data."\"";
 		$db->update2($table,$col,$data,$where);
 		
-		//*２ヶ月前のデータ更新(シフトをゼロにする)***//
+		//*２ヶ月前のデータ更新(シフトをゼロにする)//
 		//updに2ヶ月前の年月を代入
 		$upd=operationCalendar(date("Y"),date("m"),-2);
 		$where=" user_id ="."\"".$user_id."\"". " AND shift_month=". $upd[1];
@@ -182,7 +194,7 @@ $table="shift_submit";//テーブル名指定
 		$db->update2($table,$col,$data,$where);
 	
 	}
-
+*/
 	$arr= array();
 		
 	/**  カレンダー表示 **/		
@@ -275,12 +287,6 @@ for($i=0;$i<$day;$i++){
 
 </body>
 </html>
-
-
-
-
-
-
 
 
 
