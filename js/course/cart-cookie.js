@@ -68,7 +68,7 @@ var cartCookieFn = $(function()
 
 
   //--------パブリックメソッド---------------------------------------------------------
-
+  //後から追加された要素に対してイベントを設定するためには、document.onにすべし
   $(document).on("click" , '.list button' , function(){
     cookieControl($(this));
   });

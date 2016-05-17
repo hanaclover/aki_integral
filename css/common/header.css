@@ -1,21 +1,107 @@
+header>.wrapper{
+  border-bottom: 2px solid #eee;
+}
+
 .headerMenu{
   height: 80px;
   width: 100%;
   border-top: 8px solid #3d3734;
-  border-bottom: 3px solid #ddd;
+  border-bottom: 2px solid #ddd;
   padding-top: 4px;
 }
-.headerMenu>ul>li{
+.headerMenu ul li{
   display: block;
   float: left;
   margin: 0;
+}
+.headerMenu ul li:last-child{
+  padding-top: 6px;
+  float: right;
+  font-size: 12px;
+}
+.headerMenu a{
+  color: #1841ce;
 }
 .headerMenu img{
   height: 80px;
 }
 
+/*---------------------------------------------------------
+パンくずデザイン
+---------------------------------------------------------*/
+.breadcrumb {
+  margin: 18px 0;
+  line-height: 48px;
+  color: #aaa;
+  padding: 1px;
+  font-size: 17px;
+}
+ol.breadcrumb li{
+	float: left;
+}
+ol.breadcrumb li:first-child{
+	margin-left: 15%;
+}
+ol.breadcrumb li a{
+  display: block;
+  background: #eee;
+  padding-right: 10px;
+  height: 48px;
+  margin-right: 49px;
+  position: relative;
+  text-decoration: none;
+  color: #aaa;
+}
+ol.breadcrumb li a:last-of-type {
+  margin-right: 49px;
+}
+ol.breadcrumb li a:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: -48px;
+  border: 24px solid transparent;
+  border-color: #eee;
+  border-left-color: transparent;
+}
+ol.breadcrumb li a:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  right: -48px;
+  border: 24px solid transparent;
+  border-left-color: #eee;
+}
 
-.globalNav{
-  background-color: #ccc;
-  height: 44px;
+
+ol.breadcrumb li:first-child a{
+  padding-left: 15px;
+}
+ol.breadcrumb li:first-child a:before{
+  display:none;
+}
+
+ol.breadcrumb li:last-child{
+  /*color: #00b0ec;*/
+  color: #379cef;
+  font-weight: bold;
+}
+
+ol.breadcrumb li a:hover {
+  background: #666;
+  color: #fff;
+  text-decoration: none;
+}
+ol.breadcrumb a:hover:before {
+  border-color: #666;
+  border-left-color: transparent;
+}
+ol.breadcrumb li a:hover:after {
+  border-left-color: #666;
 }
