@@ -16,13 +16,18 @@ var cartCookieFn = $(function()
   //--------addボタンとdelボタンを切り替える処理---------------------------------------------------------
   var changeButton = function(target,text){
     $("#"+target).html(text);
+    if(text=="カートから削除"){
+      $("#"+target).parent("li").addClass("liDel");
+    }else if(text=="カートに追加"){
+      $("#"+target).parent("li").removeClass("liDel");
+    }
   }
 
 
   //--------クッキーを編集する---------------------------------------------------------
   var cookieEdit = function(type,cart_arr,idCookie){
     if(type==="del"){
-      //配列の中にある任意の文字列を削除するメソッド
+      //配列の中にある任意の文字列をカートから削除するメソッド
       cart_arr.some(function(val,i){
         if (val==idCookie) cart_arr.splice(i,1);
       });
@@ -37,22 +42,22 @@ var cartCookieFn = $(function()
   //--------クッキーを更新するかどうかを司る---------------------------------------------------------
   var cookieControl = function(target){
     idTarget = target.attr('id');
-    //buttonの文字を削除し、idの数字だけ拾ってくる。
+    //buttonの文字をカートから削除し、idの数字だけ拾ってくる。
     idCookie = idTarget.slice(6);
 
-    //削除のボタンが押された実行する
-    if(target.html()=="削除") {
+    //カートから削除のボタンが押された実行する
+    if(target.html()=="カートから削除" || target.html()=="削除") {
       cookieEdit("del",cart_arr,idCookie);
-      changeButton(idTarget,"追加");
+      changeButton(idTarget,"カートに追加");
 
     //カート内の商品が４つだったらaddできないように
     }else if(cart_arr.length === 4){
       return false;
 
-    //追加ボタンが押されたら実行
-    }else if(target.html()=="追加"){
+    //カートに追加ボタンが押されたら実行
+    }else if(target.html()=="カートに追加"){
       cookieEdit("add",cart_arr,idCookie);
-      changeButton(idTarget,"削除");
+      changeButton(idTarget,"カートから削除");
       //カートの中身が４つに達したらオーバーレイボックスを表示
       if(cart_arr.length === 4){
         $("#overlay").fadeIn(500);
@@ -68,7 +73,7 @@ var cartCookieFn = $(function()
 
 
   //--------パブリックメソッド---------------------------------------------------------
-  //後から追加された要素に対してイベントを設定するためには、document.onにすべし
+  //後からカートに追加された要素に対してイベントを設定するためには、document.onにすべし
   $(document).on("click" , '#jsList button' , function(){
     cookieControl($(this));
   });

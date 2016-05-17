@@ -17,8 +17,8 @@ var makeListFn = $(function()
       + '<a href="detail.php?id=' + arrValue["id"] + '">'
       + '<img id="list" src="../../img/menu/' + arrValue["img"] + '">'
       + '</a>'
-      + '<button id="button' + arrValue["id"] + '">追加</button>'
-      //+ '<p>' + arrValue["name"] + '</p>'
+      + '<p>' + arrValue["name"] + '</p>'
+      + '<button id="button' + arrValue["id"] + '">カートに追加</button>'
       + '</li>'
     );
   }
@@ -39,7 +39,8 @@ var makeListFn = $(function()
     if(!cart_arr) cart_arr=[];
     var counter = 0;
     while (counter<cart_arr.length) {
-      $("#button" + cart_arr[counter]).html("削除");
+      $("#button" + cart_arr[counter]).html("カートから削除");
+      $("#button" + cart_arr[counter]).parent("li").addClass("liDel");
       counter++;
     }
   }
@@ -67,6 +68,7 @@ var makeListFn = $(function()
     arrHtml = [];
     listControl(target);
     changeHtml("#jsList");
+    initButton();
   }
 
 
@@ -86,6 +88,7 @@ var makeListFn = $(function()
   //selectの値を変更したときにメソッド発動
   $('[name=category]').change(function() {
     changeList($('[name=category]').val());
+    $('[type=text]').val("");
   });
 
   //検索が実行されたときに実行する

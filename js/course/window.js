@@ -17,7 +17,7 @@ $(function()
   var windowChange = function(way,target,locate){
     if(way==="in"){
       $("#"+target+"lay").fadeIn();
-      $(locate).css("background-color","#f7f3e8");
+      $(locate).css("background-color","#ddd");
       eval(target+"Flag=1;");
     }else if (way==="out") {
       $("#"+target+"lay").hide();
@@ -60,7 +60,7 @@ $(function()
   var cartListMake = function(key){
     arrHtml.push(
       '<li>'
-      + '<img id="list" src="../../img/menu/' + arrayData[key]["img"] + '" width="30">'
+      + '<img id="list" src="../../img/menu/' + arrayData[key]["img"] + '">'
       + '<span>' + arrayData[key]["name"] + '</span>'
       + '<button id="button' + arrayData[key]["id"] + '">削除</button>'
       + '</li>'
@@ -89,7 +89,7 @@ $(function()
   $(document).click(function(event) {
     console.log($(event.target).parents("#cartlay").length);
     if($.contains($(".navMenu>li:last-child")[0], event.target) || $(".textList i")[0] == event.target || $(event.target).closest("#cartlay").length>0 || $(event.target).closest("#wordlay").length>0){
-      return false;
+      return true;
     }
     closeControl();
   });

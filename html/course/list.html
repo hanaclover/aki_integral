@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="../../css/course/font-awesome.min.css">
   <meta charset="UTF-8">
   <title>商品一覧 / あき農場</title>
   <script> var arrayData = <?php echo json_safe_encode($data); ?></script>
-
+  <!--グローバルCSS-->
   <link rel="stylesheet" href="../../css/common/init.css">
   <link rel="stylesheet" href="../../css/common/header.css">
   <link rel="stylesheet" href="../../css/common/footer.css">
   <link rel="stylesheet" href="../../css/course/common.css">
+  <!--外部ライブラリCSS-->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css">
+  <link rel="stylesheet" href="../../css/course/font-awesome.min.css">
+  <!--ローカルCSS-->
   <link rel="stylesheet" type="text/css" href="../../css/course/list.css">
-  <link type="text/css" rel="stylesheet"href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+  <!--外部ライブラリJS-->
   <script src="../../js/course/jquery-1.9.1.min.js"></script>
   <script type="text/javascript"src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
   <script type="text/javascript" src="../../js/course/jquery.cookie.js"></script>
+  <!--ローカルJS-->
   <script src="../../js/course/cart-cookie.js"></script>
   <script src="../../js/course/make-list.js"></script>
   <script src="../../js/course/window.js"></script>
@@ -74,17 +78,25 @@
     </div>
     <div id="cartlay">
       <ul id="cartButtonList"></ul>
-      <a href="reserve.php">Go cart!!</a>
+      <a href="reserve.php">予約を確認する</a>
     </div>
     <div id="wordlay">
-      <p>b</p>
+      <ul class="textList">
+        <li><p>なんこつの唐揚げ</p></li>
+        <li><p>チャンジャ</p></li>
+        <li><p>大根サラダ</p></li>
+        <li><p>チャーハン</p></li>
+        <li><p>ナシゴレン</p></li>
+      </ul>
     </div>
   </div>
 
   <div id="overlay">
-    <p>a</p>
-    <a href="reserve.php">Go cart!!</a>
-    <p id="close">close</p>
+    <div class="overlayBox">
+      <p>カートの商品が４つになりました。</p>
+      <a href="reserve.php">予約確認画面へ</a>
+      <button id="close">商品を選びなおす</button>
+    </div>
   </div>
 
   <?php include_once("../common/global_footer.html"); ?>

@@ -18,3 +18,11 @@ h1{
 .mt{
   margin-top: 4px;
 }
+
+*:focus {
+  outline: none;
+}
+
+button{
+  cursor: pointer;
+}
