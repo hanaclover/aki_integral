@@ -11,7 +11,6 @@
   <script> var arrayData = <?php echo json_safe_encode($data); ?></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="../../js/course/jquery.cookie.js"></script>
-  <script src="../../js/course/reserve.js"></script>
   <meta charset="utf-8">
   <title>AKI農場</title>
 </head>
@@ -22,7 +21,17 @@
   $header_flag=2;
   include_once("../common/global_header.html");
   ?>
-    <div id="box"></div>
+  <div class="wrapper">
+    <div id="box">
+             
+       <?php
+         foreach($arrImg as $val){ 
+       ?><img id="img" src="../../img/menu/<?php echo $val;?>" />      
+         <?php 
+         };
+         ?> 
+
+    </div>
 
     <p id="con">こちらでよろしいですか？</p>
 
@@ -36,13 +45,24 @@
     </p>
 
     <div>
-        <p id="gennka"></p>
+        <p id="gennka">
+        
+        <?php 
+        $totalPrice = 1500;
+        foreach($arrPrice as $val){
+           $totalPrice += $val;
+           };
+        echo $totalPrice;
+        
+        ?>
+
+        </p>
         <p id="yajirusi"> ↓ </p>
         <p id="settowari">2500円</p>
     </div>
 
     <div id="session"></div>
-
+  </div>
 
   <?php include_once("../common/global_footer.html"); ?>
 
