@@ -46,6 +46,9 @@ foreach($arrId3 as $arr1){
 $_SESSION["dish"] = $arrId4;
 ////////////////////////////////////////////////
 
+$arrImg = array_column($arrId3, "img");
+$arrPrice = array_column($arrId3, "price");
+
 include_once('./reserve.html');
 
 ?>

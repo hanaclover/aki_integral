@@ -7,7 +7,6 @@
   <script> var arrayData = <?php echo json_safe_encode($data); ?></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="../../js/course/jquery.cookie.js"></script>
-  <script src="../../js/course/detail.js"></script>
   <meta charset="utf-8">
   <title>AKI農場</title>
 </head>
@@ -19,11 +18,23 @@
   include_once("../common/global_header.html");
   ?>
   
-  <div id="wrapper" class="wrapper clearfix">
+  <div class="wrapper clearfix">
     <div id="box"></div>
-  </div>
 
-  <div id="rec"></div>
+    <?php
+         foreach($data as $arr){
+         foreach($arr as $key => $val){ 
+         if($key ==="img"){
+         ?><img id="<?php echo $key;?>" src="../../img/menu/<?php echo $val;?>" />      
+   <?php }else{ ?>
+         <p id="<?php echo $key; ?>"><?php echo $val; ?></p>
+         <?php }
+           }
+         };?>
+         
+         <p><?php echo $detailId; ?></p>
+
+  </div>
 
   <?php include_once("../common/global_footer.html"); ?>
 
