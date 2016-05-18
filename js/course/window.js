@@ -6,7 +6,11 @@ $(function()
     , arrHtml = new Array()
     , wordFlag
     , nav = $('#nav1')
-    , offset = nav.offset();
+    , offset = nav.offset()
+    , wordBox = $('.textList i')
+    , wordOffset = wordBox.offset()
+    , windowWidth
+    , windowLocate;
 
   //--------クッキーの更新を取得----------------------------------------------------------
   var cookieUpdate = function(){
@@ -89,7 +93,6 @@ $(function()
   //--------パブリックメソッド---------------------------------------------------------
   //ボックス外をクリックしたときにボックスを閉じる
   $(document).click(function(event) {
-    console.log($(event.target).parents("#cartlay").length);
     if($.contains($(".navMenu>li:last-child")[0], event.target) || $(".textList i")[0] == event.target || $(event.target).closest("#cartlay").length>0 || $(event.target).closest("#wordlay").length>0){
       return true;
     }
@@ -123,6 +126,9 @@ $(function()
 
   $('.textList i').click(function(){
     $("html,body").animate({scrollTop:$('.subNav').offset().top}, {duration: 100, complete: changeControl("word")});
+      windowWidth = $(window).width();
+      windowLocate = wordOffset.left - (windowWidth/2) + 428;
+    $('#wordlay').css("left",windowLocate);
   });
 
   //オーバーレイボックスをとじるメソッド
