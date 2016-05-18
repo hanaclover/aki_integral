@@ -22,26 +22,24 @@ $where  = ' kana like "%'. $term. '%" ';
 $data = $dbh->select($table,$col,$where);
 //////////////////////////////////////////////////////////
 
-//print_r($data);
+//使用する配列を用意
 $namrArr = Array();
+$nameArr2 = array();
+$nameArrTrue = array();
+//kanaの中身を全て配列に格納
 foreach($data as $arr1){
     $nameArr[] = $arr1["kana"];
 };
-
-//print_r($nameArr);
-$nameArr2 = array();
+//「/」区切りになっているものを更に仕分け
 foreach($nameArr as $nameArr3){
     $nameArr2[] = explode("/", $nameArr3);
 };
-
-//print_r($nameArr2);
-$nameArrTrue = array();
-
+//入力された文字列から始まる文字列のみ抽出
 foreach($nameArr2 as $arr){
     foreach($arr as $val){
         if(strpos($val, $term) === 0){
             $nameArrTrue[] = $val;
-    };
+        };
     }
 };
 
