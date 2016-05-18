@@ -4,7 +4,7 @@ $(function()
 //-------もろもろ作成-------------------------------------------------------
     $.cookie.json = true;
     var cart_arr = $.cookie('cart');
-    
+
     if( !cart_arr )
     {
         console.log("a");
@@ -23,19 +23,19 @@ $(function()
 //--------cartの中身を表示------------------------------------------------------------
     var arr_category = new Array();
     var arrctg_s = new Array();
-    for(var i = 0; i <  array.length; i++)
+    for(var i = 0; i <  arrayData.length; i++)
     {
-        for(var b in array[i])
+        for(var b in arrayData[i])
         {
             //cartにはいっているもののみ配列に追加
-            if( b === "id" && jQuery.inArray(array[i][b], cart_arr) !== -1 )
+            if( b === "id" && jQuery.inArray(arrayData[i][b], cart_arr) !== -1 )
             {
-                arr_category.push(array[i]);
+                arr_category.push(arrayData[i]);
             }
         }
     };
     for(var i=0 ; i < arr_category.length ; i++)
-    {	
+    {
         for(var c in arr_category[i])
         {
             //imgのみタグつきで書き込む
@@ -47,13 +47,13 @@ $(function()
         }
     };
 
-    $("div#box").html(arrctg_s);		
+    $("div#box").html(arrctg_s);
 
     //idからカナに変更してsessionに格納
     console.log(arr_category);
     var nameChange = new Array();
     for(var i=0 ; i < arr_category.length ; i++)
-    {	
+    {
         for(var d in arr_category[i])
         {
             var name_s = arr_category[i][d].substr(0, arr_category[i][d].length-4);
@@ -66,7 +66,7 @@ $(function()
 
     console.log(nameChange);
 ///////カートと飲み放題の合計金額////////////////////////////////////
-    var priceSum = 0; 
+    var priceSum = 0;
     for( var j = 0; j < arr_category.length; j++)
     {
         for( var key in arr_category[j])
@@ -77,30 +77,30 @@ $(function()
             }
         }
     };
-    
+
     var priceSumAll = priceSum + parseInt(1500);
-    $("p#gennka").text("合計金額は" + priceSumAll + "のところ…");
+    $("p#gennka").text("合計金額は" + priceSumAll + "円のところ…");
 
 ///////idからkanaに変換///////////////////////////////////////////////////////////////////
-/*    console.log(array);
+/*    console.log(arrayData);
     console.log(cart_arr);
     var arrExchange = new Array();
     var arrName = new Array();
 
-    for(var i = 0; i <  array.length; i++)
+    for(var i = 0; i <  arrayData.length; i++)
     {
-        for(var key2 in array[i])
+        for(var key2 in arrayData[i])
         {
             //cartにはいっているもののみ配列に追加
-            if( key2 === "id" && jQuery.inArray(array[i][key2], cart_arr) !== -1 )
+            if( key2 === "id" && jQuery.inArray(arrayData[i][key2], cart_arr) !== -1 )
             {
-                arrExchange.push(array[i]);
+                arrExchange.push(arrayData[i]);
             }
         }
     };
 
     for(var i=0 ; i < arrExchange.length ; i++)
-    {	
+    {
         for(var key3 in arrExchange[i])
         {
             if( key3 === "kana" )
@@ -111,9 +111,9 @@ $(function()
     };
 
     //console.log(arrName);
-    
+
     //$.cookie("cart", arrName);
-    
+
 
     console.log($.cookie("cart"));
     */
@@ -144,12 +144,12 @@ $(function()
 //------カートに追加・削除----------------------------------------------------------------------------------
     $('button').on("click", function()
         {
-            
+
         });
 
     function addButton(that)
     {
-        var flg = $(that).attr('id'); 
+        var flg = $(that).attr('id');
         if(cart_arr == null)
         {
             cart_arr = $.cookie('cart');
@@ -165,8 +165,8 @@ $(function()
         else
         {
             console.log("a");
-            cart_arr.push(flg);    
-            $(that).attr("class", "del"); 
+            cart_arr.push(flg);
+            $(that).attr("class", "del");
             $(that).text("削除");
         };
 
@@ -175,7 +175,7 @@ $(function()
 
     function delButton(that)
     {
-        var flg    = $(that).attr('id'); 
+        var flg    = $(that).attr('id');
         if(cart_arr == null)
         {
             cart_arr = $.cookie('cart');
@@ -185,9 +185,9 @@ $(function()
             console.log("d");
             cart_arr.some(function(v, i)
             {
-                if (v==flg) cart_arr.splice(i,1);    
+                if (v==flg) cart_arr.splice(i,1);
             });
-        $(that).attr("class", "add"); 
+        $(that).attr("class", "add");
         $(that).text("追加");
         };
         $.cookie('cart', cart_arr);
@@ -195,20 +195,20 @@ $(function()
 
     function listMakeAdd(arrctg, arr, name )
     {
-        arrctg.push('<p><img id="list"  src="./img/' + 
-        arr + '" width="200" height="200" /></a></p> <p><button type="button" id="' + 
+        arrctg.push('<p><img id="list"  src="./img/' +
+        arr + '" width="200" height="200" /></a></p> <p><button type="button" id="' +
         name + '" class="add">追加</button></p> ');
     };
 
     function listMakeDel(arrctg, arr, name )
     {
-        arrctg.push('<img id="list"  src="../../img/menu/' + 
+        arrctg.push('<img id="list"  src="../../img/menu/' +
         arr + '" width="200" height="200" /> ');
     };
-    
+
     function btnPos(arrctg, arr, name )
     {
-        arrctg.push('<p><button type="button" id="' + 
+        arrctg.push('<p><button type="button" id="' +
         name + '" class="add">追加</button></p> ');
     };
 

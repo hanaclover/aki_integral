@@ -6,12 +6,27 @@
         <li><a href=""><i class="fa fa-clone" aria-hidden="true"></i>よくあるお問い合わせ</a>　　<a href=""><i class="fa fa-clone" aria-hidden="true"></i>サイトマップ</a></li>
       </ul>
     </div>
-    <div class="wrapper">
-      <ol class="breadcrumb clearfix">
-        <li><a href="">TOP</a></li>
-        <li><a href="">座席予約</a></li>
-        <li><i class="fa fa-file-text-o" aria-hidden="true"></i> メニュー予約</li>
-        <!-- <li>Category3</li> -->
-      </ol>
-    </div>
+    <?php
+    if(empty($header_flag)){$header_flag=1;}
+    if($header_flag==3){
+    }elseif($header_flag==1){
+    ?>
+      <div class="wrapper">
+        <ol class="breadcrumb clearfix">
+          <li><a href="">TOP</a></li>
+          <li>座席予約</li>
+        </ol>
+      </div>
+    <?php
+    }elseif($header_flag==2){
+    ?>
+      <div class="wrapper">
+        <ol class="breadcrumb clearfix">
+          <li><a href="">TOP</a></li>
+          <li><a href="">座席予約</a></li>
+          <li><i class="fa fa-file-text-o" aria-hidden="true"></i> メニュー予約</li>
+          <!-- <li>Category3</li> -->
+        </ol>
+      </div>
+    <?php } ?>
   </header>

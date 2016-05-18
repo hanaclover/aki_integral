@@ -12,15 +12,18 @@ var makeListFn = $(function()
 
   //--------リストをhtml出力するためのメソッド----------------------------------------------------------
   var makeHtmlList = function(arrValue){
-    arrHtml.push(
-      '<li>'
-      + '<a href="detail.php?id=' + arrValue["id"] + '">'
-      + '<img id="list" src="../../img/menu/' + arrValue["img"] + '">'
-      + '</a>'
-      + '<p>' + arrValue["name"] + '</p>'
-      + '<button id="button' + arrValue["id"] + '">カートに追加</button>'
-      + '</li>'
-    );
+    //論理削除の分岐
+    if(arrValue["deleteflag"]!="1"){
+      arrHtml.push(
+        '<li>'
+        + '<a href="detail.php?id=' + arrValue["id"] + '">'
+        + '<img id="list" src="../../img/menu/' + arrValue["img"] + '">'
+        + '</a>'
+        + '<p>' + arrValue["name"] + '</p>'
+        + '<button id="button' + arrValue["id"] + '">カートに追加</button>'
+        + '</li>'
+      );
+    }
   }
 
 

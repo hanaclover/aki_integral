@@ -1,0 +1,48 @@
+<div class="subNav">
+  <ul class="navMenu clearfix" id="nav1">
+    <li>
+      <label class="selecter">
+        <select name="category">
+          <option value="all" selected>すべて</option>
+          <option value="zennsai">前菜</option>
+          <option value="syusai">主菜</option>
+          <option value="syusyoku">主食</option>
+        </select>
+      </label>
+    </li>
+    <li>
+      <div id="search">
+        <input id="sw" type="text" placeholder="&#xF002;　料理名・食材名" name="keyword">
+        <input type="button" value="メニュー検索">
+      </div>
+    </li>
+    <li>
+      <div class="cartWrapper">
+        <p class="cartButton"><i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
+        <div class="label cartButton"></div>
+      </div>
+    </li>
+  </ul>
+  <ul class="navMenu clearfix">
+    <li class="textListHead"><p>人気ワード:</p></li>
+    <li>
+      <ul class="textList">
+        <?php
+        foreach($randomMenu as $key2 => $val2){
+          if($key2 < 3){
+        ?>
+            <li><p><?php echo $val2; ?></p></li>
+        <?php
+          }
+        }
+        ?>
+        <li><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></li>
+      </ul>
+    </li>
+    <li>
+      <div class="cartWrapper">
+        <p class="cartButton mt behind">カート</p>
+      </div>
+    </li>
+  </ul>
+</div>

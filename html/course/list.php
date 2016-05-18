@@ -11,24 +11,26 @@ require_once("../../class/course/jsClass.php");
 //session_start();
 $dbh = new PDODatabase(db_host, db_user, db_pass, db_name , db_type);
 $table  = ' akino ';
-$col    = ' img, name, price, detail, category, id, kana ';
+$col    = ' img, name, price, detail, category, id, kana, deleteflag';
 //$where  = ( $ctg_id !== '' ) ? '  ctg_id = ? ': '';
 //$arrVal = ( $ctg_id !== '' ) ? array( $ctg_id) :array();
 $data = $dbh->select($table,$col);
 //////////////////////////////////////////////////////////
 
-//ƒIƒXƒXƒ¤•i‚ğ‚Â‚­‚é‚Æ‚±////////////////////////////////
+//ï¿½Iï¿½Xï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½////////////////////////////////
 $nameArr = array();
 foreach($data as $arr){
+  if($arr["deleteflag"]!="1"){
     foreach($arr as $key => $val){
         if($key === "name"){
             $nameArr[rand(0, 999)] = $val;
         }
     }
+  }
 };
 krsort($nameArr);
-//‚±‚±‚Éã‚©‚ç3‚Â‚Í‚¢‚Á‚Ä‚é
-$randomMenu = array_splice($nameArr, 0, 3);
+//ï¿½ï¿½ï¿½ï¿½ï¿½Éã‚©ï¿½ï¿½3ï¿½Â‚Í‚ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½
+$randomMenu = array_splice($nameArr, 0, 8);
 //print_r($randomMenu);
 /////////////////////////////////////////////////////////
 

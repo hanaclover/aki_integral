@@ -30,30 +30,30 @@ header>.wrapper{
 パンくずデザイン
 ---------------------------------------------------------*/
 .breadcrumb {
-  margin: 18px 0;
-  line-height: 48px;
+  margin: 16px 0;
+  line-height: 36px;
   color: #888;
   padding: 1px;
-  font-size: 17px;
+  font-size: 16px;
 }
 ol.breadcrumb li{
 	float: left;
 }
 ol.breadcrumb li:first-child{
-	margin-left: 15%;
+	margin-left: 10%;
 }
 ol.breadcrumb li a{
   display: block;
   background: #ddd;
   padding-right: 10px;
-  height: 48px;
-  margin-right: 52px;
+  height: 36px;
+  margin-right: 40px;
   position: relative;
   text-decoration: none;
   color: #888;
 }
 ol.breadcrumb li a:last-of-type {
-  margin-right: 52px;
+  margin-right: 40px;
 }
 ol.breadcrumb li a:before {
   content: "";
@@ -62,8 +62,8 @@ ol.breadcrumb li a:before {
   height: 0;
   position: absolute;
   top: 0;
-  left: -48px;
-  border: 24px solid transparent;
+  left: -36px;
+  border: 18px solid transparent;
   border-color: #ddd;
   border-left-color: transparent;
 }
@@ -74,14 +74,14 @@ ol.breadcrumb li a:after {
   height: 0;
   position: absolute;
   top: 0;
-  right: -48px;
-  border: 24px solid transparent;
+  right: -36px;
+  border: 18px solid transparent;
   border-left-color: #ddd;
 }
 
 
 ol.breadcrumb li:first-child a{
-  padding-left: 24px;
+  padding-left: 20px;
 }
 ol.breadcrumb li:first-child a:before{
   display:none;

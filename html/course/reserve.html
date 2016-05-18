@@ -8,7 +8,7 @@
   <!--ローカルCSS-->
   <link rel="stylesheet" type="text/css" href="../../css/course/reserve.css">
 
-  <script> var array = <?php echo json_safe_encode($data); ?></script>
+  <script> var arrayData = <?php echo json_safe_encode($data); ?></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="../../js/course/jquery.cookie.js"></script>
   <script src="../../js/course/reserve.js"></script>
@@ -18,14 +18,16 @@
 
 <body>
 
-  <?php include_once("../common/global_header.html"); ?>
-
+  <?php
+  $header_flag=2;
+  include_once("../common/global_header.html");
+  ?>
     <div id="box"></div>
 
     <p id="con">こちらでよろしいですか？</p>
 
     <p id="btn">
-        <a href="../reserved/confirm.php">
+        <a href="../reserve/confirm.php">
             <button type="button" id="confirm">この4品で決定！</button>
         </a>
         <a href="./list.php">
@@ -41,10 +43,6 @@
 
     <div id="session"></div>
 
-    <!--
-    <div id="footer">2016 Project AKINO cAMP CORPORATION 2016</div>
-    -->
-    <br><hr /><br>
   <?php include_once("../common/global_footer.html"); ?>
 
 </body>

@@ -24,53 +24,13 @@
   <script src="../../js/course/window.js"></script>
 </head>
 <body>
-  <?php include_once("../common/global_header.html"); ?>
-
-  <?//php include_once("../course/"); ?>
+  <?php
+  $header_flag=2;
+  include_once("../common/global_header.html");
+  ?>
 
   <div class="wrapper">
-    <div class="subNav">
-      <ul class="navMenu clearfix" id="nav1">
-        <li>
-          <label class="selecter">
-            <select name="category">
-              <option value="all" selected>すべて</option>
-              <option value="zennsai">前菜</option>
-              <option value="syusai">主菜</option>
-              <option value="syusyoku">主食</option>
-            </select>
-          </label>
-        </li>
-        <li>
-          <div id="search">
-            <input id="sw" type="text" placeholder="&#xF002;　料理名・食材名" name="keyword">
-            <input type="button" value="メニュー検索">
-          </div>
-        </li>
-        <li>
-          <div class="cartWrapper">
-            <p class="cartButton"><i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
-            <div class="label cartButton"></div>
-          </div>
-        </li>
-      </ul>
-      <ul class="navMenu clearfix">
-        <li class="textListHead"><p>人気ワード:</p></li>
-        <li>
-          <ul class="textList">
-            <li><p>たこわさ</p></li>
-            <li><p>チャンジャ</p></li>
-            <li><p>えだまめ</p></li>
-            <li><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></li>
-          </ul>
-        </li>
-        <li>
-          <div class="cartWrapper">
-            <p class="cartButton mt behind">カート</p>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <?php include_once("../course/nav.html"); ?>
     <div id="errMessage"></div>
     <div class="list clearfix">
       <ul id="jsList">
@@ -83,11 +43,15 @@
     </div>
     <div id="wordlay">
       <ul class="textList">
-        <li><p>なんこつの唐揚げ</p></li>
-        <li><p>チャンジャ</p></li>
-        <li><p>大根サラダ</p></li>
-        <li><p>チャーハン</p></li>
-        <li><p>ナシゴレン</p></li>
+        <?php
+        foreach($randomMenu as $key => $val){
+          if($key>=3){
+        ?>
+            <li><p><?=$val?></p></li>
+        <?php
+          }
+        }
+        ?>
       </ul>
     </div>
   </div>
