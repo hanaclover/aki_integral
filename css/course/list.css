@@ -217,8 +217,10 @@
 }
 .overlayBox{
   position: absolute;
-  top:40%;
-  left: 40%;
+  top: 35%;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 .overlayBox p{
   font-size: 32px;
@@ -228,10 +230,10 @@
 }
 .overlayBox a{
   display: block;
-  margin: 24px auto;
+  margin: 28px auto;
   font-size: 20px;
-  padding: 12px;
-  width: 50%;
+  padding: 16px;
+  width: 23%;
   color: #fff;
   font-weight: bold;
   background-color: #f08804;
@@ -240,10 +242,10 @@
 }
 .overlayBox button{
   display: block;
-  margin: 24px auto;
+  margin: 28px auto;
   font-size: 20px;
-  padding: 12px;
-  width: 50%;
+  padding: 16px;
+  width: 20%;
   color: #666;
   font-weight: bold;
   background-color: #eee;
@@ -292,6 +294,7 @@
 #wordlay p{
   font-size: 13px;
   line-height: 26px;
+  color: #888;
 }
 
 /*ナビゲーション固定*/

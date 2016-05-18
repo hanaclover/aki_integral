@@ -4,7 +4,9 @@ $(function()
   var cartFlag
     , cart_arr
     , arrHtml = new Array()
-    , wordFlag;
+    , wordFlag
+    , nav = $('#nav1')
+    , offset = nav.offset();
 
   //--------クッキーの更新を取得----------------------------------------------------------
   var cookieUpdate = function(){
@@ -137,5 +139,17 @@ $(function()
       $(".cartWrapper").css("background-color","").css("border","none");
     }
   );
+
+  //スクロールした後ナビゲーションを固定する
+  $(window).scroll(function () {
+    if($(window).scrollTop() > offset.top) {
+      nav.addClass('fixed');
+      nav.css("background-color","#eee");
+    } else {
+      nav.removeClass('fixed');
+      nav.css("background-color","");
+    }
+  });
+
 
 });

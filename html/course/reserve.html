@@ -6,24 +6,24 @@
   <link rel="stylesheet" href="../../css/common/footer.css">
   <link rel="stylesheet" href="../../css/course/common.css">
   <!--ローカルCSS-->
-<link rel="stylesheet" type="text/css" href="../../css/course/reserve.css">
+  <link rel="stylesheet" type="text/css" href="../../css/course/reserve.css">
 
-<script> var array = <?php echo json_safe_encode($data); ?></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/course/jquery.cookie.js"></script>
-<script src="../../js/course/reserve.js"></script>
-<meta charset="utf-8">
-<title>AKI農場</title>
+  <script> var array = <?php echo json_safe_encode($data); ?></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/course/jquery.cookie.js"></script>
+  <script src="../../js/course/reserve.js"></script>
+  <meta charset="utf-8">
+  <title>AKI農場</title>
 </head>
 
 <body>
-    
+
   <?php include_once("../common/global_header.html"); ?>
-  
+
     <div id="box"></div>
-    
+
     <p id="con">こちらでよろしいですか？</p>
-    
+
     <p id="btn">
         <a href="../reserve/confirm.php">
             <button type="button" id="confirm">この4品で決定！</button>
@@ -32,13 +32,13 @@
             <button type="button" id="list">リストに戻る</button>
         </a>
     </p>
-    
+
     <div>
         <p id="gennka"></p>
         <p id="yajirusi"> ↓ </p>
         <p id="settowari">2500円</p>
     </div>
-    
+
     <div id="session"></div>
 
     <br><hr /><br>

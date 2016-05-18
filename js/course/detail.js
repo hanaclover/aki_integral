@@ -12,31 +12,31 @@ $(function()
 
 //--------詳細を表示------------------------------------------------------------
     var arrctg = new Array();
-    for(var i=0 ; i < array.length ; i++)
-    {	
-		for(var y in array[i])
+    for(var i=0 ; i < arrayData.length ; i++)
+    {
+		for(var y in arrayData[i])
         {
             //imgのみタグつきで書き込む
             //console.log(cart_arr);
             if( y === "img")
             {
-                var name_d = array[i][y].substr(0, array[i][y].length-4);
-                listMakeDel(arrctg, array[i][y], name_d);
-            } 
+                var name_d = arrayData[i][y].substr(0, arrayData[i][y].length-4);
+                listMakeDel(arrctg, arrayData[i][y], name_d);
+            }
             /*else if( y === "kana" )
             {
-                arrctg.push('<p class="' + y + '">' + array[i][y] + ' </p>' 
-                + ' <p><button type="button" id="' + 
-                array[i][y] + '" class="del">削除</button></p> ');
+                arrctg.push('<p class="' + y + '">' + arrayData[i][y] + ' </p>'
+                + ' <p><button type="button" id="' +
+                arrayData[i][y] + '" class="del">削除</button></p> ');
             }*/
             else if( y === "name" || y === "detail" || y === "price" )
             {
-                arrctg.push("<p class='" + y + "'>" + array[i][y] + " </p> ");
+                arrctg.push("<p class='" + y + "'>" + arrayData[i][y] + " </p> ");
             }
         }
     };
-    
-    $("div#box").html(arrctg);		    
+
+    $("div#box").html(arrctg);
 
 //------乱数作るって適当に引っ張ってくる--------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ $(function()
 
     function addButton(that)
     {
-        var flg = $(that).attr('id'); 
+        var flg = $(that).attr('id');
         if(cart_arr == null)
         {
             cart_arr = $.cookie('cart');
@@ -76,8 +76,8 @@ $(function()
         else
         {
             console.log("a");
-            cart_arr.push(flg);    
-            $(that).attr("class", "del"); 
+            cart_arr.push(flg);
+            $(that).attr("class", "del");
             $(that).text("削除");
         };
     $.cookie('cart', cart_arr);
@@ -85,7 +85,7 @@ $(function()
 
     function delButton(that)
     {
-        var flg    = $(that).attr('id'); 
+        var flg    = $(that).attr('id');
         //flgReg = new RegExp(flg);
         //console.log(typeof $.cookie('cart'));
         if(cart_arr == null)
@@ -97,9 +97,9 @@ $(function()
             console.log("d");
             cart_arr.some(function(v, i)
             {
-                if (v==flg) cart_arr.splice(i,1);    
+                if (v==flg) cart_arr.splice(i,1);
             });
-        $(that).attr("class", "add"); 
+        $(that).attr("class", "add");
         $(that).text("追加");
         };
         $.cookie('cart', cart_arr);
@@ -107,20 +107,20 @@ $(function()
 
     function listMakeAdd(arrctg, arr, name )
     {
-        arrctg.push('<p><img id="list"  src="./img/' + 
-        arr + '" width="200" height="200" /></a></p> <p><button type="button" id="' + 
+        arrctg.push('<p><img id="list"  src="./img/' +
+        arr + '" width="200" height="200" /></a></p> <p><button type="button" id="' +
         name + '" class="add">追加</button></p> ');
     };
 
     function listMakeDel(arrctg, arr, name )
     {
-        arrctg.push('<p id="img"><img id="list"  src="../../img/menu/' + 
+        arrctg.push('<p id="img"><img id="list"  src="../../img/menu/' +
         arr + '" width="200" height="200"></a></p> ');
     };
-    
+
     function btnPos(arrctg, arr, name )
     {
-        arrctg.push('<p><button type="button" id="' + 
+        arrctg.push('<p><button type="button" id="' +
         name + '" class="add">追加</button></p> ');
     };
 
