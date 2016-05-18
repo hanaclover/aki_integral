@@ -17,6 +17,21 @@ $col    = ' img, name, price, detail, category, id, kana ';
 $data = $dbh->select($table,$col);
 //////////////////////////////////////////////////////////
 
+//オススメ商品をつくるとこ////////////////////////////////
+$nameArr = array();
+foreach($data as $arr){
+    foreach($arr as $key => $val){
+        if($key === "name"){
+            $nameArr[rand(0, 999)] = $val;
+        }
+    }
+};
+krsort($nameArr);
+//ここに上から3つはいってる
+$randomMenu = array_splice($nameArr, 0, 3);
+//print_r($randomMenu);
+/////////////////////////////////////////////////////////
+
 include_once('./list.html');
 
 ?>
