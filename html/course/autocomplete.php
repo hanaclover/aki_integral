@@ -43,7 +43,7 @@ foreach($nameArr2 as $arr){
     }
 };
 
-/////検索用にカナの配列を作る///////////////////////////
+//検索用にカナの配列を作る
 $kanaArr = array();
 foreach($nameArrTrue as $val)
 {
