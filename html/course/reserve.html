@@ -1,6 +1,13 @@
 <html>
 <head>
+  <!--グローバルCSS-->
+  <link rel="stylesheet" href="../../css/common/init.css">
+  <link rel="stylesheet" href="../../css/common/header.css">
+  <link rel="stylesheet" href="../../css/common/footer.css">
+  <link rel="stylesheet" href="../../css/course/common.css">
+  <!--ローカルCSS-->
 <link rel="stylesheet" type="text/css" href="../../css/course/reserve.css">
+
 <script> var array = <?php echo json_safe_encode($data); ?></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/course/jquery.cookie.js"></script>
@@ -11,6 +18,8 @@
 
 <body>
     
+  <?php include_once("../common/global_header.html"); ?>
+  
     <div id="box"></div>
     
     <p id="con">こちらでよろしいですか？</p>
@@ -35,6 +44,8 @@
     <!--
     <div id="footer">2016 Project AKINO cAMP CORPORATION 2016</div>
     -->
+    <br><hr /><br>
+  <?php include_once("../common/global_footer.html"); ?>
 
 </body>
 

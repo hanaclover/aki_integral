@@ -1,12 +1,11 @@
 p#con
 {
-    color: #05a903;
+    color: #04a;
     background-color: #f48c09;
     font-size: 40px;
     width: 50%;
-    border: blue 4px dotted;   
     text-align: center;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 p#img
@@ -18,7 +17,8 @@ p#img
 button
 {
     text-align: center;
-    margin: 5px auto;
+    margin: 10px auto;
+    font-size: 20px;
 }
 
 p#btn
@@ -30,7 +30,7 @@ p#btn
 div#box
 {
     text-align:center;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 p#gennka
