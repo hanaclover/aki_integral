@@ -1,5 +1,5 @@
 header>.wrapper{
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid #ccc;
 }
 
 .headerMenu{
@@ -17,7 +17,26 @@ header>.wrapper{
 .headerMenu ul li:last-child{
   padding-top: 6px;
   float: right;
+  text-align: right;
   font-size: 12px;
+}
+.headerMenu ul li:nth-child(2){
+  margin-left: 60px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #777;
+}
+.headerMenu ul li i{
+  font-size: 14px;
+  margin-right: 4px;
+}
+.phoneNum{
+  margin-top: 6px;
+  margin-left: 2px;
+  font-size: 28px;
+  color: #555;
+  letter-spacing: 2px;
+  font-style: arial;
 }
 .headerMenu a{
   color: #1841ce;
@@ -25,12 +44,20 @@ header>.wrapper{
 .headerMenu img{
   height: 80px;
 }
+.headCopy{
+  margin-top: 4px;
+  font-size: 14px;
+  color: #888;
+}
+.headerLink{
+  margin-top: 16px;
+}
 
 /*---------------------------------------------------------
 パンくずデザイン
 ---------------------------------------------------------*/
 .breadcrumb {
-  margin: 12px 0;
+  margin: 16px 0;
   line-height: 36px;
   color: #888;
   padding: 1px;

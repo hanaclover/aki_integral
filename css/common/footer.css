@@ -1,3 +1,22 @@
+.arrow{
+  margin-left: auto;
+  margin-right: 0;
+  width: 100px;
+  height: 50px;
+  position: relative;
+}
+.arrow:after{
+  border: 50px solid transparent; /* 三角形の元となる指定（一旦全て透過にする） */
+  border-bottom-color: #3d3734; /* 作成したい三角形に合わせて１辺の色をつける */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* 中央寄せに使用 */
+  margin-left: -50px; /* 中央寄せに使用*/
+}
+.arrow:hover{
+  opacity: 0.8;
+}
 footer{
   background-color: #3d3734;
   text-align: center;

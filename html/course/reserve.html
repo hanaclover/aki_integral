@@ -71,9 +71,19 @@
         </div>
       </div>
       <div class="col2">
-        <a href="../reserve/confirm.php">
-          <button class="confirm">この4品で予約する</button>
-        </a>
+        <?php
+        if(count($arrId3)==4){
+        ?>
+          <a href="../reserve/confirm.php">
+            <button class="confirm">この4品で予約する</button>
+          </a>
+        <?php
+        }else{
+        ?>
+          <button class="confirm unTouch">この4品で予約する</button>
+        <?php
+        }
+        ?>
         <a href="./list.php">
           <button class="back">リストに戻る</button>
         </a>

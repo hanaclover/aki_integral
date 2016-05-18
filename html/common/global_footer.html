@@ -1,3 +1,13 @@
+  <div class="wrapper"><div class="arrow"></div></div>
   <footer>
     <div>Copyright &copy <?php echo date('Y');?> AMP</div>
   </footer>
+
+  <script type="text/javascript">
+    $(function(){
+      $(".arrow").click(function(){
+        $("html,body").animate({scrollTop:0},'slow');
+        return false;
+      });
+    });
+  </script>
