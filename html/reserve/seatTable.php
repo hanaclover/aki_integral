@@ -37,6 +37,7 @@
     <script src="../../js/reserve/ajax.js"></script>
     <script src="../../js/reserve/seatTable.js"></script>
     <script src="../../js/reserve/ajax_Tobikomi.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/common/init.css">
     <link rel="stylesheet" type="text/css" href="../../css/reserve/style.css" />
     <link rel="stylesheet" type="text/css" href="../../css/reserve/tableForm.css" />
     <link rel="stylesheet" type="text/css" href="../../css/reserve/input.css" />

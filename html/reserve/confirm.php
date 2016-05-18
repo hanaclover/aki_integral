@@ -24,7 +24,7 @@ if($reserve->getCourse() == 4) {
     $reserve->setCourse_flag(true);
 
     // Array処理が必要です。AMPとの調整が必要
-    $dishName = array($_SESSION['dishName'][0],$_SESSION['dishName'][1],$_SESSION['dishName'][2],$_SESSION['dishName'][3]);
+    $dishName = array($_SESSION['dish'][0],$_SESSION['dish'][1],$_SESSION['dish'][2],$_SESSION['dish'][3]);
     $reserve->setCourse_4($dishName);
 }
 
@@ -39,21 +39,22 @@ if(count($reserve->errCheck()) !== 0) {
     <meta charset="UTF-8">
     <script src="../../js/lib/jquery-2.2.3.min.js"></script>
     <script src="../../js/reserve/confirm.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/common/init.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/header.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/footer.css">
     <link rel="stylesheet" type="text/css" href="../../css/reserve/tableForm.css">
-    <link rel="stylesheet" type="text/css" href="../../css/reserve/style.css"> 
+    <link rel="stylesheet" type="text/css" href="../../css/reserve/style.css">
     <title>ご予約内容のご確認</title>
 </head>
 <body>
+<?php include_once('../../html/common/global_header.html'); ?>
 <div id="wrapper">
- <?php include_once('./common/header.html'); ?>
- <?php include_once('./common/nav.html'); ?>
     <?php
-        $send = isset($_POST['send']) ? $_POST['send'] : '';
-        if($send == "予約") {
-            echo "<h1>以上の内容でよろしいですか？</h1>";
-        } else {
-            echo "<h1>以上の内容で変更よろしいですか？</h1>";
-        }
+    if($_SESSION['stat'] == "Reserve") {
+        echo "<h1>以上の内容でよろしいですか？</h1>";
+    } else if($_SESSION['stat'] == "Change") {
+        echo "<h1>以上の内容で変更よろしいですか？</h1>";
+    }
     ?>
     <table class="design_table">
         <tr>
@@ -62,7 +63,7 @@ if(count($reserve->errCheck()) !== 0) {
             </td>
             <td>
                 <?php
-                    echo $_SESSION['startTime'];
+                echo $_SESSION['startTime'];
                 ?>
             </td>
         </tr>
@@ -111,8 +112,12 @@ if(count($reserve->errCheck()) !== 0) {
         if($_SESSION['course_flag'] == true) {
             echo "<tr><td id='no_under_white'>料理選択</td><td>";
 
-            for($i = 0; $i < count($_SESSION['dishName']); $i++ ) {
-                echo "".$_SESSION['dishName'][$i]."";
+            for($i = 0; $i < count($_SESSION['dish']); $i++ ) {
+                if( $i < 3 ) {
+                    echo $_SESSION['dish'][$i].", ";
+                } else {
+                    echo "".$_SESSION['dish'][$i]."";
+                }
             }
 
             echo "</td></tr>";
@@ -120,11 +125,12 @@ if(count($reserve->errCheck()) !== 0) {
         ?>
     </table>
     <div class="btns">
-        <span class='btn'><input type='submit' name='confirm' value='確定' class='common_btn submit'></span>
-        <span class='btn'><input type='submit' name='confirm' value='修正' class='common_btn modify'></span>
+        <form action="./finishProcessing.php" method="Post">
+            <span class='btn'><input type='submit' name='confirm'     value='確定' class='common_btn submit'></span>
+            <span class='btn'><input type='submit' name='confirm'     value='修正' class='common_btn modify'></span>
+        </form>
     </div>
-    </form>
-<?php include_once('../../html/common/footer.html'); ?>
 </div>
+<?php include_once('../../html/common/footer.html'); ?>
 </body>
 </html>

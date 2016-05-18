@@ -14,17 +14,19 @@
  * 2. 4品以外の場合　→　ContentsCheck(yyy
  * 3. ContentsCheck() RETURN False　→　RESERVEDに戻る
  * */
-echo "Reserved : ".session_id();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <title>予約ページ</title>
     <script src="../../js/lib/jquery-2.2.3.min.js"></script>
     <script src="../../js/reserve/management.js"></script>
     <script src="../../js/reserve/confirm.js"></script>
     <script src="../../js/reserve/ajax.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/common/init.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/header.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/footer.css">
     <link rel="stylesheet" type="text/css" href="../../css/reserve/style.css" />
     <link rel="stylesheet" type="text/css" href="../../css/reserve/tableForm.css" />
     <link rel="stylesheet" type="text/css" href="../../css/reserve/input.css" />
@@ -34,18 +36,18 @@ echo "Reserved : ".session_id();
 
     date_default_timezone_set("Asia/Tokyo");
 
-    $pdo = new PDODatabase();
+    $_SESSION['UID'] = isset($_GET['UID']) ? $_GET['UID'] : '';
+    $_SESSION['RID'] = isset($_GET['RID']) ? $_GET['RID'] : '';
 
-    $rid = isset($_GET['RID']) ? $_GET['RID'] : '';
-    echo $_GET['RID']."+".$rid;
-    $arr = array($rid);
+    $pdo = new PDODatabase();
+    $arr = array($_SESSION['RID']);
     $res = $pdo->select("user u, reserve r", "", "RID = ?", $arr);
     ?>
 </head>
 <body>
+<?php include_once('../../html/common/global_header.html'); ?>
 <div id="wrapper">
-    <?php include_once('../../html/common/header.html'); ?>
-    <?php include_once('../../html/common/nav.html'); ?>
+
     <span id="shimaiten">
         <?php
         if(isset($_SESSION['full'])){
@@ -89,59 +91,61 @@ echo "Reserved : ".session_id();
                     }
                     echo "</select>分";
                     ?>
+                    <span class="err" id="minute"><?php echo isset($_SESSION['err']['StartTime']) ? $_SESSION['err']['StartTime'] : "" ; ?></span>
                 </td>
             </tr>
             <tr>
                 <td>人数</td>
                 <td>
-                    <?php echo "<input type='number' name='peopleNum' value='".$res[0]['PeopleNum']."' />"; ?></td>
+                    <?php
+                    $_SESSION['peopleNum'] = $res[0]['PeopleNum'];
+                    echo "<input type='number' name='peopleNum' value='".$res[0]['PeopleNum']."' />";
+                    ?>
+                    <span class="err"><?php echo isset($_SESSION['err']['peopleNum']) ? $_SESSION['err']['peopleNum'] : "" ; ?></span>
+                </td>
             </tr>
             <tr>
                 <td>漢字名前</td>
                 <td>
-                    <?php echo "<input type='text' name='familyName' value='".$res[0]['FamilyName']."' />"; ?>
+                    <?php
+                    $_SESSION['familyName'] = $res[0]['FamilyName'];
+                    $_SESSION['firstName']  = $res[0]['FirstName'];
+                    echo $res[0]['FamilyName']." ".$res[0]['FirstName'];
+                    ?>
                 </td>
             </tr>
             <tr>
                 <td>ふりがな</td>
                 <td>
-                    <?php echo "<input type='text' name='familyName_kana' value='".$res[0]['FamilyName_kana']."' />"; ?>
-                    <?php echo "<input type='text' name='firstName_kana' value='".$res[0]['FirstName_kana']."' />"; ?>
+                    <?php
+                    $_SESSION['familyName_kana']    = $res[0]['FamilyName_kana'];
+                    $_SESSION['firstName_kana']     = $res[0]['FirstName_kana'];
+                    echo $res[0]['FamilyName_kana']." ".$res[0]['FirstName_kana'];
+                    ?>
                 </td>
             </tr>
             <tr>
                 <td>電話番号</td>
                 <td>
-                <?php
-                    echo "<select name='phoneNum1'>";
-                    $firstPN = array("080", "070", "090");
-
-                    $PhoneNum = explode("-", $res[0]['PhoneNum']);
-
-                    //080 070 090
-                    for($i = 0; $i < count($firstPN); $i++) {
-                        if($firstPN[$i] == $PhoneNum[0])
-                            echo "<option value='$firstPN[$i]' selected>$firstPN[$i]</option>";
-                        else
-                            echo "<option value='$firstPN[$i]'>$firstPN[$i]</option>";
-                    }
-                    echo "</select>-";
-
-                    echo "<input type='number' name='phoneNum2' value='".$PhoneNum[1]."' />-";
-                    echo "<input type='number' name='phoneNum3' value='".$PhoneNum[2]."' />";
+                    <?php
+                    $_SESSION['phoneNumber'] = $res[0]['PhoneNum'];
+                    echo $res[0]['PhoneNum'];
                     ?>
                 </td>
             </tr>
             <tr>
                 <td>メール</td>
                 <td>
-                    <?php echo "<input type='text' name='mail' value='".$res[0]['Mail']."' />"; ?>
+                    <?php
+                    $_SESSION['mail'] = $res[0]['Mail'];
+                    echo $res[0]['Mail'];
+                    ?>
                 </td>
             </tr>
             <tr>
                 <td id="no_under_white">コース名</td>
                 <td>
-                <?php
+                    <?php
                     $order = array("4", "7", "10");
 
                     for($i = 0; $i < count($order); $i++) {
@@ -150,21 +154,23 @@ echo "Reserved : ".session_id();
                         else
                             echo "<input type='radio' name='course' value='$order[$i]' />$order[$i]";
                     }
-                ?>
+                    ?>
                 </td>
             </tr>
             <?php
-                if($res[0]['Course_flag'] !== false) {
-                    echo "<tr>
+            if($res[0]['Course_flag'] !== true) {
+                echo "<tr>
                             <td>備考</td>
                             <td>".($res[0]['Course_4'] == '' ? '' : $res[0]['Course_4'])."</td>
                         </tr>";
-                }
+            }
             ?>
         </table>
-        <input type="submit" name="send" value="予約" class="common_btn submit"/>
+        <input type="submit" name="send" value="変更" class="common_btn submit"/>
+        <input type="submit" name="send" value="削除" class="common_btn submit"/>
+        <input type="submit" name="send" value="戻る" class="common_btn submit"/>
     </form>
-    <?php include_once('../../html/common/footer.html'); ?>
 </div>
+<?php include_once('../../html/common/global_footer.html'); ?>
 </body>
 </html>

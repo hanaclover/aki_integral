@@ -37,7 +37,7 @@ if($_POST['course'] == "4") {
     $_SESSION['course_flag'] = true;
 } else $_SESSION['course_flag'] = false;
 
-echo $_POST['course_flag']."course_flag";
+echo $_SESSION['course_flag']."course_flag";
 
 // Input Data Check
 $_SESSION['err'] = inputDataCheck($_SESSION['UID'], $_SESSION['peopleNum'], $_SESSION['StartDay'],

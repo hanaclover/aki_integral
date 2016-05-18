@@ -9,7 +9,7 @@
  * 定数を定義するためにinit.phpが必要。
  */
 
-require_once "../../class/reserve/BaseModel.php";
+require_once "../../class/BaseModel.php";
 require_once "../../class/reserve/config.php";
 
 class PDODatabase extends BaseModel{

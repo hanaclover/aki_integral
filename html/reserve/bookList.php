@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <script src="../../js/lib/jquery-2.2.3.min.js"></script>
     <script src="../../js/reserve/booklist.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/common/init.css">
     <link rel="stylesheet" type="text/css" href="../../css/reserve/booklist.css">
     <link rel="stylesheet" type="text/css" href="../../css/reserve/style.css">
     <title>
