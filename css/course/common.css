@@ -20,3 +20,24 @@ h1{
 button{
   cursor: pointer;
 }
+
+/*ローカルのパンくずリスト*/
+ol.localBreadList{
+  margin-top: 18px;
+}
+ol.localBreadList li{
+  display: inline;
+  list-style-type: none;
+  font-weight: bold;
+  color: #aaa;
+}
+ol.localBreadList li a{
+  color: #1841ce;
+  text-decoration: underline;
+}
+ol.localBreadList li:before {
+  content: "　>　";
+}
+ol.localBreadList li:first-child:before {
+  content: none;
+}

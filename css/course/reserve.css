@@ -1,76 +1,97 @@
-p#con
-{
-    color: #56638F;
-    background-color: #EFC1C4;
-    font-size: 40px;
-    width: 50%;
-    text-align: center;
-    margin: 10px auto;
+p.text{
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+.reserve{
+  padding: 24px;
+  padding-left: 60px;
 }
 
-p#img
-{
-    text-align: center;
-    margin: 10px auto;
+/*写真のリスト*/
+.imgList{
+  border-bottom: 1px solid #aaa;
+  border-top: 1px solid #aaa;
+  padding-top: 20px;
+}
+.imgList li{
+  float: left;
+  margin-left: 24px;
+}
+.imgList img{
+  width: 200px;
+  height: 200px;
+}
+.imgList p{
+  text-align: center;
+  margin: 12px;
+  font-size: 16px;
 }
 
-button
-{
-    text-align: center;
-    margin: 10px auto;
-    font-size: 20px;
+/*会計の表*/
+.column{
+  margin: 18px 0;
 }
-
-p#btn
-{
-    margin: 6 auto;
-    text-align: center;
+.col1{
+  margin-left: 200px;
+  width: 180px;
+  float: left;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 12px 20px;
 }
-
-div#box
-{
-    text-align:center;
-    margin: 20px auto;
+.col1 p{
+  line-height: 1.8em;
 }
-
-p#gennka
-{
-    color: #a8b98d;
-    font-size: 40px;
-    text-align:center;
-    margin: 0 auto;
+.b{
+  font-weight: bold;
 }
-
-p#settowari
-{
-    color: skyblue;
-    font-size: 100px;
-    text-align:center;
-    margin: 0 auto;
+.totalPrice{
+  color: #b12704;
+  font-size: 18px;
+  border-top: 1px solid #ccc;
+  margin-top: 6px;
+  padding-top: 6px;
+  font-weight: bold;
 }
-
-p#yajirusi
-{
-    color: #8b2a0d;
-    font-size: 30px;
-    text-align:center;
-    margin: 0 auto;
+.col2{
+  width: 300px;
+  margin-left: 20px;
+  float: left;
+  padding-top: 40px;
 }
-/*
-div#footer 
-{
-    text-align:center;
-    z-index:99997;
-    position:fixed;
-    background:#000;
-    border-top: solid 1px #fff;
-    color: #fff;
-    bottom: 0;
-    width: 100%;
-    height: 30px;
-    background-image: no-repeat;
-    background-size: auto;
-    background-position: center center;
+.left{
+  float: left;
 }
-
-*/
+.right{
+  text-align: right;
+}
+button.confirm{
+  display: block;
+  margin: 0 auto;
+	margin-top: 20px;
+  padding: 16px 40px;
+  color: #fff;
+	font-size: 18px;
+  font-weight: bold;
+  background-color: #9fcb02;
+  border: none;
+  border-radius: 2px;
+}
+button.confirm:hover{
+  opacity: 0.7;
+}
+button.back{
+  display: block;
+  margin: 0 auto;
+	margin-top: 20px;
+  padding: 12px 36px;
+  color: #fff;
+	font-size: 16px;
+  font-weight: bold;
+  background-color: #777;
+  border: none;
+  border-radius: 2px;
+}
+button.back:hover{
+  opacity: 0.7;
+}

@@ -1,5 +1,6 @@
 <html>
 <head>
+  <link rel="stylesheet" href="../../css/course/font-awesome.min.css">
   <!--グローバルCSS-->
   <link rel="stylesheet" href="../../css/common/init.css">
   <link rel="stylesheet" href="../../css/common/header.css">
@@ -21,44 +22,62 @@
   $header_flag=2;
   include_once("../common/global_header.html");
   ?>
-  <div class="wrapper">
-    <div id="box">
-             
-       <?php
-         foreach($arrImg as $val){ 
-       ?><img id="img" src="../../img/menu/<?php echo $val;?>" />      
-         <?php 
-         };
-         ?> 
 
-    </div>
+  <ol class="wrapper localBreadList">
+    <li><a href="./list.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> メニューリスト</a></li>
+    <li>予約確認</li>
+  </ol>
+  <div class="wrapper reserve">
+    <p class="text">注文内容を確認する</p>
+    <ul class="imgList clearfix">
+      <?php
+      foreach($arrId3 as $val){
+      ?>
+        <li>
+          <div><img id="img" src="../../img/menu/<?php echo $val["img"];?>"><div>
+          <p><?php echo $val["name"];?></p>
+        </li>
+      <?php
+      }
+      ?>
+    </ul>
 
-    <p id="con">こちらでよろしいですか？</p>
-
-    <p id="btn">
+    <?php
+      //価格の計算
+      $totalPrice = 1500;
+      foreach($arrPrice as $val){
+        $totalPrice += $val;
+      }
+      $totalPrice = $totalPrice - 2500;
+    ?>
+    <div class="column clearfix">
+      <div class="col1">
+        <p class="b">注文内容</p>
+        <?php
+        foreach($arrId3 as $val){
+        ?>
+          <p class="left"><?php echo $val["name"];?></p>
+          <p class="right clearfix">&yen; <?php echo $val["price"];?></p>
+        <?php
+        }
+        ?>
+        <p class="left">飲み放題 2h</p>
+        <p class="right clearfix">&yen; 1500</p>
+        <p class="left">割引額</p>
+        <p class="right clearfix">- &yen; <?php echo $totalPrice;?></p>
+        <div class="totalPrice">
+          <p class="left">合計金額</p>
+          <p class="right clearfix">&yen; 2500</p>
+        </div>
+      </div>
+      <div class="col2">
         <a href="../reserve/confirm.php">
-            <button type="button" id="confirm">この4品で決定！</button>
+          <button class="confirm">この4品で予約する</button>
         </a>
         <a href="./list.php">
-            <button type="button" id="list">リストに戻る</button>
+          <button class="back">リストに戻る</button>
         </a>
-    </p>
-
-    <div>
-        <p id="gennka">
-        
-        <?php 
-        $totalPrice = 1500;
-        foreach($arrPrice as $val){
-           $totalPrice += $val;
-           };
-        echo $totalPrice;
-        
-        ?>
-
-        </p>
-        <p id="yajirusi"> ↓ </p>
-        <p id="settowari">2500円</p>
+      </div>
     </div>
 
     <div id="session"></div>
