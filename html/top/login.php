@@ -87,16 +87,16 @@ if($password_db[0]["Password"] == $password){
   //var_dump ($password_db[0]["Type"]);
   if($password_db[0]["Type"]==="お客様"){
      if($_SESSION["KEY"]==="key"){
-            header("Location: ../Reserved.php");
+            header("Location: ../reserve/Reserved.php");
      }else{
             header("Location: test.php");
      }
   } 
 
   if($password_db[0]["Type"]=="アルバイト")
-  header("Location: shift_worker.php");
+  header("Location: ../management/shift_worker.php");
   if($password_db[0]["Type"]=="店長")
-  header("Location: admin_top.php");
+  header("Location: ../management/admin_top.php");
 
   exit;
 }else{ //error Message

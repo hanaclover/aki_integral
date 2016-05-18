@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <!---  
-//htdocs/aki_integral/aki_integral/html/management/shift_manager.php
+//htdocs/aki_integral/aki_integral/html/management/shift_manager_test.php
 
 -->
 <head>
@@ -9,57 +9,44 @@
 
 <?php 
 require_once("shiibashi.php");
-require_once("../../class/management/database_class.php");
+//require_once("../../class/management/database_class.php");
 require_once("calendar.php");
-require_once("../../class/management/login_check_master.php");
+//require_once("../../class/management/login_check_master.php");
 
  
 ///表示するyearとmonthを定める
 $year=date("Y");
 $month=date("m");
-if(isset($_POST["month"])){
-	$month=$_POST["month"];
+
+
+$day=num_month($year,$month);
+
+$arr=array();
+for($i=0;$i<30;$i++){
+	
+	$data="1";
+	for($j=0;$j<$day-1;$j++){
+		if($j>15&&$i>15){
+			$data=$data.","."0";
+		}else{
+			$data=$data.","."1";
+		
+		}
+	}
+	$data=$data."\"";
+	$arr[$i]["shift_data"]=$data;
+	$arr[$i]["name"]="テスト君".$i;
+	
+	
+	
 }
-if(isset($_POST["year"])){
-	$year=$_POST["year"];
-}
-
-//次、前、今月のタイプ指定
-$method="";
-if(isset($_POST["next"])){
-	$method="next";
-}else if(isset($_POST["prev"])){
-	$method="prev";
-}else if(isset($_POST["now"])){
-	$method="now";
-}
- 
-//年月計算
-if(isset($_POST["month_submit"])){
-	$month=$_POST["month_submit"];
-	$year=turnCalendar($year,$month,$method)[0];
-}else{
-	$year=turnCalendar($year,$month,$method)[0];
-	$month=turnCalendar($year,$month,$method)[1];
-}
-$db=new database();
-$table="shift_submit JOIN regist ON shift_submit.user_id=regist.User_ID";//テーブル名指定	
-
-//月に提出されたデータをすべて取り出す
-$where="shift_month= ".$month;
-$column="";
-$arr=$db->select($table,$column, $where);
-
-//$sql="SELECT * FROM shift_submit JOIN regist ON shift_submit.user_id=regist.User_ID WHERE shift_month= ".$month;
-
-
 
 //人数の長さ
 $person=count($arr);
 //echo " person ".$person."<br>";
 //文字列の分解
 $shift=explode(',',$arr[0]["shift_data"]);
-
+//var_dump($shift);
 //月の日数
 $day=num_month($year,$month);
 
@@ -146,19 +133,13 @@ function setColor(i){
 <body>
 <?php echo $year."年 ".$month."月 ";  ?>
 <br>
-<form method="post" action="">
-<input type="submit" name="prev" value="前の月"  /> 
-<input type="submit" name="next" value="次の月"  /> 
-<input type="submit" name="now" value="今月"  /> 
-<input type="hidden" name="month" value=<?php  echo $month; ?>>
-<input type="hidden" name="year" value=<?php  echo $year; ?>>
-</form>
+
 
 
 
 <table border="/">
 <tr>シフト表
-<th>名前
+<th>
 
 
 
@@ -208,9 +189,13 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 		$problem->setDemand($dem);
 		$problem->setShop($shop);
 		$problem->setYear($year);
+		$start_time=time();
 		$sol1=$problem->solve_step1();
 		$sol2=$problem->solve_step2($sol1);//最終的に出力される解
-	
+		$end_time=time();
+		echo "解を得るまでの時間".($end_time-$start_time)."<br>";
+
+
 //******************************************//
 
 //******************以下は出力**********//
@@ -224,7 +209,7 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 		for($i=0;$i<$person;$i++){
 			//人の出力
 			echo "<tr>";
-			echo "<td>".$arr[$i]["FamilyName"]." ".$arr[$i]["FirstName"];	
+			echo "<td>".$arr[$i]["name"];	
 			$shift=explode(',',$arr[$i]["shift_data"]);
 			$day=count($shift);
 		
@@ -255,49 +240,9 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 		}
 		
 		//すでに
-		$db=new database();
-		$table=	"shift_fix";//テーブル名指定
-		$column="COUNT(*) ";
-		$where=" shift_year= ".$arr[0]["shift_year"]." AND shift_month= ".$_POST["month_submit"];
-		
-		$result=$db->select($table,$column,$where);
-		
-		//var_dump($result);
 		
 		//
-		if($result[0]["COUNT(*)"]==0){
 		
-			$col="user_id,shift_year,shift_month,shift_data,delete_flg";//insertするcolumn指定
-			for($i=0;$i<$person;$i++){
-				$shift_data=implode("," , $sche[$i]);//insertするvalue指定
-				$data="\"".$arr[$i]["user_id"]."\""
-						.","
-						.$arr[$i]["shift_year"]
-						.","
-						.$arr[$i]["shift_month"]
-						.","
-						."\"".$shift_data."\""
-						.","."0"
-						;
-					
-				$db->insert($table,$col,$data);
-			}
-		
-		}else{
-				
-			for($i=0;$i<$person;$i++){
-				$column="shift_data";
-				$where=" user_id ="."\"".$arr[$i]["user_id"]."\"". " AND shift_month=". $_POST["month_submit"];
-				
-				$shift_data=implode("," , $sche[$i]);//insertするvalue指定
-				$data="\"".$shift_data."\"";
-					
-				$db->update2($table,$column,$data,$where);
-			}
-			
-		}
-		header("Location:./shift_confirm.php");
-		//exit();	
 	}
 }else{
 	//makeボタンが押される前に実行される
@@ -309,7 +254,7 @@ if(isset($_POST["schedule"])){//makeボタンを押されたらtrue
 	for($i=0;$i<$person;$i++){
 		//人の出力
 		echo "<tr>";
-		echo "<td>".$arr[$i]["FamilyName"]." ".$arr[$i]["FirstName"];
+		echo "<td>".$arr[$i]["name"];
 		$shift=explode(',',$arr[$i]["shift_data"]);
 		for($j=0;$j<$day;$j++){
 			//表データボタン作成
@@ -410,42 +355,9 @@ function shop_supply($shop,$j,$arr,$person){
 
 </form>
 <br>
-<button  onclick="location.href='shift_confirm.php'">シフト確認</button>
 
-<!--  未完成  -->
-<form  action="" name="b4">
-<table border="/">
-<tr>各店舗
-<th>名前
-<?php
-for ($j=0;$j<$day;$j++ ){
-		//dayの出力
-		echo "<th>".($j+1);
-	}
-	for($i=0;$i<$person;$i++){
-		//人の出力
-		echo "<tr>";
-		echo "<td>".$arr[$i]["FamilyName"]." ".$arr[$i]["FirstName"];
-		$shift=explode(',',$arr[$i]["shift_data"]);
-		for($j=0;$j<$day;$j++){
-			//表データボタン作成
-				
-			echo "<td>";
-			//提出されたシフトを表示
-			//空いているならo,空いていないならxを返す
-			if($shift[$j]==1){
-				echo "<input type=\"button\"  value="."\"○\">";
-			}else{
-				echo "<input type=\"button\"  value="."\"x\">";
-			}
-		}
-	echo"</tr>";
-	}	
-	
-?>
-</table>
-</form>
-<button  onclick="location.href='../top/logout.php'">ログアウト</button>
+
+
 
 </body>
 </html>

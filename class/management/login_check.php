@@ -2,8 +2,8 @@
 
  session_start();
 
-if(!isset($_SESSION["USERID"])){
-  header("Location:logout.php");
+if(!isset($_SESSION["UID"])){
+  header("Location:../../html/top/logout.php");
   exit;
 }
 
