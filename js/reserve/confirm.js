@@ -10,9 +10,6 @@ $(function () {
        $(this).css("cursor" , "default");
     });
     //マウスが乗っている列の全てのセルにhoverクラス属性を与える
-    $(".design_table tr").mouseover(function () {
-        $("tr:nth-child("+(($("tr").index(this))+1)+") td").addClass("hover");
-    }).mouseout(function () {
-        $("tr:nth-child("+(($("tr").index(this))+1)+") td").removeClass("hover");
-    });
+    $(".design_table tr").mouseover(function () {    $("tr:nth-child("+(($("tr").index(this))+1)+") td").addClass("hover");}).mouseout(function () {    $("tr:nth-child("+(($("tr").index(this))+1)+") td").removeClass("hover");});
+
 });
